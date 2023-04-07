@@ -1,0 +1,144 @@
+﻿@model QRSCS.Models.CreateUserModel
+@{
+    ViewBag.Title = "ViewAllStudents";
+}
+<link href="~/Content/CreateUser/css/createuser.css" rel="stylesheet" />
+
+<link href="~/Content/ViewAllUserAssets/css/sb-admin-2.css" rel="stylesheet" />
+<main>
+    <div class="container">
+        <header>View Students</header>
+        <form style="min-height:150px" onsubmit="getstudents();return false">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Students According to Classes</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+
+
+                            <select id="class_select" required>
+                                <option disabled selected>&nbsp;&nbsp;&nbsp;&nbsp;Select Class &nbsp;&nbsp;&nbsp;&nbsp;</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <button type="submit" class="backBtn">
+                                <span class="btnText">Submit</span>
+                                <i style="transform:none !important" class="uil uil-navigator"></i>
+                            </button>
+
+
+
+                        </div>
+                        <div class="input-field" style="visibility:hidden">
+
+
+                            <select id="class_select" required>
+                                <option disabled selected> Select Class</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+
+                            </select>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Class</label>
+                            <select>
+                                <option disabled selected>Select Class</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </form>
+
+
+        <div id="tabless" class="container-fluid" style="visibility:hidden">
+
+            <div class="row">
+
+                <div class="col-lg-12 m-b30">
+                    <div class="widget-box">
+
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>ID</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Father Name</th>
+                                                <th>Gender</th>
+                                                <th>Disability</th>
+
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody id="SetStudentData">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @*    Your Profile Views Chart END*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</main>
+
+<script src="~/Content/Adminassets/js/ViewAllStudents.js"></script>

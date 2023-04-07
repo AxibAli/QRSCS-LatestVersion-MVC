@@ -1,0 +1,921 @@
+﻿@model QRSCS.Models.PhysiotherapyModelDTO
+@{
+    ViewBag.Title = "PT Form";
+
+}
+
+<link type="text/css" rel="stylesheet" href="~/Content/adminassets/css/style.css">
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+@*<script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>*@
+<style>
+
+    fieldset {
+        display: none;
+        padding: 25px;
+    }
+
+    #first {
+        display: block;
+    }
+
+    input[type=submit], input[type=button] {
+        width: 120px;
+        margin: 15px 25px;
+        padding: 5px;
+        height: 40px;
+        background-color: #2e69ff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .prevbut {
+        background-color: #e5e7f2 !important;
+        color: black !important;
+    }
+
+        .prevbut:hover {
+            background-color: #b8b8b8 !important;
+        }
+</style>
+
+<main>
+
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h2 class="breadcrumb-title">Physio Therapy </h2>
+            <ul class="db-breadcrumb-list">
+                @*<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                <li>Physio Therapy </li>*@
+            </ul>
+        </div>
+
+        <div class="row">
+            <!-- Your Profile Views Chart -->
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="widget-inner">
+                        @using (Html.BeginForm("PT", "IDD", FormMethod.Post, new { @class = "jotform-form", method = "post", name = "form_212582673034454", id = "212582673034454", acceptcharset = "utf-8", autocomplete = "on" }))
+                        {
+                            <div id="calendar">
+                                <input type="hidden" name="formID" value="212582673034454" />
+                                <input type="hidden" id="JWTContainer" value="" />
+                                <input type="hidden" id="cardinalOrderNumber" value="" />
+                                <div role="main" class="form-all">
+
+                                    <style>
+                                        .form-all:before {
+                                            background: none;
+                                        }
+                                    </style>
+
+                                    @*GENERAL INFORMATION*@
+                                    <fieldset id="first">
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            Physiotherapy Assessment Form
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="form-line jf-required" data-type="control_number" id="id_73">
+                                                <label class="form-label form-label-top" id="label_73" for="input_73">
+                                                    GR No
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_73" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        @*<input type="number" id="input_73" name="q73_grNo" data-type="input-number" class="form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:310px" size="310" value="" placeholder="ex: 23" data-component="number" aria-labelledby="label_73 sublabel_input_73" required="" step="any" />*@
+                                                        @Html.TextBoxFor(x => x.physiotherapyModel.GR_NO, null, new { required = "required", @Class = "form-textbox validate[required, Numeric, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Enter GR-NO For Search", type = "text", id = "input_73", name = "q73_grNo", size = "10" })
+                                                        @Html.ValidationMessageFor(x => x.physiotherapyModel.GR_NO, null, new { style = "color:red" })
+                                                        <label class="form-sub-label" for="input_73" id="sublabel_input_73" style="min-height:13px" aria-hidden="false"> Enter GR-No For Search </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="form-line jf-required" data-type="control_fullname" id="id_56">
+                                                <label class="form-label form-label-top form-label-auto" id="label_56" for="first_56">
+                                                    Student Name.
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_56" class="form-input-wide jf-required" data-layout="full">
+                                                    <div data-wrapper-react="true">
+                                                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                                            <input type="text" id="first_56" required="required" readonly="readonly" , disabled="disabled" class="form-textbox " name="q56_name[first]" data-defaultvalue="" size="10" value="" data-component="first" aria-labelledby="label_56 sublabel_56_first" />
+                                                            <label class="form-sub-label" for="first_56" id="sublabel_56_first" style="min-height:13px" aria-hidden="false"> First Name </label>
+                                                        </span>
+                                                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
+                                                            <input type="text" id="last_56" class="form-textbox " name="q56_name[last]" required="required" readonly="readonly" , required, disabled="disabled" data-defaultvalue="" size="15" value="" data-component="last" aria-labelledby="label_56 sublabel_56_last" />
+                                                            <label class="form-sub-label" for="last_56" id="sublabel_56_last" style="min-height:13px" aria-hidden="false"> Last Name </label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                                <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                    Father Name
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+
+                                                <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" required="" />
+                                                        <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_radio" id="id_15">
+                                                <label class="form-label form-label-top" id="label_15" for="input_15">
+                                                    Gender
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_15" class="form-input-wide jf-required" data-layout="full">
+                                                    <div class="form-single-column" role="group" aria-labelledby="label_15" data-component="radio">
+                                                        <span class="form-radio-item" style="clear:left">
+                                                            <span class="dragger-item">
+                                                            </span>
+                                                            <input type="radio" aria-describedby="label_15" readonly="readonly" disabled="disabled" class="form-radio " id="input_15_0" name="q15_gender" value="Male" />
+                                                            <label id="label_input_15_0" for="input_15_0"> Male </label>
+                                                        </span>
+                                                        <span class="form-radio-item" style="clear:left">
+                                                            <span class="dragger-item">
+                                                            </span>
+                                                            <input type="radio" aria-describedby="label_15" readonly="readonly" disabled="disabled" class="form-radio " id="input_15_1" name="q15_gender" value="Female" />
+                                                            <label id="label_input_15_1" for="input_15_1"> Female </label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_textbox" id="id_63">
+                                                <label class="form-label form-label-top" id="label_63" for="input_63">
+                                                    Disablity
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_63" class="form-input-wide jf-required" data-layout="half">
+                                                    <input type="text" id="input_63" readonly="readonly" ,required="required" , disabled="disabled" name="q63_disablity" data-type="input-textbox" class="form-textbox " data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_63" />
+                                                </div>
+                                            </li>
+                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                    Date of Assessment
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+
+                                                    @Html.EditorFor(x => x.physiotherapyModel.Date_of_Assessment, new { htmlAttributes = new { @id = "d_ex", @class = "form-textbox validate[required]", @type = "date" } })
+                                                    @Html.ValidationMessageFor(x => x.physiotherapyModel.Date_of_Assessment, null, new { style = "color:red" })
+                                                </div>
+                                            </li>
+
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_28">
+                                                <label class="form-label form-label-top form-label-auto" id="label_28" for="input_28">
+                                                    Address
+                                                </label>
+                                                <div id="cid_28" class="form-input-wide" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.physiotherapyModel.Date_of_Assessment, null, new { id = "input_28", name = "q28_motherName", @Class = "form-textbox validate[Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.physiotherapyModel.Date_of_Assessment, null, new { style = "color:red" })
+                                                </div>
+                                            </li>
+
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    Siblings
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.physiotherapyModel.Siblings, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.physiotherapyModel.Siblings, null, new { style = "color:red" })
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="form-header-group  header-default">
+                                            <div class="header-text httac htvam">
+                                                <h2 id="header_138" class="form-header" data-component="header">
+                                                    Select one or multiple choices
+                                                </h2>
+                                            </div>
+                                            <div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.physiotherapyModel.CP, new { @class = "custom-control-input", id = "CP" })
+                                                <label class="custom-control-label" for="CP">C.P</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.physiotherapyModel.Down_Syndrome, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                                <label class="custom-control-label" for="Down Syndrome">Down Syndrome</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.physiotherapyModel.Autistic, new { @class = "custom-control-input", id = "Autistic" })
+                                                <label class="custom-control-label" for="Autistic">Autistic</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.physiotherapyModel.Muscular_Dystrophy, new { @class = "custom-control-input", id = "Muscular Dystrophy" })
+                                                <label class="custom-control-label" for="Muscular Dystrophy">Muscular Dystrophy</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.physiotherapyModel.Physical_Disability, new { @class = "custom-control-input", id = "Physical Disability" })
+                                                <label class="custom-control-label" for="Physical Disability">Physical Disability</label>
+                                            </div>
+                                        </div>
+                                        <ul class="form-section page-section">
+
+                                            <li class="form-line jf-required" data-type="control_matrix" id="id_11">
+                                                <h3 id="header_43" class="form-header" data-component="header">
+                                                    Birth History
+                                                </h3>
+                                                <label class="form-label form-label-top form-label-auto" id="label_114" for="input_114">
+                                                    <p1>a) Attendant during the labor</p1> <br />
+                                                    <p2>b) Doctor / Hospital Delivery</p2> <br />
+                                                    <p3>c) None/Trained/Untrained/Midwife /Nurse </p3>
+                                                </label>
+                                            </li>
+                                            <li class="form-line jf-required" data-type="control_matrix" id="id_114">
+                                                <h3 id="header_43" class="form-header" data-component="header">
+                                                    Family History
+                                                </h3>
+                                                <label class="form-label form-label-top form-label-auto" id="label_114" for="input_114">
+                                                    <p1>1- Cousin Marriage / Outsider</p1> <br />
+                                                </label>
+                                            </li>
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    2- Blood Group
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.physiotherapyModel.Blood_Group, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.physiotherapyModel.Blood_Group, null, new { style = "color:red" })
+                                                </div>
+                                            </li>
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    3- General Health
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.physiotherapyModel.General_Health, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.physiotherapyModel.General_Health, null, new { style = "color:red" })
+                                                </div>
+                                            </li>
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                                <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                    4- Any disability in family
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                        <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li id="cid_138" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-default">
+                                                    <div class="header-text httac htvam">
+                                                        <h2 id="header_138" class="form-header" data-component="header">
+                                                            Present Complain
+                                                        </h2>
+
+                                                    </div>
+                                                    <div id="cid_139" class="form-input-wide" data-layout="full">
+                                                        @Html.TextAreaFor(x => x.physiotherapyModel.Present_Complain, new { id = "input_139", @class = "form-textarea", name = "q139_input139", style = "width:630px;height:160px", datacomponent = "textarea", placeholder = "", required = "", arialabelledby = "label_139" })
+                                                        @Html.ValidationMessageFor(x => x.physiotherapyModel.Present_Complain, null, new { style = "color:red" })
+
+                                                    </div>
+                                                </div>
+                                                <input id="next_btn1" name="next" onclick="next_step1()" type="button" value="Next" style="float: right; right: 0;">
+                                            </li>
+                                        </ul>
+                                    </fieldset>
+
+                                    @*HISTORY*@
+                                    <fieldset id="second">
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            HISTORY OF PREGNANCY
+                                                        </h1>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cid_114" class="form-input-wide jf-required" data-layout="full">
+                                                    <table summary="" aria-labelledby="label_114" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix">
+                                                        <tr class="form-matrix-tr form-matrix-header-tr"></tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Length of pregnancy </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.historyPregnancy.Pregnancy_Type, null, new { id = "input_114_0_0", name = "q114_postNatal[0][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit,requireOneAnswer]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.historyPregnancy.Pregnancy_Length, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_1">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_1"> Premature/Normal/Post mature </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.historyPregnancy.Pregnancy_Type, null, new { id = "input_114_1_0", name = "q114_postNatal[1][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.historyPregnancy.Pregnancy_Type, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_3">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_3"> Detail of birth/After birth </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.historyPregnancy.Birth_Detail, null, new { id = "input_114_3_0", name = "q114_postNatal[3][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.historyPregnancy.Birth_Detail, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_4">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_4"> Child had any breathing problem during or after birth.</label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.historyPregnancy.Breathing_Problem, null, new { id = "input_114_4_0", name = "q114_postNatal[4][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.historyPregnancy.Breathing_Problem, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_5">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_5"> Baby position</label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.historyPregnancy.Baby_Position, null, new { id = "input_114_5_0", name = "q114_postNatal[5][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", placeholder = "Normal/Transvers lies/ Breech", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.historyPregnancy.Baby_Position, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_6">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_6"> Pregnancy </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.historyPregnancy.Pregnancy, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", placeholder = "Normal/Forceps/C Section", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.historyPregnancy.Pregnancy, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+
+                                                    </table>
+                                                </div>
+                                        </ul>
+                                        @*//2nd table//*@
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            MEDICAL INFORMATION
+                                                        </h1>
+                                                    </div>
+                                                </div>
+
+                                                <div id="cid_114" class="form-input-wide jf-required" data-layout="full">
+                                                    <table summary="" aria-labelledby="label_114" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix">
+                                                        <tr class="form-matrix-tr form-matrix-header-tr"></tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Name of Gp and pediatrician </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.medicalInformation.Name_Of_Gp, null, new { id = "input_114_0_0", name = "q114_postNatal[0][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit,requireOneAnswer]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.medicalInformation.Name_Of_Gp, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_1">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_1"> Medication </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.medicalInformation.Medication, null, new { id = "input_114_1_0", name = "q114_postNatal[1][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.medicalInformation.Medication, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_3">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_3"> Illness/Epilepsy</label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.medicalInformation.Illness, null, new { id = "input_114_3_0", name = "q114_postNatal[3][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.medicalInformation.Illness, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_4">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_4"> Allergies</label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.medicalInformation.Allergies, null, new { id = "input_114_4_0", name = "q114_postNatal[4][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.medicalInformation.Allergies, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_5">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_5">
+                                                                    Child had any of the following tests? <br />
+                                                                    (MRI,CAT,EEG,ECG,X-RAY)
+
+                                                                </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.medicalInformation.Tests, null, new { id = "input_114_5_0", name = "q114_postNatal[5][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.medicalInformation.Tests, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_6">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_6"> Surgical Intervention </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.medicalInformation.Surgical_Intervention, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.medicalInformation.Surgical_Intervention, null, new { style = "color:red" })
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                            </li>
+                                        </ul>
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            MILESTONE
+                                                        </h1>
+                                                    </div>
+                                                    <br />
+
+                                                    <div id="cid_114" class="form-input-wide jf-required" data-layout="full">
+                                                        <table summary="" aria-labelledby="label_114" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix">
+                                                            <tr class="form-matrix-tr form-matrix-header-tr"></tr>
+                                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                                <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                    <label id="label_114_row_0">Cry </label>
+                                                                </th>
+                                                                <td class="form-matrix-values">
+                                                                    @Html.TextBoxFor(x => x.milestonePT.Cry, null, new { id = "input_114_0_0", name = "q114_postNatal[0][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit,requireOneAnswer]", maxLength = "10", type = "text", size = "10", })
+                                                                    @Html.ValidationMessageFor(x => x.milestonePT.Cry, null, new { style = "color:red" })
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_1">
+                                                                <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                    <label id="label_114_row_1"> Neck Control</label>
+                                                                </th>
+                                                                <td class="form-matrix-values">
+                                                                    @Html.TextBoxFor(x => x.milestonePT.Neck_Control, null, new { id = "input_114_1_0", name = "q114_postNatal[1][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                    @Html.ValidationMessageFor(x => x.milestonePT.Neck_Control, null, new { style = "color:red" })
+                                                                </td>
+
+                                                            </tr>
+
+                                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_3">
+                                                                <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                    <label id="label_114_row_3">Sitting</label>
+                                                                </th>
+                                                                <td class="form-matrix-values">
+                                                                    @Html.TextBoxFor(x => x.milestonePT.Sitting, null, new { id = "input_114_3_0", name = "q114_postNatal[3][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                    @Html.ValidationMessageFor(x => x.milestonePT.Sitting, null, new { style = "color:red" })
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_4">
+                                                                <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                    <label id="label_114_row_4">Crawling</label>
+                                                                </th>
+                                                                <td class="form-matrix-values">
+                                                                    @Html.TextBoxFor(x => x.milestonePT.Crawling, null, new { id = "input_114_4_0", name = "q114_postNatal[4][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                    @Html.ValidationMessageFor(x => x.milestonePT.Crawling, null, new { style = "color:red" })
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_5">
+                                                                <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                    <label id="label_114_row_5">
+                                                                        Standing
+
+                                                                    </label>
+                                                                </th>
+                                                                <td class="form-matrix-values">
+                                                                    @Html.TextBoxFor(x => x.milestonePT.Standing, null, new { id = "input_114_5_0", name = "q114_postNatal[5][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                    @Html.ValidationMessageFor(x => x.milestonePT.Standing, null, new { style = "color:red" })
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_6">
+                                                                <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                    <label id="label_114_row_6"> Walking</label>
+                                                                </th>
+                                                                <td class="form-matrix-values">
+                                                                    @Html.TextBoxFor(x => x.milestonePT.Walking, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                    @Html.ValidationMessageFor(x => x.milestonePT.Walking, null, new { style = "color:red" })
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_6">
+                                                                <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                    <label id="label_114_row_6"> Spoke First word</label>
+                                                                </th>
+                                                                <td class="form-matrix-values">
+                                                                    @Html.TextBoxFor(x => x.milestonePT.Spoke_First_Word, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                    @Html.ValidationMessageFor(x => x.milestonePT.Spoke_First_Word, null, new { style = "color:red" })
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_6">
+                                                                <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                    <label id="label_114_row_6"> Bowl bladder control</label>
+                                                                </th>
+                                                                <td class="form-matrix-values">
+                                                                    @Html.TextBoxFor(x => x.milestonePT.Bowl_Bladder, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                    @Html.ValidationMessageFor(x => x.milestonePT.Bowl_Bladder, null, new { style = "color:red" })
+                                                                </td>
+
+                                                            </tr>
+
+                                                        </table>
+                                                    </div>
+
+                                                    <input id="pre_btn1" onclick="prev_step1()" type="button" value="Previous" class="prevbut">
+                                                    <input id="next_btn2" name="next" onclick="next_step2()" type="button" value="Next" style="float: right; right: 0;">
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </fieldset>
+
+                                    @*HISTORY*@
+                                    <fieldset id="third">
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            Sensory Motor Function
+                                                        </h1>
+                                                    </div>
+                                                </div>
+
+                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                    Tactile
+                                                </label>
+                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+                                                    @Html.TextBoxFor(x => x.milestonePT.Tactile, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                </div>
+
+                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                    Auditory
+                                                </label>
+                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+                                                    @Html.TextBoxFor(x => x.milestonePT.Auditory, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                </div>
+
+                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                    Visual
+                                                </label>
+                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+                                                    @Html.TextBoxFor(x => x.milestonePT.Visual, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                </div>
+
+                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                    Taste & Smell
+                                                </label>
+                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+                                                    @Html.TextBoxFor(x => x.milestonePT.Taste_Smell, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                </div>
+
+                                            </li>
+                                        </ul>
+
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            Cognition
+                                                        </h1>
+
+                                                        <br />
+                                                        <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                            Response to external environment <br>
+                                                            Perception(Size,Color,Shape)
+                                                        </label>
+
+                                                        <br />
+                                                        <br />
+
+                                                        <ul class="form-section page-section">
+                                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                                <div class="form-header-group  header-large">
+                                                                    <div class="header-text httac htvam">
+                                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                                            Physical Assessment
+                                                                        </h1>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                                    Contracture or Deformity
+                                                                </label>
+                                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+                                                                    @Html.TextBoxFor(x => x.physicalAssessment.Contracture_Deformity, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                </div>
+                                                            </li>
+                                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                                    Muscle Tone
+                                                                </label>
+                                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+                                                                    @Html.TextBoxFor(x => x.physicalAssessment.Muscle_Tone, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                </div>
+                                                            </li>
+                                                            <li class="form-line jf-required" data-type="control_matrix" id="id_114">
+                                                                <label class="form-label form-label-top form-label-auto" id="label_114" for="input_114">
+                                                                    <u>Muscle Strength & Range of Motion</u>
+                                                                </label>
+                                                                <div id="cid_114" class="form-input-wide jf-required" data-layout="full">
+                                                                    <table summary="" aria-labelledby="label_114" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix">
+                                                                        <tr class="form-matrix-tr form-matrix-header-tr">
+                                                                            <th class="form-matrix-th" style="border:none">
+
+                                                                            </th>
+                                                                            <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_0">
+                                                                                <label id="label_114_col_0"> Strength</label>
+                                                                            </th>
+                                                                            <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                                                <label id="label_114_col_1">ROM</label>
+                                                                            </th>
+                                                                        </tr>
+                                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                                <label id="label_114_row_0"> Upper Limbs</label>
+                                                                            </th>
+                                                                            <td class="form-matrix-values">
+                                                                                @Html.TextBoxFor(x => x.physicalAssessment.UpperLimbs_Strength, null, new { id = "input_114_0_0", name = "q114_postNatal[0][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit,requireOneAnswer]", maxLength = "10", type = "text", size = "10", })
+                                                                                @Html.ValidationMessageFor(x => x.physicalAssessment.UpperLimbs_Strength, null, new { style = "color:red" })
+                                                                            </td>
+                                                                            <td class="form-matrix-values">
+                                                                                @Html.TextBoxFor(x => x.physicalAssessment.UpperLimbs_Rom, null, new { id = "input_114_0_1", name = "q114_postNatal[0][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                                                @Html.ValidationMessageFor(x => x.physicalAssessment.UpperLimbs_Rom, null, new { style = "color:red" })
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_1">
+                                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                                <label id="label_114_row_1">Lower Limbs </label>
+                                                                            </th>
+                                                                            <td class="form-matrix-values">
+                                                                                @Html.TextBoxFor(x => x.physicalAssessment.LowerLimbs_Strength, null, new { id = "input_114_1_0", name = "q114_postNatal[1][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                                @Html.ValidationMessageFor(x => x.physicalAssessment.LowerLimbs_Strength, null, new { style = "color:red" })
+                                                                            </td>
+                                                                            <td class="form-matrix-values">
+                                                                                @Html.TextBoxFor(x => x.physicalAssessment.LowerLimbs_Rom, null, new { id = "input_114_1_1", name = "q114_postNatal[1][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                                                @Html.ValidationMessageFor(x => x.physicalAssessment.LowerLimbs_Rom, null, new { style = "color:red" })
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            <li class="form-line jf-required" data-type="control_matrix" id="id_114">
+                                                                <label class="form-label form-label-top form-label-auto" id="label_114" for="input_114">
+                                                                    <u>Sitting</u><br />
+                                                                    <p1> Floor Sitting </p1> <br />
+                                                                    <p2> Floor Sitting</p2> <br />
+                                                                    <p3> High Sitting</p3>
+                                                                </label>
+
+
+                                                            <li class="form-line jf-required" data-type="control_matrix" id="id_114">
+                                                                <label class="form-label form-label-top form-label-auto" id="label_114" for="input_114">
+                                                                    <u>Posture</u><br />
+                                                                    <p1> Lordosis </p1> <br />
+                                                                    <p2> Kyphosis</p2> <br />
+                                                                    <p3> Scoliosis</p3>
+                                                                </label>
+
+                                                            <li class="form-line jf-required" data-type="control_matrix" id="id_114">
+                                                                <label class="form-label form-label-top form-label-auto" id="label_114" for="input_114">
+                                                                    <u>Gate</u><br />
+                                                                    <p1> Broad </p1> <br />
+                                                                    <p2> Narrow</p2> <br />
+                                                                    <p3> Other</p3>
+                                                                </label>
+                                                            <li class="form-line jf-required" data-type="control_matrix" id="id_114">
+                                                                <label class="form-label form-label-top form-label-auto" id="label_114" for="input_114">
+                                                                    <u>Mobility</u><br />
+                                                                    <p1> Wheel Chair </p1> <br />
+                                                                    <p2> Special Support</p2> <br />
+                                                                    <p3> Independent Walk</p3><br />
+                                                                    <p4> Other</p4>
+                                                                </label>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <input id="pre_btn2" onclick="prev_step2()" type="button" value="Previous" class="prevbut">
+                                                <input id="next_btn3" name="next" onclick="next_step3()" type="button" value="Next" style="float: right; right: 0;">
+                                            </li>
+                                        </ul>
+
+                                    </fieldset>
+
+                                    @*HISTORY*@
+                                    <fieldset id="fourth">
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            TREATMENT PLAN
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="cid_138" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-default">
+                                                    <div class="header-text httac htvam">
+                                                        <h2 id="header_138" class="form-header" data-component="header">
+                                                            Long Term Goal
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                        <div id="cid_139" class="form-input-wide" data-layout="full">
+                                            @Html.TextAreaFor(x => x.treatmentPlan.LongTerm_Goal, new { id = "input_139", @class = "form-textarea", name = "q139_input139", style = "width:630px;height:160px", datacomponent = "textarea", placeholder = "", required = "", arialabelledby = "label_139" })
+                                            @Html.ValidationMessageFor(x => x.treatmentPlan.LongTerm_Goal, null, new { style = "color:red" })
+                                        </div>
+
+                                        <ul>
+                                            <li id="cid_138" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-default">
+                                                    <div class="header-text httac htvam">
+                                                        <h2 id="header_138" class="form-header" data-component="header">
+                                                            Short Term Goal
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div id="cid_139" class="form-input-wide" data-layout="full">
+                                            @Html.TextAreaFor(x => x.treatmentPlan.ShortTerm_Goal, new { id = "input_139", @class = "form-textarea", name = "q139_input139", style = "width:630px;height:160px", datacomponent = "textarea", placeholder = "", required = "", arialabelledby = "label_139" })
+                                            @Html.ValidationMessageFor(x => x.treatmentPlan.ShortTerm_Goal, null, new { style = "color:red" })
+                                        </div>
+                                        <ul>
+                                            <li id="cid_138" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-default">
+                                                    <div class="header-text httac htvam">
+                                                        <h2 id="header_138" class="form-header" data-component="header">
+                                                            Recommendations
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                        <div id="cid_139" class="form-input-wide" data-layout="full">
+
+                                            @Html.TextAreaFor(x => x.treatmentPlan.Recommendations, new { id = "input_139", @class = "form-textarea", name = "q139_input139", style = "width:630px;height:160px", datacomponent = "textarea", placeholder = "", required = "", arialabelledby = "label_139" })
+                                            @Html.ValidationMessageFor(x => x.treatmentPlan.Recommendations, null, new { style = "color:red" })
+
+
+                                        </div>
+                                        <input id="pre_btn3" onclick="prev_step3()" type="button" value="Previous" class="prevbut">
+                                        <input id="submit" onclick="btn_submitch()" name="next" type="submit" value="Submit" style="float: right; right: 0;">
+
+                                    </fieldset>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+    @*<script src="~/Content/javascripts/PT.js"></script>*@
+    <script>
+
+        function next_step1() {
+
+            document.getElementById("first").style.display = "none";
+            document.getElementById("second").style.display = "block";
+            document.getElementById("active2").style.color = "red";
+        }
+        function next_step2() {
+            document.getElementById("second").style.display = "none";
+            document.getElementById("third").style.display = "block";
+            document.getElementById("active3").style.color = "red";
+        }
+        function next_step3() {
+            document.getElementById("third").style.display = "none";
+            document.getElementById("fourth").style.display = "block";
+            document.getElementById("active3").style.color = "red";
+        }
+        function next_step4() {
+            document.getElementById("fourth").style.display = "none";
+            document.getElementById("fifth").style.display = "block";
+            document.getElementById("active3").style.color = "red";
+
+        }
+        // Previous Button Script
+        function prev_step1() {
+            document.getElementById("first").style.display = "block";
+            document.getElementById("second").style.display = "none";
+            document.getElementById("active1").style.color = "red";
+            document.getElementById("active2").style.color = "gray";
+        }
+        function prev_step2() {
+            document.getElementById("third").style.display = "none";
+            document.getElementById("second").style.display = "block";
+            document.getElementById("active2").style.color = "red";
+            document.getElementById("active3").style.color = "gray";
+        }
+        function prev_step3() {
+            document.getElementById("fourth").style.display = "none";
+            document.getElementById("third").style.display = "block";
+            document.getElementById("active2").style.color = "red";
+            document.getElementById("active3").style.color = "gray";
+        }
+        function prev_step4() {
+            document.getElementById("fifth").style.display = "none";
+            document.getElementById("fourth").style.display = "block";
+            document.getElementById("active2").style.color = "red";
+            document.getElementById("active3").style.color = "gray";
+        }
+
+        function btn_submitch() {
+            const select1 = document.querySelector("#input41");
+            const value1 = select1.options[select1.selectedIndex].value;
+            if (value1 == "") {
+                alert("Kindly Fill Recommendations Required Fields")
+            } else {
+                alert("ok")
+            }
+        }
+    </script>
+
+    <script>
+
+    $("#input_73").on('change', function () {
+        var userid = $(this).val();
+        if (userid != '') {
+            $.post('@Url.Action("GetUserByID","Editor")', { GR_NO: userid })
+            .done(function (response, status, jqxhr) {
+
+                if (response != '') {
+                    var postdata = { input_73: userid }
+                    $("#first_56").val(response.Student_First_Name);
+                    $("#last_56").val(response.Student_Last_Name);
+                    $("input[name=q15_gender][value=" + response.Gender + "]").prop("checked", true);
+                    $("#input_72").val(response.Father_Name);
+                    $("#input_63").val(response.Disability);
+
+                }
+
+            })
+            .fail(function (jqxhr, status, error) { alert('error') });
+        }
+    });
+    </script>

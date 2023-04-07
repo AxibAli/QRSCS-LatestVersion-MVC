@@ -1,0 +1,1240 @@
+﻿@model QRSCS.Models.BehavioralTherapyModelDTO
+@{
+    ViewBag.Title = "BT Form";
+
+}
+
+
+<link type="text/css" rel="stylesheet" href="~/Content/adminassets/css/style.css">
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+@*<script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>*@
+<style>
+
+    fieldset {
+        display: none;
+        padding: 25px;
+    }
+
+    #first {
+        display: block;
+    }
+
+    input[type=submit], input[type=button] {
+        width: 120px;
+        margin: 15px 25px;
+        padding: 5px;
+        height: 40px;
+        background-color: #2e69ff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .prevbut {
+        background-color: #e5e7f2 !important;
+        color: black !important;
+    }
+
+        .prevbut:hover {
+            background-color: #b8b8b8 !important;
+        }
+</style>
+
+<main>
+
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h2 class="breadcrumb-title">Behavioral Therapy </h2>
+            <ul class="db-breadcrumb-list">
+                @*<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                <li>Behavioral Therapy </li>*@
+            </ul>
+        </div>
+        <div class="row">
+            <!-- Your Profile Views Chart -->
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="widget-inner">
+                        <div id="calendar">
+                            @using (Html.BeginForm("BT", "IDD", FormMethod.Post, new { @class = "jotform-form", method = "post", name = "form_212582673034454", id = "212582673034454", acceptcharset = "utf-8", autocomplete = "on" }))
+                            {
+
+                                <input type="hidden" name="formID" value="212582673034454" />
+                                <input type="hidden" id="JWTContainer" value="" />
+                                <input type="hidden" id="cardinalOrderNumber" value="" />
+
+                                <div role="main" class="form-all">
+                                    <style>
+                                        .form-all:before {
+                                            background: none;
+                                        }
+                                    </style>
+                                    @*GENERAL INFORMATION*@
+
+                                    <fieldset id="first">
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            Behavioral Therapy Form
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            <li class="form-line jf-required" data-type="control_number" id="id_73">
+                                                <label class="form-label form-label-top" id="label_73" for="input_73">
+                                                    GR No
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_73" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        @*<input type="number" id="input_73" name="q73_grNo" data-type="input-number" class="form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:310px" size="310" value="" placeholder="ex: 23" data-component="number" aria-labelledby="label_73 sublabel_input_73" required="" step="any" />*@
+                                                        @Html.TextBoxFor(x => x.BehavioralTherapy.GR_NO, null, new { required = "required", @Class = "form-textbox validate[required, Numeric, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Enter GR-NO For Search", type = "text", id = "input_73", name = "q73_grNo", size = "10" })
+                                                        @Html.ValidationMessageFor(x => x.BehavioralTherapy.GR_NO, null, new { style = "color:red" })
+                                                        <label class="form-sub-label" for="input_73" id="sublabel_input_73" style="min-height:13px" aria-hidden="false"> Enter GR-No For Search </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="form-line jf-required" data-type="control_fullname" id="id_56">
+                                                <label class="form-label form-label-top form-label-auto" id="label_56" for="first_56">
+                                                    Student Name.
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_56" class="form-input-wide jf-required" data-layout="full">
+                                                    <div data-wrapper-react="true">
+                                                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                                            <input type="text" id="first_56" required="required" readonly="readonly" , disabled="disabled" class="form-textbox " name="q56_name[first]" data-defaultvalue="" size="10" value="" data-component="first" aria-labelledby="label_56 sublabel_56_first" />
+                                                            <label class="form-sub-label" for="first_56" id="sublabel_56_first" style="min-height:13px" aria-hidden="false"> First Name </label>
+                                                        </span>
+                                                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
+                                                            <input type="text" id="last_56" class="form-textbox " name="q56_name[last]" required="required" readonly="readonly" , required, disabled="disabled" data-defaultvalue="" size="15" value="" data-component="last" aria-labelledby="label_56 sublabel_56_last" />
+                                                            <label class="form-sub-label" for="last_56" id="sublabel_56_last" style="min-height:13px" aria-hidden="false"> Last Name </label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                                <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                    Father Name
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+
+                                                <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" required="" />
+                                                        <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_radio" id="id_15">
+                                                <label class="form-label form-label-top" id="label_15" for="input_15">
+                                                    Gender
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_15" class="form-input-wide jf-required" data-layout="full">
+                                                    <div class="form-single-column" role="group" aria-labelledby="label_15" data-component="radio">
+                                                        <span class="form-radio-item" style="clear:left">
+                                                            <span class="dragger-item">
+                                                            </span>
+                                                            <input type="radio" aria-describedby="label_15" readonly="readonly" disabled="disabled" class="form-radio " id="input_15_0" name="q15_gender" value="Male" />
+                                                            <label id="label_input_15_0" for="input_15_0"> Male </label>
+                                                        </span>
+                                                        <span class="form-radio-item" style="clear:left">
+                                                            <span class="dragger-item">
+                                                            </span>
+                                                            <input type="radio" aria-describedby="label_15" readonly="readonly" disabled="disabled" class="form-radio " id="input_15_1" name="q15_gender" value="Female" />
+                                                            <label id="label_input_15_1" for="input_15_1"> Female </label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_textbox" id="id_63">
+                                                <label class="form-label form-label-top" id="label_63" for="input_63">
+                                                    Disablity
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_63" class="form-input-wide jf-required" data-layout="half">
+                                                    <input type="text" id="input_63" readonly="readonly" ,required="required" , disabled="disabled" name="q63_disablity" data-type="input-textbox" class="form-textbox " data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_63" />
+                                                </div>
+                                            </li>
+                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                    Date of Assessment
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+
+                                                    @Html.EditorFor(x => x.BehavioralTherapy.Date, new { htmlAttributes = new { @id = "d_ex", @class = "form-textbox validate[required]", @type = "date", required = "required" } })
+                                                    @Html.ValidationMessageFor(x => x.BehavioralTherapy.Date, null, new { style = "color:red" })
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+                                        <div style="width: 100%;">
+                                            <input id="next_btn1" onclick="next_step1()" type="button" value="Next" style="float: right; right: 0;">
+                                        </div>
+
+
+                                    </fieldset>
+
+                                    @*Classroom Obervation*@
+                                    <fieldset id="second">
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            Classroom Obervation
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                                <div id="cid_25" class="form-input-wide jf-required" data-layout="full">
+                                                    <table summary="" aria-labelledby="label_25" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix" data-dynamic="true">
+
+                                                        <tr class="form-matrix-tr form-matrix-header-tr">
+                                                            <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_0">
+                                                                <label id="label_25_col_0">Behavior Type </label>
+                                                            </th>
+                                                            <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                                <label id="label_25_col_1">Week 1 </label>
+                                                            </th>
+                                                            <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                                <label id="label_25_col_1">Week 2 </label>
+                                                            </th>
+                                                            <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                                <label id="label_25_col_1"> Week 3</label>
+                                                            </th>
+                                                            <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                                <label id="label_25_col_1">Week 4</label>
+                                                            </th>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Throwing </label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Throwing_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Throwing_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Throwing_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Throwing_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Throwing_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Throwing_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Throwing_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Throwing_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Pushing </label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Pushing_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Pushing_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Pushing_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Pushing_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Pushing_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Pushing_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Pushing_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Pushing_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Pinching </label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Pinching_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Pinching_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Pinching_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Pinching_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Pinching_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Pinching_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Pinching_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Pinching_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Eye hand Coordination </label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.EyehandCoordination_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.EyehandCoordination_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.EyehandCoordination_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.EyehandCoordination_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.EyehandCoordination_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.EyehandCoordination_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.EyehandCoordination_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.EyehandCoordination_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Headache Complain </label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.HeadacheComplain_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.HeadacheComplain_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.HeadacheComplain_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.HeadacheComplain_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.HeadacheComplain_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.HeadacheComplain_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.HeadacheComplain_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.HeadacheComplain_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Vomiting </label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Vomiting_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Vomiting_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Vomiting_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Vomiting_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Vomiting_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Vomiting_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Vomiting_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Vomiting_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Attachment Issue</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.AttachmentIssue_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.AttachmentIssue_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.AttachmentIssue_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.AttachmentIssue_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.AttachmentIssue_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.AttachmentIssue_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.AttachmentIssue_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.AttachmentIssue_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Adjustment</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Adjustment_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Adjustment_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Adjustment_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Adjustment_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Adjustment_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Adjustment_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Adjustment_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Adjustment_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Biting</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Biting_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Biting_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Biting_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Biting_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Biting_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Biting_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Biting_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Biting_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Hair Pulling</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.HairPulling_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.HairPulling_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.HairPulling_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.HairPulling_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.HairPulling_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.HairPulling_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.HairPulling_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.HairPulling_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Eating Problems</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.EatingProblems_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.EatingProblems_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.EatingProblems_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.EatingProblems_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.EatingProblems_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.EatingProblems_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.EatingProblems_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.EatingProblems_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Noncompliance Behavior</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.NoncomplianceBehavior_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.NoncomplianceBehavior_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.NoncomplianceBehavior_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.NoncomplianceBehavior_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.NoncomplianceBehavior_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.NoncomplianceBehavior_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.NoncomplianceBehavior_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.NoncomplianceBehavior_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Withdrawn</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Withdrawn_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Withdrawn_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Withdrawn_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Withdrawn_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Withdrawn_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Withdrawn_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Withdrawn_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Withdrawn_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0"> Shyness</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Shyness_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Shyness_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Shyness_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Shyness_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Shyness_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Shyness_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Shyness_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Shyness_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Tolerance</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Tolerance_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Tolerance_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Tolerance_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Tolerance_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Tolerance_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Tolerance_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Tolerance_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Tolerance_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Irritability</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Irritability_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Irritability_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Irritability_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Irritability_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Irritability_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Irritability_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Irritability_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Irritability_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Unhappy</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Unhappy_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Unhappy_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Unhappy_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Unhappy_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Unhappy_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Unhappy_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Unhappy_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Unhappy_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Mood swings</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Moodswings_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Moodswings_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Moodswings_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Moodswings_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Moodswings_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Moodswings_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Moodswings_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Moodswings_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Hyper active</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Hyperactive_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Hyperactive_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Hyperactive_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Hyperactive_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Hyperactive_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Hyperactive_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Hyperactive_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Hyperactive_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Isolation</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Isolation_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Isolation_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Isolation_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Isolation_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Isolation_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Isolation_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Isolation_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Isolation_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">In Attention</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.InAttention_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.InAttention_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.InAttention_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.InAttention_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.InAttention_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.InAttention_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.InAttention_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.InAttention_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Sustain Attention</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.SustainAttention_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.SustainAttention_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.SustainAttention_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.SustainAttention_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.SustainAttention_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.SustainAttention_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.SustainAttention_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.SustainAttention_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Restlessness</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Restlessness_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Restlessness_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Restlessness_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Restlessness_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Restlessness_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Restlessness_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Restlessness_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Restlessness_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Attention Seeking</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.AttentionSeeking_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.AttentionSeeking_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.AttentionSeeking_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.AttentionSeeking_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.AttentionSeeking_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.AttentionSeeking_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.AttentionSeeking_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.AttentionSeeking_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Crying</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Crying_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Crying_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Crying_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Crying_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Crying_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Crying_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Crying_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Crying_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Shouting</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Shouting_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Shouting_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Shouting_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Shouting_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Shouting_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Shouting_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Shouting_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Shouting_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Abusive Language</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.AbusiveLanguage_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.AbusiveLanguage_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.AbusiveLanguage_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.AbusiveLanguage_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.AbusiveLanguage_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.AbusiveLanguage_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.AbusiveLanguage_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.AbusiveLanguage_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Splitting</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Splitting_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Splitting_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Splitting_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Splitting_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Splitting_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Splitting_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Splitting_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Splitting_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Self Injurious</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.SelfInjurious_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.SelfInjurious_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.SelfInjurious_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.SelfInjurious_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.SelfInjurious_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.SelfInjurious_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.SelfInjurious_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.SelfInjurious_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Physical Aggression</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.PhysicalAggression_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.PhysicalAggression_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.PhysicalAggression_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.PhysicalAggression_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.PhysicalAggression_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.PhysicalAggression_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.PhysicalAggression_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.PhysicalAggression_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Other</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.Other_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.Other_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.Other_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.Other_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.Other_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.Other_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Other_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Other_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_0">Frequency of Behavior</label>
+                                                            </th>
+
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week1BT.FrequencyBehavior_Week1, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week1BT.FrequencyBehavior_Week1, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week2BT.FrequencyBehavior_Week2, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week2BT.FrequencyBehavior_Week2, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week3BT.FrequencyBehavior_Week3, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week3BT.FrequencyBehavior_Week3, null, new { style = "color:red" })
+                                                            </td>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.FrequencyBehavior_Week4, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.FrequencyBehavior_Week4, null, new { style = "color:red" })
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_1">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_1">Solution /Strategies </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Solution, null, new { id = "input_114_1_0", name = "q114_postNatal[1][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Solution, null, new { style = "color:red" })
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_1">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_1">Remarks </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Remarks, null, new { id = "input_114_1_0", name = "q114_postNatal[1][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Remarks, null, new { style = "color:red" })
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_1">
+                                                            <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                                <label id="label_114_row_1">Recommendation </label>
+                                                            </th>
+                                                            <td class="form-matrix-values">
+                                                                @Html.TextBoxFor(x => x.Week4BT.Recommendation, null, new { id = "input_114_1_0", name = "q114_postNatal[1][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                                @Html.ValidationMessageFor(x => x.Week4BT.Recommendation, null, new { style = "color:red" })
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </div>
+                                        </ul>
+                                        <input id="pre_btn1" onclick="prev_step1()" type="button" value="Previous" class="prevbut">
+                                        <input id="submit" onclick="btn_submitch()" name="next" type="submit" value="Submit" style="float: right; right: 0;">
+
+                                    </fieldset>
+                                </div>
+                            }
+
+                            <script>
+
+                                // Next Button Script
+                                function next_step1() {
+                                    document.getElementById("first").style.display = "none";
+                                    document.getElementById("second").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                }
+
+                                function next_step2() {
+                                    document.getElementById("second").style.display = "none";
+                                    document.getElementById("third").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+                                }
+                                function next_step3() {
+                                    document.getElementById("third").style.display = "none";
+                                    document.getElementById("fourth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+                                }
+
+                                function next_step4() {
+
+                                    document.getElementById("fourth").style.display = "none";
+                                    document.getElementById("fifth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+
+                                function next_step5() {
+                                    document.getElementById("fifth").style.display = "none";
+                                    document.getElementById("sixth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+
+                                function next_step6() {
+                                    document.getElementById("sixth").style.display = "none";
+                                    document.getElementById("seventh").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+
+                                function next_step7() {
+                                    document.getElementById("seventh").style.display = "none";
+                                    document.getElementById("eighth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+                                }
+
+                                function next_step8() {
+                                    document.getElementById("eighth").style.display = "none";
+                                    document.getElementById("nineth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+                                function next_step9() {
+                                    document.getElementById("nineth").style.display = "none";
+                                    document.getElementById("tenth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+                                function next_step10() {
+                                    document.getElementById("tenth").style.display = "none";
+                                    document.getElementById("eleventh").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+                                function next_step11() {
+                                    document.getElementById("eleventh").style.display = "none";
+                                    document.getElementById("twelveth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+                                function next_step12() {
+                                    document.getElementById("twelveth").style.display = "none";
+                                    document.getElementById("thirteenth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+                                function next_step13() {
+                                    document.getElementById("thirteenth").style.display = "none";
+                                    document.getElementById("fourteenth").style.display = "block";
+                                    document.getElementById("active3").style.color = "red";
+
+                                }
+
+                                // Previous Button Script
+                                function prev_step1() {
+                                    document.getElementById("first").style.display = "block";
+                                    document.getElementById("second").style.display = "none";
+                                    document.getElementById("active1").style.color = "red";
+                                    document.getElementById("active2").style.color = "gray";
+                                }
+
+                                function prev_step2() {
+                                    document.getElementById("third").style.display = "none";
+                                    document.getElementById("second").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step3() {
+                                    document.getElementById("fourth").style.display = "none";
+                                    document.getElementById("third").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step4() {
+                                    document.getElementById("fifth").style.display = "none";
+                                    document.getElementById("fourth").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step5() {
+                                    document.getElementById("sixth").style.display = "none";
+                                    document.getElementById("fifth").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step6() {
+                                    document.getElementById("seventh").style.display = "none";
+                                    document.getElementById("sixth").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step7() {
+                                    document.getElementById("eighth").style.display = "none";
+                                    document.getElementById("seventh").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step8() {
+                                    document.getElementById("nineth").style.display = "none";
+                                    document.getElementById("eighth").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step9() {
+                                    document.getElementById("tenth").style.display = "none";
+                                    document.getElementById("nineth").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step10() {
+                                    document.getElementById("eleventh").style.display = "none";
+                                    document.getElementById("tenth").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step11() {
+                                    document.getElementById("twelveth").style.display = "none";
+                                    document.getElementById("eleventh").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step12() {
+                                    document.getElementById("thirteenth").style.display = "none";
+                                    document.getElementById("twelveth").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+                                function prev_step13() {
+                                    document.getElementById("fourteenth").style.display = "none";
+                                    document.getElementById("thirteenth").style.display = "block";
+                                    document.getElementById("active2").style.color = "red";
+                                    document.getElementById("active3").style.color = "gray";
+                                }
+
+                            </script>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></main>
+    @*<script src="~/Content/javascripts/BT.js"></script>*@
+    <script>
+
+    $("#input_73").on('change', function () {
+        var userid = $(this).val();
+        if (userid != '') {
+            $.post('@Url.Action("GetUserByID","Editor")', { GR_NO: userid })
+            .done(function (response, status, jqxhr) {
+
+                if (response != '') {
+                    var postdata = { input_73: userid }
+                    $("#first_56").val(response.Student_First_Name);
+                    $("#last_56").val(response.Student_Last_Name);
+                    $("input[name=q15_gender][value=" + response.Gender + "]").prop("checked", true);
+                    $("#input_72").val(response.Father_Name);
+                    $("#input_63").val(response.Disability);
+
+                }
+
+            })
+            .fail(function (jqxhr, status, error) { alert('error') });
+        }
+    });
+    </script>

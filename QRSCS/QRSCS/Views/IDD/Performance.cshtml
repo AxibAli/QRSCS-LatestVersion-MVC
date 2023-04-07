@@ -1,0 +1,296 @@
+﻿@model QRSCS.Models.HIResultDTO
+@{
+    ViewBag.Title = "IDD Performance";
+
+}
+<link href="~/Content/ViewAllUserAssets/css/ToggleSwitch.css" rel="stylesheet" />
+@*<style>
+
+    .menu {
+        display: flex;
+    }
+
+        .menu button {
+            margin: 10px;
+            cursor: pointer;
+        }
+
+    .btn {
+        border-color: #f7b205;
+    }
+
+    .button_active {
+        color: white;
+    }
+
+    .content_inside {
+        display: none;
+        padding: 10px;
+    }
+
+    .content_inside_active {
+        display: block;
+    }
+</style>*@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src='https://cdn.plot.ly/plotly-2.11.1.min.js'></script>
+
+<link href="~/Content/adminassets/resultstyle.css" rel="stylesheet" />
+
+
+<main style="background:white; margin:15px;margin-right:15px"><div class="my-3">
+                                               <div class="container">
+                                                   <h2 class="text-center" style="font-family:     Verdana, Segoe, sans-serif;">Child Sensory Profile Performance</h2>
+                                                   <label>Current Year:</label><br />
+                                                   <label class="switch">
+                                                       <input type="checkbox" id="switchId">
+                                                       <span class="slider round"></span>
+                                                   </label>
+
+                                                   <div class="content">
+
+                                                       <div class="content_inside content_inside_active">
+                                                           <div class="content">
+                                                               <div class="audio_div">
+                                                                   <h5>GR NO:</h5>
+                                                                   <input id="Aca_GRNO" type="number" placeholder="GR_NO" style="width:25%" />
+                                                                   <button class="button_active btn btn-sm btn-primary mx-1" style="padding: 0.3rem; padding-left: 1rem; padding-right: 1rem; color: white;; background: linear-gradient(90deg, rgba(2,0,36,1) 11%, rgba(130,116,221,1) 48%, rgba(43,44,117,1) 90%); "
+        id="SpeechBtn" onclick="FetchAcademicData(document.getElementById('Aca_GRNO').value)">Search</button>
+                                                                   <br />
+                                                                   <h5>Student Name:</h5>
+                                                                   <span id="Aca_St_Name" style="width:25%; margin-left: 25px;"></span>
+                                                                   <br />
+                                                                   <h5>Father Name:</h5>
+                                                                   <span id="Aca_Father_Name" style="width:25%; margin-left: 25px;"></span>
+                                                               </div>
+                                                               <div>
+                                                                   <h4 style="text-align:center; margin:20px;">PERFORMACE</h4>
+                                                               </div>
+                                                               <table class="table table-striped table-bordered table-sm" id="academic_table" style="color:black;">
+                                                                   <thead>
+                                                                       <tr>
+                                                                           <th scope="col" class="text-center">Year</th>
+                                                                           <th scope="col" class="text-center">Seeking</th>
+                                                                           <th scope="col" class="text-center">Avoiding</th>
+                                                                           <th scope="col" class="text-center">Sensitivity</th>
+                                                                           <th scope="col" class="text-center">Registration</th>
+                                                                       </tr>
+                                                                   </thead>
+                                                                   <tbody id="mytable"></tbody>
+                                                               </table>
+                                                               <div class="row">
+                                                                   <div class="col-6">
+                                                                       @*<canvas id="myChart" style="width:100%;"></canvas>*@
+                                                                       <div id="seektbl" style="width:100%;"></div>
+                                                                   </div>
+                                                                   <div class="col-6">
+                                                                       <div id="avoidtbl" style="width:100%;"></div>
+                                                                   </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                   <div class="col-6">
+                                                                       <div id="sensitivetbl" style="width:100%;"></div>
+                                                                   </div>
+                                                                   <div class="col-6">
+                                                                       <div id="registertbl" style="width:100%;"></div>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                       </div>
+
+                                                   </div>
+                                               </div>
+
+</div></main>
+
+
+<div id="content">
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+@*<script src="~/Content/javascripts/Performance1.js"></script>*@
+<script>
+
+    // function GetInfo(id) {
+    //    console.log(id);
+    //    $.get("/Result/GetInfo?GRNO="+id, function (response) {
+    //        console.log(response)
+
+    //        document.getElementById("BM_St_Name").innerHTML = response.Name;
+    //        document.getElementById("BM_Father_Name").innerHTML = response.Father_Name;
+    //        document.getElementById("BM_Class").innerHTML = response.Class;
+    //        document.getElementById("BM_Disability").innerHTML = response.Disability;
+    //    });
+    //}
+
+    function FetchAcademicData(id) {
+        debugger
+        if (id == '') return alert("Enter the GRNO!!!")
+        var status = document.getElementById("switchId").checked
+        console.log(status);
+        $.get(`/Editor/GetOT2Performance?GRNO=${id}&isCurrentYear=${status}`,
+            function (data) {
+                console.log(data)
+                document.getElementById("Aca_St_Name").innerHTML = data.Student.Name;
+                document.getElementById("Aca_Father_Name").innerHTML = data.Student.FatherName;
+
+                var table = document.getElementById('academic_table');
+                var year = [];
+                var seekScore = [];
+                var avoidScore = [];
+                var sensitiveScore = [];
+                var registerScore = [];
+                table.innerHTML = "";
+
+                var row = "";
+                row = `<tr>
+                            <th scope="col" class="text-center">Year</th>
+                            <th scope="col" class="text-center">Seeking</th>
+                            <th scope="col" class="text-center">Avoiding</th>
+                            <th scope="col" class="text-center">Sensitivity</th>
+                            <th scope="col" class="text-center">Registration</th>
+                       </tr>`
+                for (var i = 0; i < data.Performance.length; i++) {
+                    row += `<tr>
+                                    <td>${data.Performance[i].Year}</td>
+                                    <td>${data.Performance[i].Seeking}</td>
+                                    <td>${data.Performance[i].Avoiding}</td>
+                                    <td>${data.Performance[i].Sensitivity}</td>
+                                    <td>${data.Performance[i].Registration}</td>
+                              </tr>`
+                    year.push(data.Performance[i].Year);
+                    seekScore.push(data.Performance[i].SeekingValue);
+                    avoidScore.push(data.Performance[i].AvoidingValue);
+                    sensitiveScore.push(data.Performance[i].SensitivityValue);
+                    registerScore.push(data.Performance[i].RegistrationValue);
+                }
+                table.innerHTML += row;
+                console.log(seekScore);
+                var xValues = year;
+
+                var trace11 = {
+                    x: xValues,
+                    y: seekScore,
+                    mode: 'lines+markers',
+                    name: 'Seeking Score',
+                    marker: {
+                        color: 'blue',
+                        size: 5,
+                    },
+                    line: {
+                        color: 'blue',
+                        width: 2
+                    }
+                };
+                var trace21 = {
+                    x: xValues,
+                    y: avoidScore,
+                    mode: 'lines+markers',
+                    name: 'Avoiding Score',
+                    marker: {
+                        color: 'red',
+                        size: 5,
+                    },
+                    line: {
+                        color: 'red',
+                        width: 2
+                    }
+                };
+                var trace31 = {
+                    x: xValues,
+                    y: sensitiveScore,
+                    mode: 'lines+markers',
+                    name: 'Sensitivity Score',
+                    marker: {
+                        color: 'orange',
+                        size: 5,
+                    },
+                    line: {
+                        color: 'orange',
+                        width: 2
+                    }
+                };
+                var trace41 = {
+                    x: xValues,
+                    y: registerScore,
+                    mode: 'lines+markers',
+                    name: 'Registration Score',
+                    marker: {
+                        color: 'purple',
+                        size: 5,
+                    },
+                    line: {
+                        color: 'purple',
+                        width: 2
+                    }
+                };
+
+                var data1 = [trace11];
+                var data2 = [trace21];
+                var data3 = [trace31];
+                var data4 = [trace41];
+
+                var layout1 = {
+                    title: "Seeking Score",
+                    xaxis: {
+                        title: 'Year',
+                        showgrid: false,
+                        zeroline: false,
+                        type: 'date',
+                    },
+                    yaxis: {
+                        title: 'Score',
+                        showline: false
+                    }
+                };
+                var layout2 = {
+                    title: "Avoiding Score",
+                    xaxis: {
+                        title: 'Year',
+                        showgrid: false,
+                        zeroline: false,
+                        type: 'date',
+                    },
+                    yaxis: {
+                        title: 'Score',
+                        showline: false
+                    }
+                };
+
+                var layout3 = {
+                    title: "Sensitivity Score",
+                    xaxis: {
+                        title: 'Year',
+                        showgrid: false,
+                        zeroline: false,
+                        type: 'date',
+                    },
+                    yaxis: {
+                        title: 'Score',
+                        showline: false
+                    }
+                };
+
+                var layout4 = {
+                    title: "Registration Score",
+                    xaxis: {
+                        title: 'Year',
+                        showgrid: false,
+                        zeroline: false,
+                        type: 'date',
+                    },
+                    yaxis: {
+                        title: 'Score',
+                        showline: false
+                    }
+                };
+
+                Plotly.newPlot("seektbl", data1, layout1)
+                Plotly.newPlot("avoidtbl", data2, layout2)
+                Plotly.newPlot("sensitivetbl", data3, layout3)
+                Plotly.newPlot("registertbl", data4, layout4)
+
+            });
+    }
+
+</script>

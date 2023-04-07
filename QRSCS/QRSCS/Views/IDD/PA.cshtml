@@ -1,0 +1,354 @@
+﻿@model QRSCS.Models.PsychologicalAssessmentModel
+@{
+
+
+    ViewBag.Title = "PA Form";
+
+}
+
+<link type="text/css" rel="stylesheet" href="~/Content/adminassets/css/style.css">
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+@*<script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>*@
+<style>
+
+    fieldset {
+        display: none;
+        padding: 25px;
+    }
+
+    #first {
+        display: block;
+    }
+
+    input[type=submit], input[type=button] {
+        width: 120px;
+        margin: 15px 25px;
+        padding: 5px;
+        height: 40px;
+        background-color: #2e69ff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .prevbut {
+        background-color: #e5e7f2 !important;
+        color: black !important;
+    }
+
+        .prevbut:hover {
+            background-color: #b8b8b8 !important;
+        }
+</style>
+
+<main>
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h2 class="breadcrumb-title">Psychological Assessment </h2>
+            <ul class="db-breadcrumb-list">
+                @*<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                <li>Psychological Assessment </li>*@
+            </ul>
+        </div>
+        <div class="row">
+            <!-- Your Profile Views Chart -->
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="widget-inner">
+                        <div id="calendar">
+                            @using (Html.BeginForm("PA", "IDD", FormMethod.Post, new { @class = "jotform-form", method = "post", name = "form_212582673034454", id = "212582673034454", acceptcharset = "utf-8", autocomplete = "on" }))
+                            {
+                                <div role="main" class="form-all">
+                                    <style>
+                                            .form-all:before {
+                                                background: none;
+                                            }
+                                            /* Customize the label (the container) */
+                                            /*.container {
+                                            display: block;
+                                            position: relative;
+                                            padding-left: 35px;
+                                            margin-bottom: 12px;
+                                            cursor: pointer;
+                                            font-size: 14px;
+                                            -webkit-user-select: none;
+                                            -moz-user-select: none;
+                                            -ms-user-select: none;
+                                            user-select: none;
+                                        }*/
+
+                                            /* Hide the browser's default checkbox */
+                                            /*.container input {
+                                                position: absolute;
+                                                opacity: 0;
+                                                cursor: pointer;
+                                                height: 0;
+                                                width: 0;
+                                            }*/
+
+                                            /* Create a custom checkbox */
+                                            /*.checkmark {
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            height: 25px;
+                                            width: 25px;
+                                            background-color: #eee;
+                                        }*/
+
+                                            /* On mouse-over, add a grey background color */
+                                            /*.container:hover input ~ .checkmark {
+                                            background-color: #ccc;
+                                        }*/
+
+                                            /* When the checkbox is checked, add a blue background */
+                                            /*.container input:checked ~ .checkmark {
+                                            background-color: #2196F3;
+                                        }*/
+
+                                            /* Create the checkmark/indicator (hidden when not checked) */
+                                            /*.checkmark:after {
+                                            content: "";
+                                            position: absolute;
+                                            display: none;
+                                        }*/
+
+                                            /* Show the checkmark when checked */
+                                            /*.container input:checked ~ .checkmark:after {
+                                            display: block;
+                                        }*/
+
+                                            /* Style the checkmark/indicator */
+                                            /*.container .checkmark:after {
+                                            left: 9px;
+                                            top: 5px;
+                                            width: 5px;
+                                            height: 10px;
+                                            border: solid white;
+                                            border-width: 0 3px 3px 0;
+                                            -webkit-transform: rotate(45deg);
+                                            -ms-transform: rotate(45deg);
+                                            transform: rotate(45deg);
+                                        }*/
+                                    </style>
+                                    @*GENERAL INFORMATION*@
+                                    <fieldset id="first">
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            Psychological Assessment Form
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-small">
+                                                    <div class="header-text httac htvam">
+                                                        <h3 id="header_65" class="form-header" data-component="header"></h3>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="form-line jf-required" data-type="control_number" id="id_73">
+                                                <label class="form-label form-label-top" id="label_73" for="input_73">
+                                                    GR No
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_73" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        @*<input type="number" id="input_73" name="q73_grNo" data-type="input-number" class="form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:310px" size="310" value="" placeholder="ex: 23" data-component="number" aria-labelledby="label_73 sublabel_input_73" required="" step="any" />*@
+                                                        @Html.TextBoxFor(x => x.GR_NO, null, new { required = "required", @Class = "form-textbox validate[required, Numeric, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Enter GR-NO For Search", type = "text", id = "input_73", name = "q73_grNo", size = "10" })
+                                                        @Html.ValidationMessageFor(x => x.GR_NO, null, new { style = "color:red" })
+                                                        <label class="form-sub-label" for="input_73" id="sublabel_input_73" style="min-height:13px" aria-hidden="false"> Enter GR-No For Search </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="form-line jf-required" data-type="control_fullname" id="id_56">
+                                                <label class="form-label form-label-top form-label-auto" id="label_56" for="first_56">
+                                                    Student Name.
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_56" class="form-input-wide jf-required" data-layout="full">
+                                                    <div data-wrapper-react="true">
+                                                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                                            <input type="text" id="first_56" required="required" readonly="readonly" , disabled="disabled" class="form-textbox " name="q56_name[first]" data-defaultvalue="" size="10" value="" data-component="first" aria-labelledby="label_56 sublabel_56_first" />
+                                                            <label class="form-sub-label" for="first_56" id="sublabel_56_first" style="min-height:13px" aria-hidden="false"> First Name </label>
+                                                        </span>
+                                                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
+                                                            <input type="text" id="last_56" class="form-textbox " name="q56_name[last]" required="required" readonly="readonly" , required, disabled="disabled" data-defaultvalue="" size="15" value="" data-component="last" aria-labelledby="label_56 sublabel_56_last" />
+                                                            <label class="form-sub-label" for="last_56" id="sublabel_56_last" style="min-height:13px" aria-hidden="false"> Last Name </label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                                <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                    Father Name
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+
+                                                <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" required="" />
+                                                        <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_radio" id="id_15">
+                                                <label class="form-label form-label-top" id="label_15" for="input_15">
+                                                    Gender
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_15" class="form-input-wide jf-required" data-layout="full">
+                                                    <div class="form-single-column" role="group" aria-labelledby="label_15" data-component="radio">
+                                                        <span class="form-radio-item" style="clear:left">
+                                                            <span class="dragger-item">
+                                                            </span>
+                                                            <input type="radio" aria-describedby="label_15" readonly="readonly" disabled="disabled" class="form-radio " id="input_15_0" name="q15_gender" value="Male" />
+                                                            <label id="label_input_15_0" for="input_15_0"> Male </label>
+                                                        </span>
+                                                        <span class="form-radio-item" style="clear:left">
+                                                            <span class="dragger-item">
+                                                            </span>
+                                                            <input type="radio" aria-describedby="label_15" readonly="readonly" disabled="disabled" class="form-radio " id="input_15_1" name="q15_gender" value="Female" />
+                                                            <label id="label_input_15_1" for="input_15_1"> Female </label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_textbox" id="id_63">
+                                                <label class="form-label form-label-top" id="label_63" for="input_63">
+                                                    Disablity
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_63" class="form-input-wide jf-required" data-layout="half">
+                                                    <input type="text" id="input_63" readonly="readonly" ,required="required" , disabled="disabled" name="q63_disablity" data-type="input-textbox" class="form-textbox " data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_63" />
+                                                </div>
+                                            </li>
+                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                    Date of Assessment
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+
+                                                    @Html.EditorFor(x => x.Date, new { htmlAttributes = new { @id = "d_ex", @class = "form-textbox validate[required]", @type = "date" } })
+                                                    @Html.ValidationMessageFor(x => x.Date, null, new { style = "color:red" })
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+                                        <label class="form-label form-label-top form-label-auto" id="label_3" for="input_3">
+                                            Select one or multiple tests
+                                        </label>
+                                        <label class="custom-control custom-checkbox ">
+                                            @Html.CheckBoxFor(x => x.Solosson_Intelligence_Test, new { @class = "custom-control-input", id = "Solosson_Intelligence_Test" })
+                                            <label class="custom-control-label" for="Solosson_Intelligence_Test">Solosson Intelligence Test</label>
+                                        </label>
+                                        @*<label class="container">
+                                                Solosson intelligence test
+                                                @Html.CheckBoxFor(x => x.Solosson_Intelligence_Test, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                                <span class="checkmark"></span>
+                                            </label>*@
+
+                                        <label class="container">
+                                            draw a person test
+                                            @Html.CheckBoxFor(x => x.Draw_A_Person_Test, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                            <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="container">
+                                            colored progressive matrices,
+                                            @Html.CheckBoxFor(x => x.Colored_Progressive_Matrices, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                            <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="container">
+                                            standard progressive matrice
+                                            @Html.CheckBoxFor(x => x.Standard_Progressive_Matrices, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container">
+                                            Vineland adaptive behavior scales
+                                            @Html.CheckBoxFor(x => x.Vineland_Adaptive_Behavior_Scales, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container">
+                                            childhood autism rating scale
+                                            @Html.CheckBoxFor(x => x.Childhood_Autism_Rating_Scale, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container">
+                                            attention deficit hyperactive disorder test
+                                            @Html.CheckBoxFor(x => x.Attention_Deficit_Hyperactive_Disorder_Test, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container">
+                                            Children Apperception thematic test
+                                            @Html.CheckBoxFor(x => x.Children_Apperception_Thematic_Test, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container">
+                                            Personality Assessment
+                                            @Html.CheckBoxFor(x => x.Personality_Assessment, new { @class = "custom-control-input", id = "Down Syndrome" })
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <input id="submit" name="next" type="submit" value="Submit" style="float: right; right: 0;">
+                                    </fieldset>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </main>
+    @*<script src="~/Content/javascripts/PA.js"></script>*@
+    <script>
+
+    $("#input_73").on('change', function () {
+        var userid = $(this).val();
+        if (userid != '') {
+            $.post('@Url.Action("GetUserByID","Editor")', { GR_NO: userid })
+            .done(function (response, status, jqxhr) {
+
+                if (response != '') {
+                    var postdata = { input_73: userid }
+                    $("#first_56").val(response.Student_First_Name);
+                    $("#last_56").val(response.Student_Last_Name);
+                    $("input[name=q15_gender][value=" + response.Gender + "]").prop("checked", true);
+                    $("#input_72").val(response.Father_Name);
+                    $("#input_63").val(response.Disability);
+
+                }
+
+            })
+            .fail(function (jqxhr, status, error) { alert('error') });
+        }
+    });
+    </script>

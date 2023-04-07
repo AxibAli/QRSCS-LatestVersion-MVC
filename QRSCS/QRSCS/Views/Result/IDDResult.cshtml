@@ -1,0 +1,946 @@
+﻿@model QRSCS.Models.HIResultDTO
+@{
+    ViewBag.Title = "IDDResult";
+ 
+}
+
+@*<style>
+        .container-fluid {
+            height: 1700px;
+        }
+
+        select {
+            font-family: 'FontAwesome', 'sans-serif';
+        }
+    </style>*@
+
+<link type="text/css" rel="stylesheet" href="~/Content/adminassets/css/style.css">
+<link href="~/Content/adminassets/resultstyle.css" rel="stylesheet" />
+<link href="~/Content/adminassets/assets/vendors/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/fontawesome.min.css" integrity="sha512-pvr7xUq+1V77GWmZVvQbM5mozl2iouCzyJG3xxxJPoGQ3HlxHUmMHxlnw4vFUNX1gj80WH4XO7a2un+XQZNkJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div>
+    <ul class="nav">
+        <li onclick="BMT()">ACADEMIC SKILLS</li>
+        <li onclick="IEP()">INDIVIDUALIZED EDUCATION PLAN</li>
+        <li onclick="ST()">VOCATIONAL GROUP</li>
+    </ul>
+</div>
+<div class="wrapper">
+    <div class="rec-prism">
+        <div class="face face-front1">
+            <div class="content">
+                <h4>PROGRESS REPORT</h4>
+                <div class="BM_GRNO">
+                    @*<input type="number" placeholder="GR_NO" style="width:100px; float:right; margin-bottom:10px; height:100%"/>*@
+                    @Html.TextBoxFor(x => x.biMonthlyModel.GR_NO, null, new { type = "number", placeholder = "GR_NO", style = "width:50%; height:30px; margin:10px 0;", onchange = "GetInfo(document.getElementById('biMonthlyModel_GR_NO').value)" })
+                </div>
+                <div class="BM_Result">
+                    <h5 id="name">Name:</h5>
+                    <span id="AS_St_Name" style=" margin-left: 25px;"></span><br />
+                    <h5>Father Name:</h5>
+                    <span id="AS_Father_Name" style="margin-left: 25px;"></span><br />
+                    <h5>Class:</h5>
+                    <span id="AS_Class" style="margin-left: 25px;"></span><br />
+                    <h5>Disability:</h5>
+                    <span id="AS_Disability" style="margin-left: 25px;"></span><br />
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">S.NO.</th>
+                            <th rowspan="2" class="wide">Subjects</th>
+                            <th class="twide" colspan="2">
+                                @*<select>
+                                        <option>1st Bi-Monthly</option>
+                                        <option>2nd Bi-Monthly</option>
+                                        <option>3rd Bi-Monthly</option>
+                                        <option>4th Bi-Monthly</option>
+                                    </select>*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Test_Type, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "TERM TYPE", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "MID TERM" },
+                                      new SelectListItem() { Text = "FINAL TERM" },
+                                    }, new { @Class = "form-dropdown" })
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="tleft">English</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.English, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.English, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td class="tleft">Urdu</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Urdu, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Urdu, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td class="tleft">Mathematics</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Maths, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Maths, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td class="tleft">Computer Studies</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Science, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Computer, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td class="tleft">Islamiat / Nazra</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Social_Studies, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Islamiat, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td class="tleft">Social Science / G.K</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Islamiat, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Social_Studies, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td class="tleft">Conceptual / Cognition</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Computer, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Concepts, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td class="tleft">Speech & Lang</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Speech, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Speech, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>9.</td>
+                            <td class="tleft">Art & Drawing / Voc.</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Language, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Art_and_Drawing, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10.</td>
+                            <td class="tleft">Music</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Concepts, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Language, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>11.</td>
+                            <td class="tleft">Sports</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Art_and_Drawing, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Sindhi, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="BDM">
+                    <div class="percentage">
+                        <h3>Grade:</h3>
+                        @*<input type="text" name="" value="" id="per">*@
+                        @*@Html.Label(" ", new { id = "BM_Grade" })*@
+                        @Html.DropDownListFor(x => x.biMonthlyModel.Grade, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                    </div>
+                    <div class="percentage">
+                        <h3>Date:</h3>
+                        @*<input type="date" name="" value="">*@
+                        @Html.TextBoxFor(x => x.biMonthlyModel.Result_Date, null, new { type = "date" })
+                    </div>
+                    <div>
+                        <input type="button" value="SUBMIT" onclick="submitBMResult(document.getElementById('biMonthlyModel_GR_NO').value)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="face face-right1">
+            <div class="content">
+                <h4>PROGRESS REPORT</h4>
+                <div class="BM_GRNO">
+                    @*<input type="number" placeholder="GR_NO" style="width:100px; float:right; margin-bottom:10px; height:100%"/>*@
+                    @Html.TextBoxFor(x => x.biMonthlyModel.GR_NO, null, new { id = "finalTerm_GR_NO", type = "number", placeholder = "GR_NO", style = "width:50%; height:30px; margin:10px 0;", onchange = "FTGetInfo(document.getElementById('finalTerm_GR_NO').value)" })
+                </div>
+                <div class="BM_Result">
+                    <h5 id="name">Name:</h5>
+                    <span id="IEP_St_Name" style=" margin-left: 25px;"></span><br />
+                    <h5>Father Name:</h5>
+                    <span id="IEP_Father_Name" style="margin-left: 25px;"></span><br />
+                    <h5>Disability:</h5>
+                    <span id="IEP_Disability" style="margin-left: 25px;"></span><br />
+                    <h5>Class:</h5>
+                    <span id="IEP_Class" style="margin-left: 25px;"></span><br />
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">S.NO.</th>
+                            <th rowspan="2" class="wide">Developmental Areas</th>
+                            <th class="twide" colspan="2">
+                                @*<select>
+                                        <option>1st Bi-Monthly</option>
+                                        <option>2nd Bi-Monthly</option>
+                                        <option>3rd Bi-Monthly</option>
+                                        <option>4th Bi-Monthly</option>
+                                    </select>*@
+                                @Html.DropDownListFor(x => x.finalResultModel.Term_Type, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "SELECT TERM", Disabled=true, Selected=true },
+                                      new SelectListItem() { Text = "MID TERM" },
+                                      new SelectListItem() { Text = "FINAL TERM" },
+                                    }, new { @Class = "form-dropdown" })
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Icons</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="tleft">lang. / Speech & communication</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.English, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @*@Html.DropDownListFor(x => x.biMonthlyModel.English, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Value = "address-book", Text = "&#xf2b9"},
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td class="tleft">Gross Motor Development</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Urdu, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td class="tleft">Fine Motor Development</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Maths, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td class="tleft">Socialization</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Science, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td class="tleft">Conceptual / Cognition</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Social_Studies, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td class="tleft">Daily Living Skills / Self-Help Skills</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Islamiat, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td class="tleft">Behavioral Observation</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Computer, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td class="tleft">Money Management</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Speech, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>9.</td>
+                            <td class="tleft">Per-Voc / Art & Drawing</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Language, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10.</td>
+                            <td class="tleft">Pre-Academic</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Concepts, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>11.</td>
+                            <td class="tleft">G.K / Islamiat</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Art_and_Drawing, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>12.</td>
+                            <td class="tleft">Computer</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Art_and_Drawing, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>13.</td>
+                            <td class="tleft">Music</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Art_and_Drawing, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>14.</td>
+                            <td class="tleft">Sports</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Art_and_Drawing, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                <select id="icon" class="form-dropdown">
+                                    <option disabled="disabled" selected="selected">Select Grade</option>
+                                    <option value="">&#xf118; Response</option>
+                                    <option value="">&#xf119; No Response</option>
+                                    <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                                    <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                                    <option value="">&#xf005;&#xf005; Good</option>
+                                    <option value="">&#xf00c; Nice/Fair</option>
+                                    <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                                    <option value="">&#xf11a; Behavior Problem</option>
+                                    <option value="">&#xf028; Speech</option>
+                                    <option value="">&#xf00c;&#xf028; Speech Less</option>
+                                    <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="BDM">
+                    <div class="percentage">
+                        <h3>Grade:</h3>
+                        @*<input type="text" name="" value="" id="per">*@
+                        @*@Html.Label(" ", new { id = "BM_Grade" })*@
+                        <select id="icon" class="form-dropdown">
+                            <option disabled="disabled" selected="selected">Select Grade</option>
+                            <option value="">&#xf118; Response</option>
+                            <option value="">&#xf119; No Response</option>
+                            <option value="">&#x2b;&#x2f;&#x4f; With Help</option>
+                            <option value="">&#x2b;&#x2f;&#x2b; Without Help</option>
+                            <option value="">&#xf005;&#xf005; Good</option>
+                            <option value="">&#xf00c; Nice/Fair</option>
+                            <option value="">&#xf005;&#xf005;&#xf005; Excellent</option>
+                            <option value="">&#xf11a; Behavior Problem</option>
+                            <option value="">&#xf028; Speech</option>
+                            <option value="">&#xf00c;&#xf028; Speech Less</option>
+                            <option value="" class="fa-thin fa-lips">&#xf00d;&#xf028; Absent Speech</option>
+                        </select>
+                    </div>
+                    <div class="percentage">
+                        <h3>Date:</h3>
+                        @*<input type="date" name="" value="">*@
+                        @Html.TextBoxFor(x => x.finalResultModel.Result_Date, null, new { type = "date" })
+                    </div>
+                    <div>
+                        <input type="button" value="SUBMIT" onclick="submitFTResult(document.getElementById('finalResultModel_GR_NO').value)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="face face-back1">
+            <div class="content">
+                <h4>PROGRESS REPORT</h4>
+                <div class="BM_GRNO">
+                    @*<input type="number" placeholder="GR_NO" style="width:100px; float:right; margin-bottom:10px; height:100%"/>*@
+                    @Html.TextBoxFor(x => x.biMonthlyModel.GR_NO, null, new { id = "finalTerm_GR_NO", type = "number", placeholder = "GR_NO", style = "width:50%; height:30px; margin:10px 0;", onchange = "FTGetInfo(document.getElementById('finalTerm_GR_NO').value)" })
+                </div>
+                <div class="BM_Result">
+                    <h5 id="name">Name:</h5>
+                    <span id="VG_St_Name" style=" margin-left: 25px;"></span><br />
+                    <h5>Father Name:</h5>
+                    <span id="VG_Father_Name" style="margin-left: 25px;"></span><br />
+                    <h5>Disability:</h5>
+                    <span id="VG_Disability" style="margin-left: 25px;"></span><br />
+                    <h5>Class:</h5>
+                    <span id="VG_Class" style="margin-left: 25px;"></span><br />
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead style="width:1%">
+                        <tr>
+                            <th rowspan="2">S.NO.</th>
+                            <th rowspan="2" class="wide">Developmental Areas</th>
+                            <th class="twide" colspan="2">
+                                @*<select>
+                                        <option>1st Bi-Monthly</option>
+                                        <option>2nd Bi-Monthly</option>
+                                        <option>3rd Bi-Monthly</option>
+                                        <option>4th Bi-Monthly</option>
+                                    </select>*@
+                                @Html.DropDownListFor(x => x.finalResultModel.Term_Type, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "SELECT TERM", Disabled=true, Selected=true },
+                                      new SelectListItem() { Text = "MID TERM" },
+                                      new SelectListItem() { Text = "FINAL TERM" },
+                                    }, new { @Class = "form-dropdown" })
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="tleft">Kitchen Class (Cooking)</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.English, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.English, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td class="tleft">Home-Management</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Urdu, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Urdu, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td class="tleft">Self-Management</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Maths, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Maths, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td class="tleft">Art & Craft</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Science, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Computer, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td class="tleft">Cognition / Conceptual</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Social_Studies, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Islamiat, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td class="tleft">Islamiat / Nazra</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Islamiat, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Social_Studies, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td class="tleft">Music</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Computer, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Concepts, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td class="tleft">Sports</td>
+                            <td>
+                                @*<input type="number" name="" value="">*@
+                                @*@Html.TextBoxFor(x => x.biMonthlyModel.Speech, null, new { type = "number", onchange = "BMTotal()", onkeyup = "ValidateBM()" })*@
+                                @Html.DropDownListFor(x => x.biMonthlyModel.Speech, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown" })
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="BDM">
+                    <div class="percentage">
+                        <h3>Grade:</h3>
+                        @*<input type="text" name="" value="" id="per">*@
+                        @*@Html.Label(" ", new { id = "BM_Grade" })*@
+                        @Html.DropDownListFor(x => x.biMonthlyModel.Grade, new List<SelectListItem>
+                                    { new SelectListItem() { Text = "Select Grade", Disabled = true, Selected = true },
+                                      new SelectListItem() { Text = "A" },
+                                      new SelectListItem() { Text = "B" },
+                                      new SelectListItem() { Text = "C" },
+                                      new SelectListItem() { Text = "D" },
+                                      new SelectListItem() { Text = "U" },
+                                    }, new { @Class = "form-dropdown", style = "width:70%" })
+                    </div>
+                    <div class="percentage">
+                        <h3>Date:</h3>
+                        @*<input type="date" name="" value="">*@
+                        @Html.TextBoxFor(x => x.finalResultModel.Result_Date, null, new { type = "date" })
+                    </div>
+                    <div>
+                        <input type="button" value="SUBMIT" onclick="submitFTResult(document.getElementById('finalResultModel_GR_NO').value)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Content/adminassets/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+@*<script src="~/Content/javascripts/IDDResult.js"></script>*@
+<script>
+
+    function GetInfo(id) {
+        console.log(id);
+        $.get("/Result/GetInfo?GRNO=" + id, function (response) {
+            console.log(response)
+
+            document.getElementById("AS_St_Name").innerHTML = response.Name;
+            document.getElementById("AS_Father_Name").innerHTML = response.Father_Name;
+            document.getElementById("AS_Class").innerHTML = response.Class;
+            document.getElementById("AS_Disability").innerHTML = response.Disability;
+        });
+    }
+
+    function IEPGetInfo(id) {
+        console.log(id);
+        $.get("/Result/GetInfo?GRNO=" + id, function (response) {
+            console.log(response)
+
+            document.getElementById("IEP_St_Name").innerHTML = response.Name;
+            document.getElementById("IEP_Father_Name").innerHTML = response.Father_Name;
+            document.getElementById("IEP_Class").innerHTML = response.Class;
+            document.getElementById("IEP_Disability").innerHTML = response.Disability;
+        });
+    }
+
+    function VGGetInfo(id) {
+        console.log(id);
+        $.get("/Result/GetInfo?GRNO=" + id, function (response) {
+            console.log(response)
+
+            document.getElementById("VG_St_Name").innerHTML = response.Name;
+            document.getElementById("VG_Father_Name").innerHTML = response.Father_Name;
+            document.getElementById("VG_Class").innerHTML = response.Class;
+            document.getElementById("VG_Disability").innerHTML = response.Disability;
+        });
+    }
+
+</script>
+
+

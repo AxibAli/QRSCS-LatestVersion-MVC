@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <link href="~/Content/Adminassets/css/logoutmodal.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="~/Content/Adminassets/css/main_layout.css" rel="stylesheet" />
+    <title>Quaid E Azam Rangers Special Children School</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/adminassets/assets/images/favicon.png" />
+    <link href="~/Content/loginassets/css/notify_alert.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var jQuery_3_6_1 = $.noConflict(true);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <script type="text/javascript">
+        var jQuery_3_1_1 = $.noConflict(true);
+    </script>
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+
+    @* Scripts for pdf, csv *@
+    <script src="~/Content/UpdateSectionAssets/js/PrintTable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (Session["Full_Name"] != null)
+        {
+
+            <!-- SIDEBAR -->
+            <section id="sidebar">
+
+                <a href="#" class="brand" style="margin-left: 5px;"><img src="~/Content/Adminassets/img/logo.png" alt=""> QRSCS</a>
+                <ul class="side-menu">
+                    @{
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li><a id="Index" href="@Url.Action("Index", "Admin")"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
+                            <li class="divider" data-text="main">Main</li>
+                            <li><a id="CreateUser" href="@Url.Action("CreateUser", "Admin")"><i style="font-size: 18px;" class='bx bxs-user-plus icon'></i> Create User</a></li>
+                            <li><a id="ViewAllUser" href="@Url.Action("ViewAllUser", "Admin")"><i class='bx bxs-user  icon'></i> View All User</a></li>
+                            <li><a id="ViewAllTeacher" href="@Url.Action("ViewAllTeacher", "Teacher")"><i class="bx bxs-user icon"></i>View All Teacher</a></li>
+                            <li><a id="ViewAllStudents" href="@Url.Action("ViewAllStudents", "Admin")"><i class='bx bxs-book-reader bx-tada icon'></i>View All Students</a></li>
+
+                            <li>
+                                <a id="editorview" href="#"><i class='bx bxs-notepad icon'></i> Editor View <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a id="NewAdmission" href="@Url.Action("NewAdmission", "Editor")">New Admission Form</a></li>
+                                    <li><a id="CaseHistory" href="@Url.Action("CaseHistory", "Editor")">Case History Form</a></li>
+                                    <li><a id="ViewAllTeacherAndAssign" href="@Url.Action("ViewAllTeacherAndAssign", "Teacher")">Assign Teacher</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a id="hearing_impaired" href="#"><i class='bx bx-plus-medical icon'></i> Hearing Impaired <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a id="" href="@Url.Action("SpeechCaseHistory", "Editor")">Speech Case History</a></li>
+                                    <li><a href="@Url.Action("AudiologyAssessment", "Editor")">Audiology Assesment</a></li>
+                                    <li><a id="SpeechTherapyAssessment" href="@Url.Action("SpeechTherapyAssessment", "Editor")">Speech Therapy Asses</a></li>
+                                    <li><a href="@Url.Action("HIResult", "Result")">HI Result</a></li>
+                                    <li><a href="@Url.Action("Performance", "Editor")">Performance</a></li>
+                                    <li><a href="@Url.Action("Predict_Marks", "Editor")">Predicted Marks</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a id="Visually_impared" href="#"><i class='bx bx-low-vision  icon'></i> Visually Impaired <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a href="@Url.Action("VIResult", "Result")">VI Result</a></li>
+                                     
+                                    <li><a href="@Url.Action("VIPerformance", "Editor")">Performance</a></li>
+                                     
+                                </ul>
+                            </li>
+                            <li>
+                                <a id="idd_disability" href="#"><i class='bx bxs-notepad icon'></i> IDD Disability <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a href="@Url.Action("OT", "IDD")">Occupational Therapy</a></li>
+                                    <li><a href="@Url.Action("OT2", "IDD")">Child Sensory Profile</a></li>
+                                    <li><a href="@Url.Action("PT", "IDD")">Physio Therapy </a></li>
+                                    <li><a href="@Url.Action("PA", "IDD")">Psychological Assess </a></li>
+                                    <li><a href="@Url.Action("BT", "IDD")">Behavioral Therapy </a></li>
+                                    <li><a href="@Url.Action("IQ", "IDD")">IQ Test </a></li>
+                                    <li><a href="@Url.Action("IDDResult", "Result")">IDD Result </a></li>
+                                    <li><a href="@Url.Action("Performance", "IDD")">Performance </a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a id="update_section" href="#"><i class='bx bxs-chevrons-up bx-fade-down icon'></i> Update Section <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a id="AllStudentView" href="@Url.Action("AllStudentView", "UpdateSection")">Update All Students</a></li>
+                                    <li><a id="HIView" href="@Url.Action("HIView", "UpdateSection")">Update H.I Students</a></li>
+                                    <li><a id="VIView" href="@Url.Action("VIView", "UpdateSection")">Update V.I Students</a></li>
+                                    <li><a id="IDDView" href="@Url.Action("IDDView", "UpdateSection")">Update IDD Students</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a id="individualize_eplan" href="#"><i class='bx bxs-notepad icon'></i> Individualized E-Plan <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a href="@Url.Action("IEP", "IDD")">Individual E-Plan Form</a></li>
+
+                                    <li><a href="@Url.Action("ViewAllIEP", "IDD")">View All IEP Form</a></li>
+
+                                </ul>
+                            </li>
+                            @*<li><a href="#"><i class='bx bxs-chart icon'></i> Charts</a></li>
+                                <li><a href="#"><i class='bx bxs-widget icon'></i> Widgets</a></li>
+                                <li class="divider" data-text="table and forms">Table and forms</li>
+                                <li><a href="#"><i class='bx bx-table icon'></i> Tables</a></li>
+                                <li>
+                                    <a href="#"><i class='bx bxs-notepad icon'></i>Forms<i class='bx bx-chevron-right icon-right'></i></a>
+                                    <ul class="side-dropdown">
+                                        <li><a href="#">Basic</a></li>
+                                        <li><a href="#">Select</a></li>
+                                        <li><a href="#">Checkbox</a></li>
+                                        <li><a href="#">Radio</a></li>
+                                    </ul>
+                                </li>*@
+                        }
+                        else
+                        {
+                            <li><a id="Index" href="@Url.Action("Index", "Admin")"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
+                            <li class="divider" data-text="main">Main</li>
+                            <li><a id="ViewAllStudents" href="@Url.Action("ViewAllStudents", "Admin")"><i class='bx bxs-book-reader bx-tada icon'></i>View All Students</a></li>
+
+                            <li>
+                                <a id="hearing_impaired" href="#"><i class='bx bx-plus-medical icon'></i> Hearing Impaired <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a id="" href="@Url.Action("SpeechCaseHistory", "Editor")">Speech Case History</a></li>
+                                    <li><a href="@Url.Action("AudiologyAssessment", "Editor")">Audiology Assesment</a></li>
+                                    <li><a id="SpeechTherapyAssessment" href="@Url.Action("SpeechTherapyAssessment", "Editor")">Speech Therapy Asses</a></li>
+                                    <li><a href="@Url.Action("SpeechTherapyAssessment", "Editor")">HI Result</a></li>
+                                    <li><a href="@Url.Action("SpeechTherapyAssessment", "Editor")">Performance</a></li>
+                                    <li><a href="@Url.Action("Predict_Marks", "Editor")">Predicted Marks</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a id="Visually_impared" href="#"><i class='bx bx-low-vision  icon'></i> Visually Impaired <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a href="@Url.Action("SpeechCaseHistory", "Editor")">Speech Case History</a></li>
+                                    <li><a href="#">Audiology Assesment</a></li>
+                                    <li><a href="@Url.Action("SpeechTherapyAssessment", "Editor")">Speech Therapy Asses</a></li>
+                                    <li><a href="@Url.Action("SpeechTherapyAssessment", "Editor")">HI Result</a></li>
+                                    <li><a href="@Url.Action("SpeechTherapyAssessment", "Editor")">Performance</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a id="idd_disability" href="#"><i class='bx bxs-notepad icon'></i> IDD Disability <i class='bx bx-chevron-right icon-right'></i></a>
+                                <ul class="side-dropdown">
+                                    <li><a href="@Url.Action("NewAdmission", "Editor")">New Admission Form</a></li>
+                                    <li><a href="#">Case History Form</a></li>
+                                    <li><a href="@Url.Action("ViewAllTeacherAndAssign", "Teacher")">Assign Teacher</a></li>
+
+                                </ul>
+                            </li>
+                        }
+                    }
+
+                </ul>
+                <div class="ads">
+                    <div class="wrappers">
+                        <p>A Product of <span>QUAID-E-AZAM RANGERS SPECIAL CHILDREN SCHOOL</span> <br> ALL RIGHTS RESERVED!  </p>
+                    </div>
+                </div>
+            </section>
+            <!-- SIDEBAR -->
+            <!-- NAVBAR -->
+            <section id="content">
+                <!-- NAVBAR -->
+                <nav>
+                    <i class='bx bx-menu toggle-sidebar'></i>
+                    <form action="#" style="visibility: hidden;">
+                        <div class="form-group">
+                            <!-- <img src="./logo.png" alt=""> -->
+                            <!-- <input type="text" placeholder="Search...">
+                            <i class='bx bx-search icon' ></i> -->
+                        </div>
+                    </form>
+                    <span class="divider"></span>
+
+
+                    <h5>Welcome, @Session["Full_Name"] </h5>
+                    <div class="profile">
+
+                        <img src="@Url.Content(Session["UserImage"].ToString())" alt="">
+                        <ul class="profile-link">
+                            <li><a href="javascript:Profmodal_function()"><i class='bx bxs-user-circle icon'></i> Profile</a></li>
+                            <li><a href="javascript:modal_function()"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
+                        </ul>
+                    </div>
+
+
+                </nav>
+                <!-- NAVBAR -->
+                <!--Main-->
+                @RenderBody()
+                <!--Main-->
+            </section>
+            <!-- NAVBAR -->
+            <!--Logout Modal-->
+
+
+            <div id="logou" class="popup">
+                <header>
+                    <span>Ready to Leave?</span>
+                    <div><i onclick="modal_close()" class="uil uil-times"></i></div>
+                </header>
+                <div class="content">
+
+                    <p>Select "Logout" below if you are ready to end your current session.</p>
+
+                    <br>
+                    <div class="field">
+                        <button onclick="modal_close()">Cancel</button>
+                        <button onclick="location.href='@Url.Action("Logout", "Login")'">Logout</button>
+                    </div>
+                </div>
+            </div>
+            <!--Logout Modal-->
+
+            <!-- Profile Modal-->
+
+            <!--<div class="modal fade" id="MyModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalTitle">Personal Details</h5>
+                            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="col-sm-4 m-auto ">
+                                <div class="form-group row">
+                                    <div class="circle">-->
+                                        <!-- User Profile Image -->
+                                        <!--<img id="pics" class="profile-pic" src="" style="width : 100%; height:100%; ">-->
+
+                                        <!-- Default Image -->
+                                        <!-- <i class="fa fa-user fa-5x"></i> -->
+                                    <!--</div>
+                                    <div class="p-image">
+                                        <i class="fa fa-camera upload-button"></i>
+                                        <input class="file-upload" type="file" name="ImageFile" accept="image/*" id="file" />
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Full_Name">Full Name:</label>
+                                <input type="text" id="Full_Name">
+
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Father_Name">Father Name:</label>
+                                <input type="text" id="Father_Name">
+
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="NIC">NIC#:</label>
+                                <input type="text" id="NIC">
+
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Gen">Gender:</label>
+
+                                <select name="Gender" id="Gen" style="width:100% ;height:40px">
+
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Date_of_Birth">Date of Birth:</label>
+                                <input type="date" id="Date_of_Birth">
+
+                            </div>
+
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Contact">Contact:</label>
+                                <input type="text" id="Contact">
+
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Rank">Rank:</label>
+                                <input type="text" id="Rank">
+
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Designation">Designation:</label>
+
+                                <select name="Designation" id="Designation" style="width: 100%; height: 40px">
+
+                                    <option value="Admin">Admin</option>
+
+                                </select>
+                            </div>
+
+                            <Center><h5>Address:</h5></Center>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Address">Address:</label>
+                                <input type="text" id="Address">
+
+                            </div>
+
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="City">City:</label>
+                                <input type="text" id="City">
+
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="State">State:</label>
+
+                                <select name="State" id="State" style="width: 100%; height: 40px">
+
+                                    <option value="Sindh">
+                                        Sindh
+                                    </option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Balochistan">Balochistan</option>
+                                    <option value="KP">KP</option>
+                                    <option value="GB">GB</option>
+                                </select>
+                            </div>
+
+                            <center><h5>Create Username and Password:</h5></center>
+
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="username">User Name</label>
+
+                                <input type="text" id="username">
+
+                            </div>
+                            <div class="form-group row" style="padding-right: 20px !important; padding-left: 20px !important">
+                                <label for="Passwprd">Password</label>
+
+                                <input type="text" id="Password" />
+
+                            </div>
+                            <div class="form-group row" style="padding-left: 20px">
+                                <button id="saverecord" type="submit" class="btn">Update changes</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>-->
+
+            <script src="~/Content/Adminassets/js/main_layout.js"></script>
+
+
+            <script>
+
+                function modal_function() {
+                    const previewBtn = document.getElementById("logou");
+                    previewBtn.classList.add("show");
+
+                }
+                function modal_close() {
+                    const previewBtn = document.getElementById("logou");
+                    previewBtn.classList.remove("show");
+
+
+                }
+                function Profmodal_function() {
+                    const previewBtn = document.getElementById("MyModal");
+                    previewBtn.classList.add("show");
+
+                }
+
+
+            </script>
+        }
+        else
+        {
+            //((QRSCS.Controllers.LoginController)this.ViewContext.Controller).Logout();
+            @RenderBody()
+
+
+
+        }
+    }
+    else
+    {
+        @RenderBody()
+    }
+
+</body>
+</html>
+<!--alert-->
+<div class="alert hide">
+    <span class="fas fa-check-circle"></span>
+    <span class="msg">@TempData["Message"]</span>
+    <div class="close-btn">
+        <span class="fas fa-times"></span>
+    </div>
+</div>
+<!--alert script-->
+<script>
+
+    jQuery_3_6_1('.close-btn').click(function () {
+        jQuery_3_6_1('.alert').removeClass("show");
+        jQuery_3_6_1('.alert').addClass("hide");
+    });
+</script>
+@if (TempData["Message"] != null)
+{
+    if ( TempData["Success"] !=null && TempData["Success"].Equals("Success"))
+    {
+        <script>
+            jQuery_3_6_1(".alert").css("background", "#c2f3d6");
+            jQuery_3_6_1(".close-btn").css("background", "#96eab8");
+            jQuery_3_6_1(" .fas").css("color", "#24a058");
+            jQuery_3_6_1(" .msg").css("color", "#34a56d");
+            jQuery_3_6_1(" .alert").css("color", "#ff4658");
+            jQuery_3_6_1(" .alert").css("top", "-200px");
+            jQuery_3_6_1('.alert').css({ borderLeft: '6px solid #30d375' });
+            
+            jQuery_3_6_1('.alert').addClass("show");
+            jQuery_3_6_1('.alert').removeClass("hide");
+            jQuery_3_6_1('.alert').addClass("showAlert");
+            setTimeout(function () {
+                jQuery_3_6_1('.alert').removeClass("show");
+                jQuery_3_6_1('.alert').addClass("hide");
+            }, 5000);
+           
+        </script>
+
+    }
+    else
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                jQuery_3_6_1('#username').val("");
+                jQuery_3_6_1('#password').val("");
+
+                jQuery_3_6_1('.alert').addClass("show");
+                jQuery_3_6_1('.alert').removeClass("hide");
+                jQuery_3_6_1('.alert').addClass("showAlert");
+                //setTimeout(function () {
+                //    jQuery_3_6_1('.alert').removeClass("show");
+                //    jQuery_3_6_1('.alert').addClass("hide");
+                //}, 5000);
+            }
+        </script>
+    }
+
+}

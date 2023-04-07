@@ -1,0 +1,205 @@
+﻿@model QRSCS.Models.CreateUserModel
+@{
+    ViewBag.Title = "CreateUser";
+}
+<link href="~/Content/CreateUser/css/createuser.css" rel="stylesheet" />
+
+<main>
+    <div class="container">
+        <header>Create User</header>
+        @using (Html.BeginForm("CreateUser", "Admin", FormMethod.Post, new { @id = "formmm", enctype = "multipart/form-data" }))
+        {
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Full Name</label>
+                            @Html.TextBoxFor(x => x.Full_Name, new { placeholder = "Enter Full Name", @required = "required" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>Father Name</label>
+                            @Html.TextBoxFor(x => x.Father_Name, new { placeholder = "Enter Father Name", @required = "required" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>NIC</label>
+                            @Html.TextBoxFor(x => x.NIC, null, new { placeholder = "Enter CNIC Number", @required = "required", id = "NIC" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Gender</label>
+                            @Html.DropDownListFor(x => x.Gender, new List<SelectListItem>
+                         { new SelectListItem() { Text = "Please Select" },
+                           new SelectListItem() { Text = "Male" },
+                           new SelectListItem() { Text = "Female" }
+                         }, new { @required = "required", id = "gen" })
+                        </div>
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            @Html.TextBoxFor(x => x.DOB, null, new { @type = "date", placeholder = "Enter CNIC Number", @required = "required" })
+
+
+
+
+                        </div>
+                        <div class="input-field">
+                            <label>Contact Number</label>
+                            @Html.TextBoxFor(x => x.Contact_Number, null, new { placeholder = "Enter Phone Number", @required = "required", @id = "desig" })
+
+
+
+
+                        </div>
+                        <div class="input-field">
+                            <label>Upload User Image</label>
+                            @Html.TextBoxFor(m => m.Imageofuser, new { @id = "user-image", @class = "upload-box", type = "file", accept = "image/png, image/jpeg", @required = "required" })
+                        </div>
+
+                        <div class="input-field">
+                            <label style="visibility:hidden">Upload User Image</label>
+
+                            <div id="preview" style="visibility:hidden;margin:0px;" onclick="preview_modal()" class="backBtn">Preview Image</div>
+                        </div>
+
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Upload User Image</label>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="details ID">
+                    <span class="title">Identity Details</span>
+
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Enter Rank</label>
+                            @Html.TextBoxFor(x => x.Rank, null, new { placeholder = "Enter Rank", @requiired = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Select Role</label>
+                            @Html.DropDownListFor(x => x.Desigation_Role, ViewBag.Roles as SelectList,
+                           "Select Role")
+
+                        </div>
+
+                        <div class="input-field" style="visibility:hidden">
+                            <label>ID Number</label>
+
+                        </div>
+
+                    </div>
+
+                    <div onclick="forwardbtn()" class="backBtn">
+                        <span class="btnText">Next</span>
+                        <i style="transform:none" class="uil uil-navigator"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form second">
+                <div class="details address">
+                    <span class="title">Address Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Address</label>
+                            @Html.TextBoxFor(x => x.Address, null, new { placeholder = "Enter Complete Address", @requiired = "required" })
+
+                        </div>
+
+                        <div class="input-field">
+                            <label>State</label>
+                            @Html.DropDownListFor(x => x.State, new List<SelectListItem>
+                            { new SelectListItem() { Text = "Please Select" },
+                            new SelectListItem() { Text = "Sindh" },
+                            new SelectListItem() { Text = "Punjab" },
+                            new SelectListItem() { Text = "Balochistan" },
+                            new SelectListItem() { Text = "Khyber Pakhtunkhwa" },
+                            new SelectListItem() { Text = "Gilgit Baltistan" }
+                            }, new { @required = "required" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>City</label>
+                            @Html.TextBoxFor(x => x.City, null, new { placeholder = "Enter City", @requiired = "required" })
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="details family">
+                    <span class="title">Username and Password</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>User Name</label>
+                            @Html.TextBoxFor(x => x.UserName, null, new { placeholder = "Enter Username", @requiired = "required" })
+
+                        </div>
+
+                        <div class="input-field">
+                            <label>Password</label>
+                            @Html.TextBoxFor(x => x.Password, null, new { @type = "password", placeholder = "Enter Password", @requiired = "required" })
+
+                        </div>
+
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Grandfather</label>
+                            <input type="text" placeholder="Enter grandfther name">
+                        </div>
+
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Spouse Name</label>
+                            <input type="text" placeholder="Enter spouse name">
+                        </div>
+
+                    </div>
+
+                    <div class="buttons">
+                        <div onclick="backwardbtn()" class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+
+                        <button type="submit" class=" backBtn" style="margin-left:10px">
+                            <span class="btnText">Submit</span>
+                            <i style="transform:none !important" class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+    <div id="image-preview" class="popup">
+        <header>
+            <span>Preview of Image</span>
+            <div><i onclick="img_modal_close()" class="uil uil-times"></i></div>
+        </header>
+        <div class="content">
+            <center>
+                <img width="200px" height="200px" src="" alt="" id="photo-preview" />
+            </center>
+
+        </div>
+    </div>
+
+
+</main>
+
+<script src="~/Content/CreateUser/js/createuser.js"></script>
+
+

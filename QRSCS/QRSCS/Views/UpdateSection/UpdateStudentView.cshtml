@@ -1,0 +1,567 @@
+﻿@model QRSCS.Models.NewAdmissionModel
+@{
+    ViewBag.Title = "UpdateStudentView";
+ 
+}
+
+<!-- Admission Form -->
+<link type="text/css" rel="stylesheet" href="~/Content/adminassets/css/style.css">
+<script src="~/Content/adminassets/assets/vendors/JotForm/prototypeform.js" type="text/javascript"></script>
+<script src="~/Content/adminassets/assets/vendors/JotForm/jotforms.js" type="text/javascript"></script>
+<script defer src="~/Content/adminassets/js/vendor/maskedinput.min.js?v=3.3.27613" type="text/javascript"></script>
+<script defer src="~/Content/adminassets/js/vendor/jquery.maskedinput.min.js?v=3.3.27613" type="text/javascript"></script>
+
+@*<script src="~/Content/javascripts/UpdateStudentView.js"></script>*@
+@*<script type="text/javascript">
+    JotForm.newDefaultTheme = true;
+    JotForm.extendsNewTheme = false;
+    JotForm.newPaymentUIForNewCreatedForms = false;
+    JotForm.newPaymentUI = true;
+
+    JotForm.init(function () {
+        /*INIT-START*/
+        setTimeout(function () {
+            $('input_73').hint('ex: 23');
+        }, 20);
+
+        JotForm.calendarMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        JotForm.calendarDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        JotForm.calendarOther = { "today": "Today" };
+        var languageOptions = document.querySelectorAll('#langList li');
+        for (var langIndex = 0; langIndex < languageOptions.length; langIndex++) {
+            languageOptions[langIndex].on('click', function (e) { setTimeout(function () { JotForm.setCalendar("74", false, { "days": { "monday": true, "tuesday": true, "wednesday": true, "thursday": true, "friday": true, "saturday": true, "sunday": true }, "future": true, "past": true, "custom": false, "ranges": false, "start": "", "end": "" }); }, 0); });
+        }
+        JotForm.onTranslationsFetch(function () { JotForm.setCalendar("74", false, { "days": { "monday": true, "tuesday": true, "wednesday": true, "thursday": true, "friday": true, "saturday": true, "sunday": true }, "future": true, "past": true, "custom": false, "ranges": false, "start": "", "end": "" }); });
+
+        JotForm.calendarMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        JotForm.calendarDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        JotForm.calendarOther = { "today": "Today" };
+        var languageOptions = document.querySelectorAll('#langList li');
+        for (var langIndex = 0; langIndex < languageOptions.length; langIndex++) {
+            languageOptions[langIndex].on('click', function (e) { setTimeout(function () { JotForm.setCalendar("75", false, { "days": { "monday": true, "tuesday": true, "wednesday": true, "thursday": true, "friday": true, "saturday": true, "sunday": true }, "future": true, "past": true, "custom": false, "ranges": false, "start": "", "end": "" }); }, 0); });
+        }
+        JotForm.onTranslationsFetch(function () { JotForm.setCalendar("75", false, { "days": { "monday": true, "tuesday": true, "wednesday": true, "thursday": true, "friday": true, "saturday": true, "sunday": true }, "future": true, "past": true, "custom": false, "ranges": false, "start": "", "end": "" }); });
+        if (window.JotForm && JotForm.accessible) $('input_59').setAttribute('tabindex', 0);
+        if (window.JotForm && JotForm.accessible) $('input_60').setAttribute('tabindex', 0);
+        if (window.JotForm && JotForm.accessible) $('input_61').setAttribute('tabindex', 0);
+        if (window.JotForm && JotForm.accessible) $('input_63').setAttribute('tabindex', 0);
+        if (window.JotForm && JotForm.accessible) $('input_72').setAttribute('tabindex', 0);
+        if (window.JotForm && JotForm.accessible) $('input_76').setAttribute('tabindex', 0);
+        setTimeout(function () {
+            $('input_79').hint('#####-#######-#');
+        }, 20);
+        if (window.JotForm && JotForm.accessible) $('input_80').setAttribute('tabindex', 0);
+        if (window.JotForm && JotForm.accessible) $('input_81').setAttribute('tabindex', 0);
+        if (window.JotForm && JotForm.accessible) $('input_82').setAttribute('tabindex', 0);
+        JotForm.setPhoneMaskingValidator('input_79', '#####-#######-#');
+        JotForm.setPhoneMaskingValidator('input_85_full', '03##-#######');
+        JotForm.setPhoneMaskingValidator('input_86_full', '03##-#######');
+        JotForm.setPhoneMaskingValidator('input_87_full', '03##-#######');
+        JotForm.setPhoneMaskingValidator('input_84_postal', '#####');
+        if (window.JotForm && JotForm.accessible) $('input_90').setAttribute('tabindex', 0);
+        JotForm.alterTexts({ "confirmClearForm": "Are you sure you want to clear the form", "lessThan": "Your score should be less than" });
+        /*INIT-END*/
+    });
+
+    JotForm.prepareCalculationsOnTheFly([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, { "name": "gender", "qid": "15", "text": "Gender", "type": "control_radio" }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, { "name": "birthDate39", "qid": "39", "text": "Birth Date", "type": "control_birthdate" }, null, null, null, { "name": "clickTo", "qid": "43", "text": "Admissions Form", "type": "control_head" }, null, null, null, null, null, { "name": "childsDisablity", "qid": "49", "text": "CHILD'S DISABLITY", "type": "control_head" }, null, null, { "name": "submitForm", "qid": "52", "text": "Submit Form", "type": "control_button" }, null, null, null, { "name": "name", "qid": "56", "text": "Name", "type": "control_fullname" }, { "description": "", "name": "class", "qid": "57", "subLabel": "", "text": "Class", "type": "control_dropdown" }, null, { "description": "", "name": "placeOf", "qid": "59", "subLabel": "", "text": "Place of Birth", "type": "control_textbox" }, { "description": "", "name": "religion", "qid": "60", "subLabel": "", "text": "Religion", "type": "control_textbox" }, { "description": "", "name": "nameOf", "qid": "61", "subLabel": "", "text": "Name of last School Attended", "type": "control_textbox" }, null, { "description": "", "name": "hobbies", "qid": "63", "subLabel": "", "text": "Hobbies", "type": "control_textbox" }, { "name": "quaidE", "qid": "64", "text": "QUAID E AZAM RANGERS SPECIAL CHILDREN SCHOOL", "type": "control_head" }, { "name": "studentProfile", "qid": "65", "text": "Student Profile", "type": "control_head" }, null, { "name": "pageBreak67", "qid": "67", "text": "Page Break", "type": "control_pagebreak" }, null, { "name": "pageBreak", "qid": "69", "text": "Page Break", "type": "control_pagebreak" }, { "name": "parentsguardianInformation", "qid": "70", "text": "PARENTS\u002FGUARDIAN INFORMATION", "type": "control_head" }, null, { "description": "", "name": "fatherName72", "qid": "72", "subLabel": "Full name of Father", "text": "Father Name", "type": "control_textbox" }, { "description": "", "name": "grNo", "qid": "73", "subLabel": "Enter GR for Student", "text": "GR No", "type": "control_number" }, { "description": "", "name": "dateOf", "qid": "74", "text": "Date Of Admission", "type": "control_datetime" }, { "description": "", "name": "dateOf75", "qid": "75", "text": "Date of Assessment", "type": "control_datetime" }, { "description": "", "name": "education", "qid": "76", "subLabel": "", "text": "Education", "type": "control_textbox" }, null, null, { "description": "", "name": "nic", "qid": "79", "subLabel": "Enter your NIC", "text": "NIC", "type": "control_number" }, { "description": "", "name": "relationWith80", "qid": "80", "subLabel": "", "text": "Relation with the Student", "type": "control_textbox" }, { "description": "", "name": "monthlyIncome", "qid": "81", "subLabel": "", "text": "Monthly Income", "type": "control_textbox" }, { "description": "", "name": "occupation", "qid": "82", "subLabel": "", "text": "Occupation", "type": "control_textbox" }, { "description": "", "name": "category", "qid": "83", "subLabel": "", "text": "Category", "type": "control_dropdown" }, { "description": "", "name": "completeAddress", "qid": "84", "text": "Complete Address", "type": "control_address" }, { "description": "", "name": "cellPhone", "qid": "85", "text": "Cell Phone Number", "type": "control_phone" }, { "description": "", "name": "phoneResidence", "qid": "86", "text": "Phone Residence", "type": "control_phone" }, { "description": "", "name": "phoneOffice", "qid": "87", "text": "Phone Office", "type": "control_phone" }, { "description": "", "name": "typeA", "qid": "88", "subLabel": "", "text": "Type a question", "type": "control_dropdown" }, null, { "description": "", "name": "presentingComplaint", "qid": "90", "subLabel": "", "text": "Presenting Complaint", "type": "control_textbox" }]);
+    setTimeout(function () {
+        JotForm.paymentExtrasOnTheFly([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, { "name": "gender", "qid": "15", "text": "Gender", "type": "control_radio" }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, { "name": "birthDate39", "qid": "39", "text": "Birth Date", "type": "control_birthdate" }, null, null, null, { "name": "clickTo", "qid": "43", "text": "Admissions Form", "type": "control_head" }, null, null, null, null, null, { "name": "childsDisablity", "qid": "49", "text": "CHILD'S DISABLITY", "type": "control_head" }, null, null, { "name": "submitForm", "qid": "52", "text": "Submit Form", "type": "control_button" }, null, null, null, { "name": "name", "qid": "56", "text": "Name", "type": "control_fullname" }, { "description": "", "name": "class", "qid": "57", "subLabel": "", "text": "Class", "type": "control_dropdown" }, null, { "description": "", "name": "placeOf", "qid": "59", "subLabel": "", "text": "Place of Birth", "type": "control_textbox" }, { "description": "", "name": "religion", "qid": "60", "subLabel": "", "text": "Religion", "type": "control_textbox" }, { "description": "", "name": "nameOf", "qid": "61", "subLabel": "", "text": "Name of last School Attended", "type": "control_textbox" }, null, { "description": "", "name": "hobbies", "qid": "63", "subLabel": "", "text": "Hobbies", "type": "control_textbox" }, { "name": "quaidE", "qid": "64", "text": "QUAID E AZAM RANGERS SPECIAL CHILDREN SCHOOL", "type": "control_head" }, { "name": "studentProfile", "qid": "65", "text": "Student Profile", "type": "control_head" }, null, { "name": "pageBreak67", "qid": "67", "text": "Page Break", "type": "control_pagebreak" }, null, { "name": "pageBreak", "qid": "69", "text": "Page Break", "type": "control_pagebreak" }, { "name": "parentsguardianInformation", "qid": "70", "text": "PARENTS\u002FGUARDIAN INFORMATION", "type": "control_head" }, null, { "description": "", "name": "fatherName72", "qid": "72", "subLabel": "Full name of Father", "text": "Father Name", "type": "control_textbox" }, { "description": "", "name": "grNo", "qid": "73", "subLabel": "Enter GR for Student", "text": "GR No", "type": "control_number" }, { "description": "", "name": "dateOf", "qid": "74", "text": "Date Of Admission", "type": "control_datetime" }, { "description": "", "name": "dateOf75", "qid": "75", "text": "Date of Assessment", "type": "control_datetime" }, { "description": "", "name": "education", "qid": "76", "subLabel": "", "text": "Education", "type": "control_textbox" }, null, null, { "description": "", "name": "nic", "qid": "79", "subLabel": "Enter your NIC", "text": "NIC", "type": "control_number" }, { "description": "", "name": "relationWith80", "qid": "80", "subLabel": "", "text": "Relation with the Student", "type": "control_textbox" }, { "description": "", "name": "monthlyIncome", "qid": "81", "subLabel": "", "text": "Monthly Income", "type": "control_textbox" }, { "description": "", "name": "occupation", "qid": "82", "subLabel": "", "text": "Occupation", "type": "control_textbox" }, { "description": "", "name": "category", "qid": "83", "subLabel": "", "text": "Category", "type": "control_dropdown" }, { "description": "", "name": "completeAddress", "qid": "84", "text": "Complete Address", "type": "control_address" }, { "description": "", "name": "cellPhone", "qid": "85", "text": "Cell Phone Number", "type": "control_phone" }, { "description": "", "name": "phoneResidence", "qid": "86", "text": "Phone Residence", "type": "control_phone" }, { "description": "", "name": "phoneOffice", "qid": "87", "text": "Phone Office", "type": "control_phone" }, { "description": "", "name": "typeA", "qid": "88", "subLabel": "", "text": "Type a question", "type": "control_dropdown" }, null, { "description": "", "name": "presentingComplaint", "qid": "90", "subLabel": "", "text": "Presenting Complaint", "type": "control_textbox" }]);
+    }, 20);
+</script>*@
+
+
+<div class="container-fluid">
+    <div class="db-breadcrumb">
+        <h4 class="breadcrumb-title"> Update New Admission Form </h4>
+        <ul class="db-breadcrumb-list">
+            <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+            <li>New Admission</li>
+        </ul>
+    </div>
+    <div class="row">
+        <!-- Your Profile Views Chart -->
+        <div class="col-lg-12 m-b30">
+            <div class="widget-box">
+                <div class="widget-inner">
+                    <div id="calendar">
+                        @using (Html.BeginForm("UpdateStudentView", "UpdateSection", FormMethod.Post, new { @class = "jotform-form", method = "post", name = "form_212561466200446", id = "212561466200446", acceptcharset = "utf-8", autocomplete = "on" }))
+                        {
+                            <input type="hidden" name="formID" value="212561466200446" />
+                            <input type="hidden" id="JWTContainer" value="" />
+                            <input type="hidden" id="cardinalOrderNumber" value="" />
+                            <div role="main" class="form-all">
+
+                                <style>
+                                    .form-all:before {
+                                        background: none;
+                                    }
+                                </style>
+                                <ul class="form-section page-section">
+                                    <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                        <div class="form-header-group  header-large">
+                                            <div class="header-text httac htvam">
+                                                <h1 id="header_43" class="form-header" data-component="header">
+                                                    Admissions Form
+                                                </h1>
+                                                <div id="subHeader_43" class="form-subHeader">
+                                                    Enter your admission information below
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @Html.HiddenFor(x => x.Gr_No)
+                                    <li class="form-line jf-required" data-type="control_fullname" id="id_56">
+                                        <label class="form-label form-label-top form-label-auto" id="label_56" for="first_56">
+                                            Student Name
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_56" class="form-input-wide jf-required" data-layout="full">
+                                            <div data-wrapper-react="true">
+                                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                                    @Html.TextBoxFor(x => x.Student_First_Name, null, new { @Class = "form-textbox validate[required]", placeholder = "Enter First Name", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                                                    @Html.ValidationMessageFor(x => x.Student_First_Name, null, new { style = "color:red" })
+                                                    <label class="form-sub-label" for="first_56" id="sublabel_56_first" style="min-height:13px" aria-hidden="false"> First Name </label>
+                                                </span>
+                                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
+
+                                                    @Html.TextBoxFor(x => x.Student_Last_Name, null, new { @Class = "form-textbox validate[required]", placeholder = "Enter Last Name", type = "text", id = "last_56", name = "q56_name[last]", datacomponent = "last", arialabelledby = "label_56 sublabel_56_last" })
+                                                    @Html.ValidationMessageFor(x => x.Student_Last_Name, null, new { style = "color:red" })
+                                                    <label class="form-sub-label" for="last_56" id="sublabel_56_last" style="min-height:13px" aria-hidden="false"> Last Name </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                        <label class="form-label form-label-top" id="label_39" for="input_39">
+                                            Date Of Admission
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_39" class="form-input-wide jf-required" data-layout="full">
+                                            @Html.EditorFor(x => x.Date_of_Admission, new { htmlAttributes = new { @class = "form-textbox validate[required]", @Value = @Model.Date_of_Admission.ToString("dd-MM-yyyy"), @type = "date" } })
+                                            @Html.ValidationMessageFor(x => x.Date_of_Admission, null, new { style = "color:red" })
+
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                        <label class="form-label form-label-top" id="label_57" for="input_57">
+                                            Class of Addmission
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.DropDownListFor(x => x.Class, new List<SelectListItem>
+                                               { new SelectListItem() { Text = "Please Select" },
+                                                 new SelectListItem() { Text = "1" },
+                                                 new SelectListItem() { Text = "2" },
+                                                  new SelectListItem() { Text = "3" },
+                                                 new SelectListItem() { Text = "4" },
+                                                 new SelectListItem() { Text = "5" },
+                                                  new SelectListItem() { Text = "6" },
+                                                 new SelectListItem() { Text = "7" },
+                                                 new SelectListItem() { Text = "8" },
+                                                  new SelectListItem() { Text = "9" },
+                                                 new SelectListItem() { Text = "10" }
+
+                                           }, new { @Class = "form-dropdown validate[required]", id = "input_57", name = "q57_class", style = "width:310px", datacomponent = "dropdown" })
+                                            @Html.ValidationMessageFor(x => x.Class, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-2 jf-required" data-type="control_radio" id="id_15">
+                                        <label class="form-label form-label-top" id="label_15" for="input_15">
+                                            Gender
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_15" class="form-input-wide jf-required" data-layout="full">
+                                            <div class="form-single-column" role="group" aria-labelledby="label_15" data-component="radio">
+
+
+                                                <span class="form-radio-item" style="clear:left">
+                                                    <span class="dragger-item">
+                                                    </span>
+                                                    @Html.RadioButtonFor(x => x.Gender, "Male", new { @class = "form-radio validate[required]", type = "radio", id = "input_15_0", name = "q15_gender", value = "Male", required = "" })
+                                                    <label id="label_input_15_0" for="input_15_0"> Male </label>
+                                                </span>
+                                                <span class="form-radio-item" style="clear:left">
+                                                    <span class="dragger-item">
+                                                    </span>
+                                                    @Html.RadioButtonFor(x => x.Gender, "Female", new { @class = "form-radio validate[required]", type = "radio", id = "input_15_1", name = "q15_gender", value = "Female", required = "" })
+                                                    <label id="label_input_15_1" for="input_15_1"> Female </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                        <label class="form-label form-label-top" id="label_39" for="input_39">
+                                            Date of Birth
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_39" class="form-input-wide jf-required" data-layout="full">
+                                            @Html.EditorFor(x => x.Dob, new { htmlAttributes = new { @class = "form-textbox validate[required]", @type = "date" } })
+                                            @Html.ValidationMessageFor(x => x.Dob, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-4 jf-required" data-type="control_textbox" id="id_59">
+                                        <label class="form-label form-label-top" id="label_59" for="input_59">
+                                            Place of Birth
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_59" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Place_of_Birth, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Place_of_Birth, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-5 jf-required" data-type="control_textbox" id="id_60">
+                                        <label class="form-label form-label-top" id="label_60" for="input_60">
+                                            Religion
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_60" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Religion, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Religion, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_61">
+                                        <label class="form-label form-label-top form-label-auto" id="label_61" for="input_61">
+                                            Name of last School Attended
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_61" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Name_Last_School_Attended, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Name_Last_School_Attended, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_63">
+                                        <label class="form-label form-label-top" id="label_63" for="input_63">
+                                            Hobbies
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_63" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Hobbies, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Hobbies, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li id="cid_69" class="form-input-wide" data-type="control_pagebreak">
+                                        <div class="form-pagebreak" data-component="pagebreak">
+                                            <div class="form-pagebreak-back-container">
+                                                <button id="form-pagebreak-back_69" type="button" class="form-pagebreak-back  jf-form-buttons" data-component="pagebreak-back">
+                                                    Back
+                                                </button>
+                                            </div>
+                                            <div class="form-pagebreak-next-container">
+                                                <button id="form-pagebreak-next_69" type="button" class="form-pagebreak-next  jf-form-buttons" data-component="pagebreak-next">
+                                                    Next
+                                                </button>
+                                            </div>
+                                            <div style="clear:both" class="pageInfo form-sub-label" id="pageInfo_69">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="form-section page-section" style="display:none;">
+                                    <li id="cid_70" class="form-input-wide" data-type="control_head">
+                                        <div class="form-header-group  header-default">
+                                            <div class="header-text httac htvam">
+                                                <h2 id="header_70" class="form-header" data-component="header">
+                                                    PARENTS/GUARDIAN INFORMATION
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-5 jf-required" data-type="control_textbox" id="id_72">
+                                        <label class="form-label form-label-top" id="label_72" for="input_72">
+                                            Father Name
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_72" class="form-input-wide jf-required" data-layout="half">
+                                            <span class="form-sub-label-container" style="vertical-align:top">
+                                                @Html.TextBoxFor(x => x.Father_Name, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                                @Html.ValidationMessageFor(x => x.Father_Name, null, new { style = "color:red" })
+                                                <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-2" data-type="control_number" id="id_79">
+                                        <label class="form-label form-label-top" id="label_79" for="input_79">
+                                            Father NIC
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_79" class="form-input-wide" data-layout="half">
+                                            <span class="form-sub-label-container" style="vertical-align:top">
+                                                @Html.TextBoxFor(x => x.NIC, null, new { type = "tel", id = "input_79", name = "q79_nic", datatype = "mask-number", @class = "mask-phone-number form-textbox validate[required,Fill Mask]", datadefaultvalue = "", style = "width:310px", datamasked = "true", value = "", placeholder = "#####-#######-#", datacomponent = "phone", arialabelledby = "label_85 sublabel_85_masked" })
+                                                @Html.ValidationMessageFor(x => x.NIC, null, new { style = "color:red" })
+                                                <label class="form-sub-label" for="input_79" id="sublabel_input_79" style="min-height:13px" aria-hidden="false"> Enter your NIC </label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_80">
+                                        <label class="form-label form-label-top form-label-auto" id="label_80" for="input_80">
+                                            Relation with the Student
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_80" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Relation_with_Student, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Relation_with_Student, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_76">
+                                        <label class="form-label form-label-top" id="label_76" for="input_76">
+                                            Education
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_76" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Education, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Education, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_81">
+                                        <label class="form-label form-label-top" id="label_81" for="input_81">
+                                            Monthly Income
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_81" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Monthy_Income, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Monthy_Income, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-2 jf-required" data-type="control_textbox" id="id_82">
+                                        <label class="form-label form-label-top" id="label_82" for="input_82">
+                                            Occupation
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_82" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Occupation, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Occupation, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line jf-required" data-type="control_dropdown" id="id_83">
+                                        <label class="form-label form-label-top" id="label_83" for="input_83">
+                                            Category
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_83" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.DropDownListFor(x => x.Category, new List<SelectListItem>
+                                              { new SelectListItem() { Text = "Please Select" },
+                                                new SelectListItem() { Text = "Army/Ranger Serving" },
+                                                new SelectListItem() { Text = "Rangers/Retired" },
+                                                 new SelectListItem() { Text = "PN/Police Per" },
+                                                new SelectListItem() { Text = "Civilian" },
+                                              }, new { @Class = "form-dropdown validate[required]" })
+                                            @Html.ValidationMessageFor(x => x.Category, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line jf-required" data-type="control_address" id="id_84">
+                                        <label class="form-label form-label-top form-label-auto" id="label_84" for="input_84_addr_line1">
+                                            Complete Address
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_84" class="form-input-wide jf-required" data-layout="full">
+                                            <div summary="" class="form-address-table jsTest-addressField">
+                                                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                                                    <span class="form-address-line form-address-street-line jsTest-address-lineField">
+                                                        <span class="form-sub-label-container" style="vertical-align:top">
+                                                            @Html.TextBoxFor(x => x.Address, null, new { type = "text", id = "input_84_addr_line1", name = "q84_completeAddress[addr_line1]", @class = "form-textbox validate[required] form-address-line", datadefaultvalue = "", value = "", datacomponent = "address_line_1", arialabelledby = "label_84 sublabel_84_addr_line1", required = "" })
+                                                            @Html.ValidationMessageFor(x => x.Address, null, new { style = "color:red" })
+                                                            <label class="form-sub-label" for="input_84_addr_line1" id="sublabel_84_addr_line1" style="min-height:13px" aria-hidden="false"> Complete Address </label>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                                                    <span class="form-address-line form-address-state-line jsTest-address-lineField ">
+                                                        <span class="form-sub-label-container" style="vertical-align:top">
+                                                            @Html.DropDownListFor(x => x.State, new List<SelectListItem>
+                                                              { new SelectListItem() { Text = "Please Select" },
+                                                                new SelectListItem() { Text = "Sindh" },
+                                                                new SelectListItem() { Text = "Punjab" },
+                                                                new SelectListItem() { Text = "Balochistan" },
+                                                                new SelectListItem() { Text = "Khyber Pakhtunkhwa" },
+                                                                new SelectListItem() { Text = "Gilgit Baltistan" },
+                                                               }, new { type = "text", id = "input_84_state", name = "q84_completeAddress[state]", @class = "form-dropdown validate[required]", datadefaultvalue = "", value = "", datacomponent = "state", arialabelledby = "label_84 sublabel_84_state", required = "" })
+                                                            @Html.ValidationMessageFor(x => x.State, null, new { style = "color:red" })
+
+                                                            <label class="form-sub-label" for="input_84_state" id="sublabel_84_state" style="min-height:13px" aria-hidden="false"> State / Province </label>
+                                                        </span>
+                                                    </span>
+                                                    <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+                                                        <span class="form-sub-label-container" style="vertical-align:top">
+                                                            @Html.TextBoxFor(x => x.City, null, new { type = "text", id = "input_84_city", name = "q84_completeAddress[city]", @class = "form-textbox validate[required] form-address-city", datadefaultvalue = "", value = "", datacomponent = "city", arialabelledby = "label_84 sublabel_84_city", required = "" })
+                                                            @Html.ValidationMessageFor(x => x.City, null, new { style = "color:red" })
+                                                            <label class="form-sub-label" for="input_84_city" id="sublabel_84_city" style="min-height:13px" aria-hidden="false"> City </label>
+                                                        </span>
+                                                    </span>
+
+                                                </div>
+                                                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                                                    <span class="form-address-line form-address-zip-line jsTest-address-lineField ">
+                                                        <span class="form-sub-label-container" style="vertical-align:top">
+                                                            @Html.TextBoxFor(x => x.Zip_Code, null, new { type = "tel", id = "input_84_postal", name = "q84_completeAddress[postal]", @class = "form-textbox form-address-postal", datadefaultvalue = "", value = "", datacomponent = "zip", arialabelledby = "label_84 sublabel_84_postal" })
+                                                            @Html.ValidationMessageFor(x => x.Zip_Code, null, new { style = "color:red" })
+                                                            <label class="form-sub-label" for="input_84_postal" id="sublabel_84_postal" style="min-height:13px" aria-hidden="false"> Postal / Zip Code </label>
+                                                        </span>
+                                                    </span>
+                                                    <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+                                                        <span class="form-sub-label-container" style="vertical-align:top">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="form-line" data-type="control_phone" id="id_85">
+                                        <label class="form-label form-label-top form-label-auto" id="label_85" for="input_85_full"> Contact Number </label>
+                                        <div id="cid_85" class="form-input-wide" data-layout="half">
+                                            <span class="form-sub-label-container" style="vertical-align:top">
+                                                @Html.TextBoxFor(x => x.Contact, null, new { type = "tel", id = "input_85_full", name = "q85_cellPhone[full]", datatype = "mask-number", @class = "mask-phone-number form-textbox validate[required,Fill Mask]", datadefaultvalue = "", style = "width:310px", datamasked = "true", value = "", placeholder = "0300-0000000", datacomponent = "phone", arialabelledby = "label_85 sublabel_85_masked" })
+                                                @Html.ValidationMessageFor(x => x.Contact, null, new { style = "color:red" })
+                                                <label class="form-sub-label" for="input_85_full" id="sublabel_85_masked" style="min-height:13px" aria-hidden="false"> Please enter a valid phone number. </label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-1 jf-required" data-type="control_phone" id="id_86">
+                                        <label class="form-label form-label-top" id="label_86" for="input_86_full">
+                                            Phone Residence
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_86" class="form-input-wide jf-required" data-layout="half">
+                                            <span class="form-sub-label-container" style="vertical-align:top">
+                                                @Html.TextBoxFor(x => x.Phone_Residence, null, new { type = "tel", id = "input_86_full", name = "q86_phoneResidence[full]", datatype = "mask-number", @class = "mask-phone-number form-textbox validate[required,Fill Mask]", datadefaultvalue = "", style = "width:310px", datamasked = "true", value = "", placeholder = "0300-0000000", datacomponent = "phone", arialabelledby = "label_86 sublabel_86_masked" })
+                                                @Html.ValidationMessageFor(x => x.Phone_Residence, null, new { style = "color:red" })
+                                                <label class="form-sub-label" for="input_86_full" id="sublabel_86_masked" style="min-height:13px" aria-hidden="false"> Please enter a valid phone number. </label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-2 jf-required" data-type="control_phone" id="id_87">
+                                        <label class="form-label form-label-top" id="label_87" for="input_87_full">
+                                            Phone Office
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_87" class="form-input-wide jf-required" data-layout="half">
+                                            <span class="form-sub-label-container" style="vertical-align:top">
+                                                @Html.TextBoxFor(x => x.Phone_Office, null, new { type = "tel", id = "input_87_full", name = "q87_phoneOffice[full]", datatype = "mask-number", @class = "mask-phone-number form-textbox validate[required,Fill Mask]", datadefaultvalue = "", style = "width:310px", datamasked = "true", value = "", placeholder = "0300-0000000", datacomponent = "phone", arialabelledby = "label_87 sublabel_87_masked" })
+                                                @Html.ValidationMessageFor(x => x.Phone_Office, null, new { style = "color:red" })
+                                                <label class="form-sub-label" for="input_87_full" id="sublabel_87_masked" style="min-height:13px" aria-hidden="false"> Please enter a valid phone number. </label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li id="cid_67" class="form-input-wide" data-type="control_pagebreak">
+                                        <div class="form-pagebreak" data-component="pagebreak">
+                                            <div class="form-pagebreak-back-container">
+                                                <button id="form-pagebreak-back_67" type="button" class="form-pagebreak-back  jf-form-buttons" data-component="pagebreak-back">
+                                                    Back
+                                                </button>
+                                            </div>
+                                            <div class="form-pagebreak-next-container">
+                                                <button id="form-pagebreak-next_67" type="button" class="form-pagebreak-next  jf-form-buttons" data-component="pagebreak-next">
+                                                    Next
+                                                </button>
+                                            </div>
+                                            <div style="clear:both" class="pageInfo form-sub-label" id="pageInfo_67">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="form-section page-section" style="display:none;">
+                                    <li id="cid_49" class="form-input-wide" data-type="control_head">
+                                        <div class="form-header-group  header-default">
+                                            <div class="header-text httac htvam">
+                                                <h2 id="header_49" class="form-header" data-component="header">
+                                                    CHILD&#x27;S DISABLITY
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-5 jf-required" data-type="control_dropdown" id="id_88">
+                                        <label class="form-label form-label-top form-label-auto" id="label_88" for="input_88">
+                                            DISABLITIES
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_88" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.DropDownListFor(x => x.Disability, new List<SelectListItem>
+                                             { new SelectListItem() { Text = "Please Select" },
+                                               new SelectListItem() { Text = "H.I" },
+                                               new SelectListItem() { Text = "V.I" },
+                                                new SelectListItem() { Text = "I.D.D" },
+                                               new SelectListItem() { Text = "P.H" },
+                                               new SelectListItem() { Text = "C.P" },
+                                               new SelectListItem() { Text = "Multiple Problems" },
+                                               new SelectListItem() { Text = "Therapeutic Services" },
+                                             }, new { @Class = "form-dropdown validate[required]" })
+                                            @Html.ValidationMessageFor(x => x.Disability, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-5 jf-required" data-type="control_textbox" id="id_90">
+                                        <label class="form-label form-label-top form-label-auto" id="label_90" for="input_90">
+                                            Presenting Complaint
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_90" class="form-input-wide jf-required" data-layout="half">
+                                            @Html.TextBoxFor(x => x.Presenting_Complain, null, new { @Class = "form-textbox validate[required]", placeholder = "" })
+                                            @Html.ValidationMessageFor(x => x.Presenting_Complain, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+                                    <li class="form-line" data-type="control_button" id="id_52">
+                                        <div id="cid_52" class="form-input-wide" data-layout="full">
+                                            @helper button(string type, string value, string clas = "form-submit-button submit-button jf-form-buttons jsTest-submitField")
+                                            {
+                                                <input type="@type" value="@value" class="@clas" />
+                                            }
+                                            <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
+                                                <button id="input_52" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" data-component="button" data-content="">
+                                                    Submit Form
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Your Profile Views Chart END-->
+    </div>
+</div>
+<div class="ttr-overlay"></div>
+
+

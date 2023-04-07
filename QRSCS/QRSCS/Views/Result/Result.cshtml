@@ -1,0 +1,407 @@
+﻿﻿@model QRSCS.Models.HIResultDTO
+@{
+    ViewBag.Title = "Result";
+}
+
+
+<link href="~/Content/adminassets/resultstyle.css" rel="stylesheet" />
+<div class="wrapper">
+    <div class="rec-prism">
+
+        <div class="face face-left">
+            <div class="content">
+                <h2>PROGRESS REPORT</h2>
+                @Html.TextBoxFor(x => x.biMonthlyModel.GR_NO, null, new { id = "GR_NO", type = "number", placeholder = "GR_NO", style = "width:25%; float:right; margin-bottom:10px;", onchange = "FetchData(document.getElementById('GR_NO').value)" })
+                <table class="table table-striped table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">S.NO.</th>
+                            <th rowspan="2" class="twide">Subjects</th>
+                            <th class="twide">1st <br> Bi-Monthly Test <br> Max-Marks:25</th>
+                            <th class="twide">2nd <br> Bi-Monthly Test <br> Max-Marks:25</th>
+                            <th class="twide">1st <br>Term Exam Test <br> Max-Marks:100</th>
+                            <th class="twide">Grand<br>Total:150</th>
+                            <th rowspan="2">40% Weightage of Total</th>
+                            <th class="twide">3rd <br> Bi-Monthly Test <br> Max-Marks:25</th>
+                            <th class="twide">4th <br> Bi-Monthly Test <br> Max-Marks:25</th>
+                            <th class="twide">2nd <br>Term Exam Test <br> Max-Marks:100</th>
+                            <th class="twide">Grand<br>Total:150</th>
+                            <th rowspan="2">60% Weightage of Total</th>
+                        </tr>
+                        <tr>
+                            <th>Marks Obtained</th>
+                            <th>Marks Obtained</th>
+                            <th>Marks Obtained</th>
+                            <th>Total Marks Obtained</th>
+                            <th>Marks Obtained</th>
+                            <th>Marks Obtained</th>
+                            <th>Marks Obtained</th>
+                            <th>Total Marks Obtained</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td class="tleft">English</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td class="tleft">Urdu</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td class="tleft">Maths</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td class="tleft">Science</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td class="tleft">Social Studies</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td class="tleft">Islamiat</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td class="tleft">Computer</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td class="tleft">Speech</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>9.</td>
+                            <td class="tleft">Language</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10.</td>
+                            <td class="tleft">Concepts</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>11.</td>
+                            <td class="tleft">Art / Drawing</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>12.</td>
+                            <td class="tleft">Sindhi</td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Total</strong></td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Percentage</strong></td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Grade</strong></td>
+                            <td>@Html.Label(" ", new { id = "FBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FT_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FGT_English" })</td>
+                            <td></td>
+                            <td>@Html.Label(" ", new { id = "TBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "FthBM_English" })</td>
+                            <td>@Html.Label(" ", new { id = "ST_English" })</td>
+                            <td>@Html.Label(" ", new { id = "SGT_English" })</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                @*<div>
+                    <div class="BDM">
+                        <div class="percentage">
+                            <h3>Percentage:</h3>
+                            @*<input type="number" name="" value="">*@
+                @*@Html.Label(" ", new { id = "FT_Percentage" })*@
+                @*</div>
+                    <div class="percentage">
+                        <h3>Grade:</h3>*@
+                @*<input type="text" name="" value="" id="per">*@
+                @*@Html.Label(" ", new { id = "FT_Grade" })*@
+                @*</div>
+                        </div>
+                    </div>*@
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+@*<script src="~/Content/javascripts/Result.js"></script>*@
+<script>
+        function FetchData(id) {
+            $.post("/Result/GetHIResult/",
+                {
+                    GR_NO: id
+                },
+                function (data, status) {
+                    console.log(data.Test_Type)
+                    //if (data.Test_Type == )
+                    const TestType = [];
+                    for (let i = 0; i < data.length; i++) {
+                        TestType.push(data[i].Test_Type);
+                    }
+                    console.log(data)
+
+
+                    if (TestType.includes("1st Bi-Monthly")) {
+                        document.getElementById("BMF_English").innerText = data[0].English;
+                        document.getElementById("BMF_Urdu").innerText = data[0].Urdu;
+                        document.getElementById("BMF_Maths").innerText = data[0].Maths;
+                        document.getElementById("BMF_Science").innerText = data[0].Science;
+                        document.getElementById("BMF_Social_Studies").innerText = data[0].Social_Studies;
+                        document.getElementById("BMF_Islamiat").innerText = data[0].Islamiat;
+                        document.getElementById("BMF_Computer").innerText = data[0].Computer;
+                        document.getElementById("BMF_Speech").innerText = data[0].Speech;
+                        document.getElementById("BMF_Language").innerText = data[0].Language;
+                        document.getElementById("BMF_Concepts").innerText = data[0].Concepts;
+                        document.getElementById("BMF_Art_and_Drawing").innerText = data[0].Art_and_Drawing;
+                        document.getElementById("BMF_Sindhi").innerText = data[0].Sindhi;
+                        document.getElementById("BMF_Obtained_Total").innerText = data[0].Obtained_Total;
+
+                        document.getElementById("BMS_English").innerText = 0;
+                        document.getElementById("BMS_Urdu").innerText = 0;
+                        document.getElementById("BMS_Maths").innerText = 0;
+                        document.getElementById("BMS_Science").innerText = 0;
+                        document.getElementById("BMS_Social_Studies").innerText = 0;
+                        document.getElementById("BMS_Islamiat").innerText = 0;
+                        document.getElementById("BMS_Computer").innerText = 0;
+                        document.getElementById("BMS_Speech").innerText = 0;
+                        document.getElementById("BMS_Language").innerText = 0;
+                        document.getElementById("BMS_Concepts").innerText = 0;
+                        document.getElementById("BMS_Art_and_Drawing").innerText = 0;
+                        document.getElementById("BMS_Sindhi").innerText = 0;
+                        document.getElementById("BMS_Obtained_Total").innerText = 0;
+
+                    } if (TestType.includes("2nd Bi-Monthly")) {
+                        document.getElementById("BMF_English").innerText = 0;
+                        document.getElementById("BMF_Urdu").innerText = 0;
+                        document.getElementById("BMF_Maths").innerText = 0;
+                        document.getElementById("BMF_Science").innerText = 0;
+                        document.getElementById("BMF_Social_Studies").innerText = 0;
+                        document.getElementById("BMF_Islamiat").innerText = 0;
+                        document.getElementById("BMF_Computer").innerText = 0;
+                        document.getElementById("BMF_Speech").innerText = 0;
+                        document.getElementById("BMF_Language").innerText = 0;
+                        document.getElementById("BMF_Concepts").innerText = 0;
+                        document.getElementById("BMF_Art_and_Drawing").innerText = 0;
+                        document.getElementById("BMF_Sindhi").innerText = 0;
+                        document.getElementById("BMF_Obtained_Total").innerText = 0;
+
+                        document.getElementById("BMS_English").innerText = data[1].English;
+                        document.getElementById("BMS_Urdu").innerText = data[1].Urdu;
+                        document.getElementById("BMS_Maths").innerText = data[1].Maths;
+                        document.getElementById("BMS_Science").innerText = data[1].Science;
+                        document.getElementById("BMS_Social_Studies").innerText = data[1].Social_Studies;
+                        document.getElementById("BMS_Islamiat").innerText = data[1].Islamiat;
+                        document.getElementById("BMS_Computer").innerText = data[1].Computer;
+                        document.getElementById("BMS_Speech").innerText = data[1].Speech;
+                        document.getElementById("BMS_Language").innerText = data[1].Language;
+                        document.getElementById("BMS_Concepts").innerText = data[1].Concepts;
+                        document.getElementById("BMS_Art_and_Drawing").innerText = data[1].Art_and_Drawing;
+                        document.getElementById("BMS_Sindhi").innerText = data[1].Sindhi;
+                        document.getElementById("BMS_Obtained_Total").innerText = data[1].Obtained_Total;
+
+                    } if (TestType.includes("1st Bi-Monthly") && TestType.includes("2nd Bi-Monthly")) {
+                        document.getElementById("BMF_English").innerText = data[0].English;
+                        document.getElementById("BMF_Urdu").innerText = data[0].Urdu;
+                        document.getElementById("BMF_Maths").innerText = data[0].Maths;
+                        document.getElementById("BMF_Science").innerText = data[0].Science;
+                        document.getElementById("BMF_Social_Studies").innerText = data[0].Social_Studies;
+                        document.getElementById("BMF_Islamiat").innerText = data[0].Islamiat;
+                        document.getElementById("BMF_Computer").innerText = data[0].Computer;
+                        document.getElementById("BMF_Speech").innerText = data[0].Speech;
+                        document.getElementById("BMF_Language").innerText = data[0].Language;
+                        document.getElementById("BMF_Concepts").innerText = data[0].Concepts;
+                        document.getElementById("BMF_Art_and_Drawing").innerText = data[0].Art_and_Drawing;
+                        document.getElementById("BMF_Sindhi").innerText = data[0].Sindhi;
+                        document.getElementById("BMF_Obtained_Total").innerText = data[0].Obtained_Total;
+
+                        document.getElementById("BMS_English").innerText = data[1].English;
+                        document.getElementById("BMS_Urdu").innerText = data[1].Urdu;
+                        document.getElementById("BMS_Maths").innerText = data[1].Maths;
+                        document.getElementById("BMS_Science").innerText = data[1].Science;
+                        document.getElementById("BMS_Social_Studies").innerText = data[1].Social_Studies;
+                        document.getElementById("BMS_Islamiat").innerText = data[1].Islamiat;
+                        document.getElementById("BMS_Computer").innerText = data[1].Computer;
+                        document.getElementById("BMS_Speech").innerText = data[1].Speech;
+                        document.getElementById("BMS_Language").innerText = data[1].Language;
+                        document.getElementById("BMS_Concepts").innerText = data[1].Concepts;
+                        document.getElementById("BMS_Art_and_Drawing").innerText = data[1].Art_and_Drawing;
+                        document.getElementById("BMS_Sindhi").innerText = data[1].Sindhi;
+                        document.getElementById("BMS_Obtained_Total").innerText = data[1].Obtained_Total;
+
+                    } if (!TestType.includes("1st Bi-Monthly") && !TestType.includes("2nd Bi-Monthly")) {
+                        document.getElementById("BMF_English").innerText = 0;
+                        document.getElementById("BMF_Urdu").innerText = 0;
+                        document.getElementById("BMF_Maths").innerText = 0;
+                        document.getElementById("BMF_Science").innerText = 0;
+                        document.getElementById("BMF_Social_Studies").innerText = 0;
+                        document.getElementById("BMF_Islamiat").innerText = 0;
+                        document.getElementById("BMF_Computer").innerText = 0;
+                        document.getElementById("BMF_Speech").innerText = 0;
+                        document.getElementById("BMF_Language").innerText = 0;
+                        document.getElementById("BMF_Concepts").innerText = 0;
+                        document.getElementById("BMF_Art_and_Drawing").innerText = 0;
+                        document.getElementById("BMF_Sindhi").innerText = 0;
+                        document.getElementById("BMF_Obtained_Total").innerText = 0;
+
+                        document.getElementById("BMS_English").innerText = 0;
+                        document.getElementById("BMS_Urdu").innerText = 0;
+                        document.getElementById("BMS_Maths").innerText = 0;
+                        document.getElementById("BMS_Science").innerText = 0;
+                        document.getElementById("BMS_Social_Studies").innerText = 0;
+                        document.getElementById("BMS_Islamiat").innerText = 0;
+                        document.getElementById("BMS_Computer").innerText = 0;
+                        document.getElementById("BMS_Speech").innerText = 0;
+                        document.getElementById("BMS_Language").innerText = 0;
+                        document.getElementById("BMS_Concepts").innerText = 0;
+                        document.getElementById("BMS_Art_and_Drawing").innerText = 0;
+                        document.getElementById("BMS_Sindhi").innerText = 0;
+                        document.getElementById("BMS_Obtained_Total").innerText = 0;
+                    }
+                });
+        }
+</script>

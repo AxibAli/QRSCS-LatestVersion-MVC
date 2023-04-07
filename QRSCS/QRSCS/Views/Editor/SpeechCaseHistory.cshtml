@@ -1,0 +1,279 @@
+﻿@model QRSCS.Models.SpeachCaseHistoryModelDTO
+@{
+    ViewBag.Title = "SpeechCaseHistory";
+}
+
+<link href="~/Content/NewAdmissionAssets/css/newadd.css" rel="stylesheet" />
+    @*<link href="~/Content/CreateUser/cs@*s/createuser.css" rel="stylesheet" />
+
+    <link href="~/Content/ViewAllUserAssets/css/sb-admin-2.css" rel="stylesheet" />*@
+<main>
+    <div class="container">
+        <header>Receptive Language (Check all the fields)</header>
+        @using (Html.BeginForm("Speech Case History", "Editor", FormMethod.Post, new { @id = "formmm", enctype = "multipart/form-data" }))
+        {
+            <div class="form first">
+                <div class="details personal">
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>GR No.</label>
+                            @Html.TextBoxFor(x => x.SpeechCaseHistory.GR_NO, null, new { @Class = "form-number-input form-textbox validate[required]", maxLength = "6", dataminlength = "", placeholder = "GR No.", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                            @Html.ValidationMessageFor(x => x.SpeechCaseHistory.GR_NO, null, new { style = "color:red" })
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <span class="title"><b>Student Case History Form</b></span>
+                        <div class="input-field"></div>
+                        <div class="input-field"></div>
+                        <div class="input-field">
+                            <label>Child Name</label>
+                            <input type="text" placeholder="Child Name" style="border-radius: 5px; " />
+                        </div>
+                        <div class="input-field">
+                            <label>Father Name</label>
+                            <input type="text" placeholder="Father Name" style="border-radius: 5px; " />
+                        </div>
+                        <div class="input-field">
+                            <label>Date of Admission</label>
+                            @Html.EditorFor(x => x.GeneralInformation.Today_Date, new { htmlAttributes = new { @class = "form-textbox validate[required, limitDate, validateLiteDate]", @type = "date" } })
+                            @Html.ValidationMessageFor(x => x.GeneralInformation.Today_Date, null, new { style = "color:red" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>What is the parent's Primary Language?</label>
+                            @Html.TextBoxFor(x => x.GeneralInformation.Parent_Primary_Language, null, new { @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Type here", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                            @Html.ValidationMessageFor(x => x.GeneralInformation.Parent_Primary_Language, null, new { style = "color:red" })
+
+                        </div>
+
+                        <div class="input-field">
+                            <label>What is the child's Primary Language?</label>
+                            @Html.TextBoxFor(x => x.GeneralInformation.Child_Primary_Language, null, new { @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Type here", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                            @Html.ValidationMessageFor(x => x.GeneralInformation.Child_Primary_Language, null, new { style = "color:red" })
+
+                        </div>
+                        @*<div class="input-field">
+                            <label>Class of Admission</label>
+                            @Html.DropDownListFor(x => x.Class, new List<SelectListItem>
+                         { new SelectListItem() { Text = "Please Select" },
+                           new SelectListItem() { Text = "Yes" },
+                           new SelectListItem() { Text = "No" },
+
+
+                         }, new { @required = "required", id = "gen" })
+                        </div>*@
+                        <div class="input-field">
+                            <label>Who is the child's Primary Caregiver? </label>
+                            @Html.TextBoxFor(x => x.GeneralInformation.Child_Primary_Caregiver, null, new { @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Type here", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                            @Html.ValidationMessageFor(x => x.GeneralInformation.Child_Primary_Caregiver, null, new { style = "color:red" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>What is the caregiver's Primary Language? </label>
+                            @Html.TextBoxFor(x => x.GeneralInformation.Child_Primary_Caregiver_Language, null, new { @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Type here", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                            @Html.ValidationMessageFor(x => x.GeneralInformation.Child_Primary_Caregiver_Language, null, new { style = "color:red" })
+
+                        </div>
+                        <div class="input-field">
+                            <label> Does the child live both parents?</label>
+                            @Html.DropDownListFor(x => x.GeneralInformation.Live_With_Both_Parents, new List<SelectListItem>
+                                                  { new SelectListItem() { Text = "Please Select" },
+                                                    new SelectListItem() { Text = "Yes" },
+                                                    new SelectListItem() { Text = "No" },
+                                               }, new { @Class = "form-dropdown validate[required]", id = "input_57", name = "q57_class", style = "width:310px", datacomponent = "dropdown" })
+                            @Html.ValidationMessageFor(x => x.GeneralInformation.Live_With_Both_Parents, null, new { style = "color:red" })
+                        </div>
+                        <div class="input-field"></div>
+
+
+
+                        <div class="input-field">
+                            <div onclick="forwardbtn()" class="backBtn">
+                                <span class="btnText">Next</span>
+                                <i style="transform:none" class="uil uil-navigator"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form second">
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow p-3 mb-5 bg-white rounded">
+
+
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <center><h5> My Child Understand</h5></center>
+
+
+                                <table class="table table-borderless" width="100%">
+                                    <tr>
+                                        <th width="70%"></th>
+                                        <th width="20%" style="text-align:left;">Yes</th>
+                                        <th width="10%" style="text-align:left;">No</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Single Words</td>
+                                        <td><input class="form-check-input" type="radio" name="row1" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row1" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yes/No Question</td>
+                                        <td><input class="form-check-input" type="radio" name="row2" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row2" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sentences</td>
+                                        <td><input class="form-check-input" type="radio" name="row3" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row3" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>WH-Questions (E.g. where, when, who)</td>
+                                        <td><input class="form-check-input" type="radio" name="row4" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row4" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Routine Requests (E.g. sit, down, stop)</td>
+                                        <td><input class="form-check-input" type="radio" name="row5" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row5" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Conversation</td>
+                                        <td><input class="form-check-input" type="radio" name="row6" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row6" id=""></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <br />
+                        <div class="card shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-body ">
+                                <h3 class="card-title">Expressive Language</h3>
+                                <h5>My child uses the following modes of communication (check all that apply) </h5>
+                                <table class="table table-borderless" width="100%">
+                                    <tr>
+                                        <th width="70%"></th>
+                                        <th width="20%" style="text-align:left;">Yes</th>
+                                        <th width="10%" style="text-align:left;">No</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Gestures</td>
+                                        <td><input class="form-check-input" type="radio" name="row1" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row1" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phrases</td>
+                                        <td><input class="form-check-input" type="radio" name="row2" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row2" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sign Language</td>
+                                        <td><input class="form-check-input" type="radio" name="row3" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row3" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sentences</td>
+                                        <td><input class="form-check-input" type="radio" name="row4" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row4" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Words (about how many)</td>
+                                        <td><input class="form-check-input" type="radio" name="row5" id=""></td>
+                                        <td><input class="form-check-input" type="radio" name="row5" id=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Conversation</td>
+                                        <td><input class="form-check-input" placeholder="Type here" style="border:0px;" type="text" size="10" id=""></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+
+                    <div onclick="backwardbtn()" class="backBtn">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btnText">Back</span>
+
+                    </div>
+
+
+                    <div onclick="nextforwardbtn()" class="backBtn" style="margin-left:1.5rem;">
+                        <span class="btnText">Next</span>
+                        <i style="transform:none" class="uil uil-navigator"></i>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="form third">
+
+                <div class="fields">
+                    <span class="title"><b>Expressive Language</b></span>
+                    <div class="input-field"></div>
+                    <div class="input-field"></div>
+                    <div class="input-field">
+                        <label>Babble?</label>
+                        @Html.TextBoxFor(x => x.GeneralInformation.Parent_Primary_Language, null, new { @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Type here", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                        @Html.ValidationMessageFor(x => x.GeneralInformation.Parent_Primary_Language, null, new { style = "color:red" })
+
+                    </div>
+                    <div class="input-field">
+                        <label>Say his / her first word?</label>
+                        @Html.TextBoxFor(x => x.GeneralInformation.Parent_Primary_Language, null, new { @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Type here", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                        @Html.ValidationMessageFor(x => x.GeneralInformation.Parent_Primary_Language, null, new { style = "color:red" })
+
+                    </div>
+
+                    <div class="input-field">
+                        <label>Combine 2 words?</label>
+                        @Html.TextBoxFor(x => x.GeneralInformation.Child_Primary_Language, null, new { @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Type here", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                        @Html.ValidationMessageFor(x => x.GeneralInformation.Child_Primary_Language, null, new { style = "color:red" })
+
+                    </div>
+                    <div class="input-field">
+                        <label>Use Complete sentences?</label>
+                        @Html.TextBoxFor(x => x.GeneralInformation.Child_Primary_Language, null, new { @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Type here", type = "text", id = "first_56", name = "q56_name[first]", size = "10", datacomponent = "first", arialabelledby = "label_56 sublabel_56_first" })
+                        @Html.ValidationMessageFor(x => x.GeneralInformation.Child_Primary_Language, null, new { style = "color:red" })
+
+                    </div>
+                </div>
+
+
+
+                <div class="buttons">
+
+                    <div onclick="nextbackwardbtn()" class="backBtn">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btnText">Back</span>
+
+                    </div>
+
+
+                    <div onclick="nextforwardbtn()" class="backBtn" style="margin-left:1.5rem;">
+                        <span class="btnText">Next</span>
+                        <i style="transform:none" class="uil uil-navigator"></i>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+                }
+            </div>
+</main>
+<script src="~/Content/NewAdmissionAssets/js/newadd.js"></script>
+

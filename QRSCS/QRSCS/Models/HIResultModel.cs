@@ -1,0 +1,165 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+namespace QRSCS.Models
+{
+    public class HIResultModel
+    {
+        public int GR_NO { get; set; } = 0;
+        //public string FirstBTM { get; set; }
+        public int FirstBTM_English { get; set; } = 0;
+        public int FirstBTM_Urdu { get; set; } = 0;
+        public int FirstBTM_Maths { get; set; } = 0;
+        public int FirstBTM_Science { get; set; } = 0;
+        public int FirstBTM_Social_Studies { get; set; } = 0;
+        public int FirstBTM_Islamiat { get; set; } = 0;
+        public int FirstBTM_Computer { get; set; } = 0;
+        public int FirstBTM_Speech { get; set; } = 0;
+        public int FirstBTM_Language { get; set; } = 0;
+        public int FirstBTM_Concepts { get; set; } = 0;
+        public int FirstBTM_Art_and_Drawing { get; set; } = 0;
+        public int FirstBTM_Sindhi { get; set; } = 0;
+        public int FirstBTM_Obtained_Total { get; set; } = 0;
+        public int FirstBTM_Percentage { get; set; } = 0;
+        public string FirstBTM_Grade { get; set; } = "F";
+        //public string SecondBTM { get; set; }
+        public int SecondBTM_English { get; set; } = 0;
+        public int SecondBTM_Urdu { get; set; } = 0;
+        public int SecondBTM_Maths { get; set; } = 0;
+        public int SecondBTM_Science { get; set; } = 0;
+        public int SecondBTM_Social_Studies { get; set; } = 0;
+        public int SecondBTM_Islamiat { get; set; } = 0;
+        public int SecondBTM_Computer { get; set; } = 0;
+        public int SecondBTM_Speech { get; set; } = 0;
+        public int SecondBTM_Language { get; set; } = 0;
+        public int SecondBTM_Concepts { get; set; } = 0;
+        public int SecondBTM_Art_and_Drawing { get; set; } = 0;
+        public int SecondBTM_Sindhi { get; set; } = 0;
+        public int SecondBTM_Obtained_Total { get; set; } = 0;
+        public int SecondBTM_Percentage { get; set; } = 0;
+        public string SecondBTM_Grade { get; set; } = "F";
+        //public string ThirdBTM { get; set; }
+        public int ThirdBTM_English { get; set; } = 0;
+        public int ThirdBTM_Urdu { get; set; } = 0;
+        public int ThirdBTM_Maths { get; set; } = 0;
+        public int ThirdBTM_Science { get; set; } = 0;
+        public int ThirdBTM_Social_Studies { get; set; } = 0;
+        public int ThirdBTM_Islamiat { get; set; } = 0;
+        public int ThirdBTM_Computer { get; set; } = 0;
+        public int ThirdBTM_Speech { get; set; } = 0;
+        public int ThirdBTM_Language { get; set; } = 0;
+        public int ThirdBTM_Concepts { get; set; } = 0;
+        public int ThirdBTM_Art_and_Drawing { get; set; } = 0;
+        public int ThirdBTM_Sindhi { get; set; } = 0;
+        public int ThirdBTM_Obtained_Total { get; set; } = 0;
+        public int ThirdBTM_Percentage { get; set; } = 0;
+        public string ThirdBTM_Grade { get; set; } = "F";
+        //public string FourthBTM { get; set; }
+        public int FourthBTM_English { get; set; } = 0;
+        public int FourthBTM_Urdu { get; set; } = 0;
+        public int FourthBTM_Maths { get; set; } = 0;
+        public int FourthBTM_Science { get; set; } = 0;
+        public int FourthBTM_Social_Studies { get; set; } = 0;
+        public int FourthBTM_Islamiat { get; set; } = 0;
+        public int FourthBTM_Computer { get; set; } = 0;
+        public int FourthBTM_Speech { get; set; } = 0;
+        public int FourthBTM_Language { get; set; } = 0;
+        public int FourthBTM_Concepts { get; set; } = 0;
+        public int FourthBTM_Art_and_Drawing { get; set; } = 0;
+        public int FourthBTM_Sindhi { get; set; } = 0;
+        public int FourthBTM_Obtained_Total { get; set; } = 0;
+        public int FourthBTM_Percentage { get; set; } = 0;
+        public string FourthBTM_Grade { get; set; } = "F";
+        //public string FirstTerm { get; set; }
+        public int FirstTerm_English { get; set; } = 0;
+        public int FirstTerm_Urdu { get; set; } = 0;
+        public int FirstTerm_Maths { get; set; } = 0;
+        public int FirstTerm_Science { get; set; } = 0;
+        public int FirstTerm_Social_Studies { get; set; } = 0;
+        public int FirstTerm_Islamiat { get; set; } = 0;
+        public int FirstTerm_Computer { get; set; } = 0;
+        public int FirstTerm_Speech { get; set; } = 0;
+        public int FirstTerm_Language { get; set; } = 0;
+        public int FirstTerm_Concepts { get; set; } = 0;
+        public int FirstTerm_Art_and_Drawing { get; set; } = 0;
+        public int FirstTerm_Sindhi { get; set; } = 0;
+        public int FirstTerm_Total { get; set; } = 0;
+        public int FirstTerm_Percentage { get; set; } = 0;
+        public string FirstTerm_Grade { get; set; } = "F";
+        //public string SecondTerm { get; set; }
+        public int SecondTerm_English { get; set; } = 0;
+        public int SecondTerm_Urdu { get; set; } = 0;
+        public int SecondTerm_Maths { get; set; } = 0;
+        public int SecondTerm_Science { get; set; } = 0;
+        public int SecondTerm_Social_Studies { get; set; } = 0;
+        public int SecondTerm_Islamiat { get; set; } = 0;
+        public int SecondTerm_Computer { get; set; } = 0;
+        public int SecondTerm_Speech { get; set; } = 0;
+        public int SecondTerm_Language { get; set; } = 0;
+        public int SecondTerm_Concepts { get; set; } = 0;
+        public int SecondTerm_Art_and_Drawing { get; set; } = 0;
+        public int SecondTerm_Sindhi { get; set; } = 0;
+        public int SecondTerm_Total { get; set; } = 0;
+        public int SecondTerm_Percentage { get; set; } = 0;
+        public string SecondTerm_Grade { get; set; } = "F";
+        //public string FirstGT { get; set; }
+        public int FirstGT_English { get; set; } = 0;
+        public int FirstGT_Urdu { get; set; } = 0;
+        public int FirstGT_Maths { get; set; } = 0;
+        public int FirstGT_Science { get; set; } = 0;
+        public int FirstGT_Social_Studies { get; set; } = 0;
+        public int FirstGT_Islamiat { get; set; } = 0;
+        public int FirstGT_Computer { get; set; } = 0;
+        public int FirstGT_Speech { get; set; } = 0;
+        public int FirstGT_Language { get; set; } = 0;
+        public int FirstGT_Concepts { get; set; } = 0;
+        public int FirstGT_Art_and_Drawing { get; set; } = 0;
+        public int FirstGT_Sindhi { get; set; } = 0;
+        public int FirstGT_Total { get; set; } = 0;
+        public int FirstGT_Percentage { get; set; } = 0;
+        public string FirstGT_Grade { get; set; } = "F";
+        //public string SecondGT { get; set; }
+        public int SecondGT_English { get; set; } = 0;
+        public int SecondGT_Urdu { get; set; } = 0;
+        public int SecondGT_Maths { get; set; } = 0;
+        public int SecondGT_Science { get; set; } = 0;
+        public int SecondGT_Social_Studies { get; set; } = 0;
+        public int SecondGT_Islamiat { get; set; } = 0;
+        public int SecondGT_Computer { get; set; } = 0;
+        public int SecondGT_Speech { get; set; } = 0;
+        public int SecondGT_Language { get; set; } = 0;
+        public int SecondGT_Concepts { get; set; } = 0;
+        public int SecondGT_Art_and_Drawing { get; set; } = 0;
+        public int SecondGT_Sindhi { get; set; } = 0;
+        public int SecondGT_Total { get; set; } = 0;
+        public int SecondGT_Percentage { get; set; } = 0;
+        public string SecondGT_Grade { get; set; } = "F";
+        public int FourtyPT_English { get; set; } = 0;
+        public int FourtyPT_Urdu { get; set; } = 0;
+        public int FourtyPT_Maths { get; set; } = 0;
+        public int FourtyPT_Science { get; set; } = 0;
+        public int FourtyPT_Social_Studies { get; set; } = 0;
+        public int FourtyPT_Islamiat { get; set; } = 0;
+        public int FourtyPT_Computer { get; set; } = 0;
+        public int FourtyPT_Speech { get; set; } = 0;
+        public int FourtyPT_Language { get; set; } = 0;
+        public int FourtyPT_Concepts { get; set; } = 0;
+        public int FourtyPT_Art_and_Drawing { get; set; } = 0;
+        public int FourtyPT_Sindhi { get; set; } = 0;
+        public int SixtyPT_English { get; set; } = 0;
+        public int SixtyPT_Urdu { get; set; } = 0;
+        public int SixtyPT_Maths { get; set; } = 0;
+        public int SixtyPT_Science { get; set; } = 0;
+        public int SixtyPT_Social_Studies { get; set; } = 0;
+        public int SixtyPT_Islamiat { get; set; } = 0;
+        public int SixtyPT_Computer { get; set; } = 0;
+        public int SixtyPT_Speech { get; set; } = 0;
+        public int SixtyPT_Language { get; set; } = 0;
+        public int SixtyPT_Concepts { get; set; } = 0;
+        public int SixtyPT_Art_and_Drawing { get; set; } = 0;
+        public int SixtyPT_Sindhi { get; set; } = 0;
+    }
+}

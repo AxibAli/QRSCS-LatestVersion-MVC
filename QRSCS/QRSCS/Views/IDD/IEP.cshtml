@@ -1,0 +1,1733 @@
+﻿@model QRSCS.Models.IndividualizedEPlanModelDTO
+@{
+    ViewBag.Title = "Individualized E-Plan";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="~/Content/adminassets/css/style.css">
+@*<link href="~/Content/IDE/css/idd.css" rel="stylesheet" />*@
+<style>
+
+    fieldset {
+        display: none;
+        padding: 25px;
+    }
+
+    #first {
+        display: block;
+    }
+
+    input[type=submit], input[type=button] {
+        width: 120px;
+        margin: 15px 25px;
+        padding: 5px;
+        height: 40px;
+        background-color: #2e69ff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .prevbut {
+        background-color: #e5e7f2 !important;
+        color: black !important;
+    }
+
+        .prevbut:hover {
+            background-color: #b8b8b8 !important;
+        }
+</style>
+
+<main>
+  @*  <link type="text/css" rel="stylesheet" href="~/Content/adminassets/css/style.css">*@
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h2 class="breadcrumb-title">Individualized E-Plan </h2>
+            <ul class="db-breadcrumb-list">
+                @*<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                <li>Individualized E-Plan </li>*@
+            </ul>
+        </div>
+        <div class="row">
+            <!-- Your Profile Views Chart -->
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="widget-inner">
+                        <div id="calendar">
+                            <div role="main" class="form-all">
+                                <style>
+                                    .form-all:before {
+                                        background: none;
+                                    }
+                                </style>
+                                @*GENERAL INFORMATION*@
+                                <fieldset id="first">
+                                    <ul class="form-section page-section">
+                                        <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                            <div class="form-header-group  header-large">
+                                                <div class="header-text httac htvam">
+                                                    <h1 id="header_43" class="form-header" data-component="header">
+                                                        Individualized E-Plan
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                            <div class="form-header-group  header-small">
+                                                <div class="header-text httac htvam">
+                                                    <h3 id="header_65" class="form-header" data-component="header">
+                                                        GENERAL INFORMATION
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                GR No
+                                                <span class="form-required">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.iEPlanModel.GR_No, null, new { id = "GR_NO", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10", onchange = "GetSTDInfo(document.getElementById('GR_NO').value)" })
+                                                @Html.ValidationMessageFor(x => x.iEPlanModel.GR_No, null, new { style = "color:red" })
+                                            </div>
+                                            <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                <span class="form-sub-label-container" style="vertical-align:top">
+                                                    <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Enter GR.No for search </label>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                            <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                Name
+                                                <span class="form-required">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                <span class="form-sub-label-container" style="vertical-align:top">
+                                                    <input type="text" id="Std_Name" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                    <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Student Name </label>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        @*<li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                                <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                    Age
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                        <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Student Age </label>
+                                                    </span>
+                                                </div>
+                                            </li>*@
+                                        <li class="form-line form-line-column form-col-2 jf-required" data-type="control_radio" id="id_15">
+                                            <label class="form-label form-label-top" id="label_15" for="input_15">
+                                                Gender
+                                                <span class="form-required">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div id="cid_15" class="form-input-wide jf-required" data-layout="full">
+                                                <div class="form-single-column" role="group" aria-labelledby="label_15" data-component="radio">
+                                                    <span class="form-radio-item" style="clear:left">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        <input type="radio" aria-describedby="label_15" readonly="readonly" , disabled="disabled" class="form-radio " id="input_15_0" name="q15_gender" value="Male" />
+                                                        <label id="label_input_15_0" for="input_15_0"> Male </label>
+                                                    </span>
+                                                    <span class="form-radio-item" style="clear:left">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        <input type="radio" aria-describedby="label_15" readonly="readonly" , disabled="disabled" class="form-radio " id="input_15_1" name="q15_gender" value="Female" />
+                                                        <label id="label_input_15_1" for="input_15_1"> Female </label>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                            <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                DOB
+                                                <span class="form-required">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                <span class="form-sub-label-container" style="vertical-align:top">
+                                                    <input type="text" id="Std_DOB" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                    <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Date of Birth </label>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                            <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                Disability
+                                                <span class="form-required">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                <span class="form-sub-label-container" style="vertical-align:top">
+                                                    <input type="text" id="Disability" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                    <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Disability of Student </label>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div style="width: 100%;">
+                                        <input id="next_btn1" onclick="next_step1()" type="button" value="Next" style="float: right; right: 0;">
+                                    </div>
+                                </fieldset>
+                                @*MEETING INFORMATION*@
+                                <fieldset id="second">
+                                    <!--<ul class="form-section page-section" style="display:none;">-->
+                                    <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                        <div class="form-header-group  header-small">
+                                            <div class="header-text httac htvam">
+                                                <h3 id="header_65" class="form-header" data-component="header">
+                                                    MEETING INFORMATION
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                        <label class="form-label form-label-top" id="label_39" for="input_39">
+                                            Date of Assessment
+                                            <span class="form-required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+                                            @Html.EditorFor(x => x.iEPlanModel.Date_Of_Assessment, new { htmlAttributes = new { @id = "d_ex", @class = "form-textbox validate[required]", @type = "date" } })
+                                            @Html.ValidationMessageFor(x => x.iEPlanModel.Date_Of_Assessment, null, new { style = "color:red" })
+                                        </div>
+                                    </li>
+
+
+                                    <div class="form-header-group  header-default">
+                                        <div class="header-text httac htvam">
+                                            <h2 id="header_138" class="form-header" data-component="header">
+                                                Select one or multiple choices
+                                            </h2>
+                                        </div>
+                                        <div>
+                                            <table class="table table-striped table-bordered table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Meeting</th>
+                                                        <th>Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" id="meetingInformation_Initial_IEP" style="width:12px; height:12px;">
+                                                            <label for="meetingInformation_Initial_IEP">Initial IEP</label>
+                                                            @*<div class="custom-control custom-checkbox ">
+                                                                    @Html.CheckBoxFor(x => x.meetingInformation.Initial_IEP, new { @class = "custom-control-input", id = "meetingInformation_Initial_IEP", value="false" })
+                                                                    <label class="custom-control-label" for="meetingInformation_Initial_IEP">Initial IEP</label>
+                                                                </div>*@
+                                                        </td>
+                                                        <td>@Html.TextBoxFor(x => x.meetingInformation.Initial_IEP, null, new { type = "date" })</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" id="meetingInformation_Annual_Review" style="width:12px; height:12px;">
+                                                            <label for="meetingInformation_Annual_Review">Annual Review</label>
+                                                            @*<div class="custom-control custom-checkbox ">
+                                                                    @Html.CheckBoxFor(x => x.meetingInformation.Annual_Review, new { id= "meetingInformation_Annual_Review", @class = "custom-control-input", value = "false" })
+                                                                    <label class="custom-control-label" for="meetingInformation_Annual_Review">Annual Review</label>
+                                                                </div>*@
+                                                        </td>
+                                                        <td>@Html.TextBoxFor(x => x.meetingInformation.Annual_Review, null, new { id = "meetingInformation_Annual_Review", type = "date" })</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" id="meetingInformation_Review_Other_Than_Annaul_Review" style="width:12px; height:12px;">
+                                                            <label for="meetingInformation_Review_Other_Than_Annaul_Review">Review Other Than Annual Review</label>
+                                                            @*<div class="custom-control custom-checkbox ">
+                                                                    @Html.CheckBoxFor(x => x.meetingInformation.Review_Other_Than_Annaul_Review, new { id= "meetingInformation_Review_Other_Than_Annaul_Review", @class = "custom-control-input", value = "false" })
+                                                                    <label class="custom-control-label" for="meetingInformation_Review_Other_Than_Annaul_Review">Review Other Than Annual Review</label>
+                                                                </div>*@
+                                                        </td>
+                                                        <td>@Html.TextBoxFor(x => x.meetingInformation.Review_Other_Than_Annaul_Review, null, new { type = "date" })</td>
+                                                    </tr>
+                                                    <tr>
+
+                                                        <td>
+                                                            <input type="checkbox" id="meetingInformation_Review_Other_Than_Annaul_Review" style="width:12px; height:12px;">
+                                                            <label for="meetingInformation_Ammendment">Ammendment</label>
+                                                            @*<div class="custom-control custom-checkbox ">
+                                                                    @Html.CheckBoxFor(x => x.meetingInformation.Ammendment, new { id= "meetingInformation_Ammendment", @class = "custom-control-input", value = "false" })
+                                                                    <label class="custom-control-label" for="meetingInformation_Ammendment">Ammendment</label>
+                                                                </div>*@
+                                                        </td>
+                                                        <td>@Html.TextBoxFor(x => x.meetingInformation.Ammendment, null, new { type = "date" })</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        @*<div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.meetingInformation.Initial_IEP, new { @class = "custom-control-input", id = "Initial IEP" })
+                                                <label class="custom-control-label" for="Initial IEP">Initial IEP</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.meetingInformation.Annual_Review, new { @class = "custom-control-input", id = "Annual Review" })
+                                                <label class="custom-control-label" for="Annual Review">Annual Review</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.meetingInformation.Review_Other_Than_Annaul_Review, new { @class = "custom-control-input", id = "Review Other Than Annaul Review" })
+                                                <label class="custom-control-label" for="Review Other Than Annaul Review">Review Other Than Annual Review</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox ">
+                                                @Html.CheckBoxFor(x => x.meetingInformation.Ammendment, new { @class = "custom-control-input", id = "Ammendment" })
+                                                <label class="custom-control-label" for="Ammendment">Ammendment</label>
+                                            </div>*@
+                                    </div>
+
+                                    <div style="display:flex; flex-flow: row wrap;">
+
+
+                                        <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_28">
+                                            <label class="form-label form-label-top form-label-auto" id="label_28" for="input_28">Language used for communicating with child</label>
+                                            @Html.TextBoxFor(x => x.meetingInformation.Communicating_Language, null, new { name = "q28_motherName", @Class = "form-textbox validate[Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                            @Html.ValidationMessageFor(x => x.meetingInformation.Communicating_Language, null, new { style = "color:red" })
+
+                                        </div>
+
+                                    </div>
+                                    <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                        <div class="form-header-group  header-small">
+                                            <div class="header-text httac htvam">
+                                                <h3 id="header_65" class="form-header" data-component="header">
+                                                    PRESENT LEVEL OF PERFORMANCE
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                Physical Development
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.Physical_Development, null, new { id = "presentLevel_Physical_Development", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Physical_Development, null, new { style = "color:red" })
+                                            </div>
+
+
+                                            <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                Communication
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.Communication, null, new { id = "presentLevel_Communication", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Communication, null, new { style = "color:red" })
+                                            </div>
+
+
+                                            <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                Self-help Skills
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.Self_Help_Skills, null, new { id = "presentLevel_Self_Help_Skills", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Self_Help_Skills, null, new { style = "color:red" })
+                                            </div>
+
+                                            <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                Cognition
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.Cognition, null, new { id = "presentLevel_Cognition", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Cognition, null, new { style = "color:red" })
+                                            </div>
+
+
+                                            <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                Socialization
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.Socialization, null, new { id = "presentLevel_Socialization", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Socialization, null, new { style = "color:red" })
+                                            </div>
+
+
+                                            <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                Functional Academic
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.Functional_Academic, null, new { id = "presentLevel_Functional_Academic", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Functional_Academic, null, new { style = "color:red" })
+                                            </div>
+
+
+                                            <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                Academic Performance
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.Academic_Performance, null, new { id = "presentLevel_Academic_Performance", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Academic_Performance, null, new { style = "color:red" })
+                                            </div>
+
+                                            <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                Pre-vocational / Vocational Skills
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.PreVocational_Skills, null, new { id = "presentLevel_PreVocational_Skills", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Self_Help_Skills, null, new { style = "color:red" })
+                                            </div>
+                                            <div style="display:flex; flex-flow: row wrap;">
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                            <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                General / Others
+                                            </label>
+                                            <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                @Html.TextBoxFor(x => x.presentLevel.Others, null, new { id = "presentLevel_Others", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                @Html.ValidationMessageFor(x => x.presentLevel.Others, null, new { style = "color:red" })
+                                            </div>
+                                        </li>
+
+                                        <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                            <div class="form-header-group  header-small">
+                                                <div class="header-text httac htvam">
+                                                    <h3 id="header_65" class="form-header" data-component="header">
+                                                        SPECIAL INSTRUCTIONAL INFORMATION
+                                                    </h3>
+                                                    <div id="subHeader_43" class="form-subHeader">
+                                                        Items checked 'YES' must be addressed in this IEP:
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <li class="form-line jf-required" data-type="control_radio" id="id_3">
+                                            <label class="form-label form-label-top form-label-auto" id="label_3" for="input_3">
+                                                Does the student exhibit behaviors which impede his/her learning of others?
+                                            </label>
+                                            <div id="cid_3" class="form-input-wide jf-required" data-layout="full">
+                                                <div class="form-multiple-column" data-columncount="2" role="group" aria-labelledby="label_3" data-component="radio">
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_1, "Yes", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_0", name = "q3_typeA", value = "Labor", required = "" })
+                                                        <label id="label_input_3_0" for="input_3_0"> Yes </label>
+                                                    </span>
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_1, "No", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_1", name = "q3_typeA", value = "Normal", required = "" })
+                                                        <label id="label_input_3_1" for="input_3_1"> No </label>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        </li>
+
+                                        <li class="form-line jf-required" data-type="control_radio" id="id_3">
+                                            <label class="form-label form-label-top form-label-auto" id="label_3" for="input_3">
+                                                Does the student have limited English proficiency?
+                                            </label>
+                                            <div id="cid_3" class="form-input-wide jf-required" data-layout="full">
+                                                <div class="form-multiple-column" data-columncount="2" role="group" aria-labelledby="label_3" data-component="radio">
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_2, "Yes", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_2", name = "q3_typeA", value = "Labor", required = "" })
+                                                        <label id="label_input_3_2" for="input_3_2"> Yes </label>
+                                                    </span>
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_2, "No", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_3", name = "q3_typeA", value = "Normal", required = "" })
+                                                        <label id="label_input_3_3" for="input_3_3"> No </label>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        </li>
+
+                                        <li class="form-line jf-required" data-type="control_radio" id="id_3">
+                                            <label class="form-label form-label-top form-label-auto" id="label_3" for="input_3">
+                                                Does the student require instruction in Braille and the use of Braille?
+                                            </label>
+                                            <div id="cid_3" class="form-input-wide jf-required" data-layout="full">
+                                                <div class="form-multiple-column" data-columncount="2" role="group" aria-labelledby="label_3" data-component="radio">
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_3, "Yes", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_4", name = "q3_typeA", value = "Labor", required = "" })
+                                                        <label id="label_input_3_4" for="input_3_4"> Yes </label>
+                                                    </span>
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_3, "No", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_5", name = "q3_typeA", value = "Normal", required = "" })
+                                                        <label id="label_input_3_5" for="input_3_5"> No </label>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        </li>
+                                        <li class="form-line jf-required" data-type="control_radio" id="id_3">
+                                            <label class="form-label form-label-top form-label-auto" id="label_3" for="input_3">
+                                                Does the student have communication needs (deaf or hearing impaired only)?
+                                            </label>
+                                            <div id="cid_3" class="form-input-wide jf-required" data-layout="full">
+                                                <div class="form-multiple-column" data-columncount="2" role="group" aria-labelledby="label_3" data-component="radio">
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_4, "Yes", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_6", name = "q3_typeA", value = "Labor", required = "" })
+                                                        <label id="label_input_3_6" for="input_3_6"> Yes </label>
+                                                    </span>
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_4, "No", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_7", name = "q3_typeA", value = "Normal", required = "" })
+                                                        <label id="label_input_3_7" for="input_3_7"> No </label>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        </li>
+                                        <li class="form-line jf-required" data-type="control_radio" id="id_3">
+                                            <label class="form-label form-label-top form-label-auto" id="label_3" for="input_3">
+                                                Does the student need assistive technology devices and/or services?
+                                            </label>
+                                            <div id="cid_3" class="form-input-wide jf-required" data-layout="full">
+                                                <div class="form-multiple-column" data-columncount="2" role="group" aria-labelledby="label_3" data-component="radio">
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_5, "Yes", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_8", name = "q3_typeA", value = "Labor", required = "" })
+                                                        <label id="label_input_3_8" for="input_3_8"> Yes </label>
+                                                    </span>
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_5, "No", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_9", name = "q3_typeA", value = "Normal", required = "" })
+                                                        <label id="label_input_3_9" for="input_3_9"> No </label>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        </li>
+
+                                        <li class="form-line jf-required" data-type="control_radio" id="id_3">
+                                            <label class="form-label form-label-top form-label-auto" id="label_3" for="input_3">
+                                                Is the student working toward alternate achievement  standards assessed via alternate assessments?
+                                            </label>
+                                            <div id="cid_3" class="form-input-wide jf-required" data-layout="full">
+                                                <div class="form-multiple-column" data-columncount="2" role="group" aria-labelledby="label_3" data-component="radio">
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_6, "Yes", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_10", name = "q3_typeA", value = "Labor", required = "" })
+                                                        <label id="label_input_3_10" for="input_3_10"> Yes </label>
+                                                    </span>
+                                                    <span class="form-radio-item">
+                                                        <span class="dragger-item">
+                                                        </span>
+                                                        @Html.RadioButtonFor(x => x.specialInstructional.Question_6, "No", new { @class = "form-radio validate[required]", type = "radio", id = "input_3_11", name = "q3_typeA", value = "Normal", required = "" })
+                                                        <label id="label_input_3_11" for="input_3_11"> No </label>
+                                                    </span>
+                                                </div>
+
+                                                <div style="width: 100%;">
+                                                    <input id="pre_btn1" onclick="prev_step1()" type="button" value="Previous" class="prevbut">
+                                                    <input id="next_btn1" onclick="next_step2()" type="button" value="Next" style="float: right; right: 0;">
+                                                </div>
+                                        </li>
+
+                                </fieldset>
+
+
+
+                                @*MEASURABLE ANNUAL GOALS*@
+                                <fieldset id="third">
+                                    <!--    <ul class="form-section page-section" style="display:none;"> -->
+                                    <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                        <div class="form-header-group  header-small">
+                                            <div class="header-text httac htvam">
+                                                <h3 id="header_65" class="form-header" data-component="header">
+                                                    MEASURABLE ANNUAL GOALS
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <div>
+                                        <button id="addsection" value="Add Section" class="addSection">Add Section</button>
+                                    </div>
+
+                                    <div class="container">
+
+
+
+                                        <h2>Section I</h2>
+                                        <div class="wrap-collabsible" id="wrap-coll">
+                                            <input id="collapsible1" class="collapsible toggle" type="checkbox">
+                                            <label for="collapsible1" class="lbl-toggle">
+                                                View More From This Section
+                                            </label>
+                                            <div class="collapsible-content">
+                                                <div class="content-inner">
+
+                                                    <section class="main-container section-1">
+                                                        <table class="form-container form-1" border="1px">
+                                                            <form action="" method="post">
+                                                            <tr>
+                                                                <th>Goals</th>
+                                                                <th>Provider</th>
+                                                                <th>Evaluation Method</th>
+                                                                <th>Initial Date</th>
+                                                                <th>Check Date</th>
+                                                                <th>Mastery Date</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="col col-1">
+                                                                    <input type="text" id="Goal_1">
+                                                                </td>
+                                                                <td class="col col-2" rowspan="6">
+                                                                    <input type="checkbox" value="Special Edu." id="Provider_1"><label for="Special Edu.">Special Edu.</label><br>
+                                                                    <input type="checkbox" value="SLP" id="Provider_2"><label for="Special Edu.">SLP</label><br>
+                                                                    <input type="checkbox" value="OT" id="Provider_3"><label for="Special Edu.">OT</label><br>
+                                                                    <input type="checkbox" value="BT" id="Provider_4"><label for="Special Edu.">BT</label><br>
+                                                                    <input type="checkbox" value="PT" id="Provider_5"><label for="Special Edu.">PT</label><br>
+                                                                    <input type="checkbox" value="Others" id="Provider_Others_1"><label for="Special Edu.">Others</label><br><input type="text" id="provider_Others_1">
+                                                                </td>
+                                                                <td class="col col-3">
+                                                                    <input type="checkbox" value="Data Collection" id="Evaluation_Method_1"><label for="Special Edu.">a. Data Collection</label>
+                                                                </td>
+                                                                <td class="col col-4"><input type="date" id="Initial_Date_1"></td>
+                                                                <td class="col col-5"><input type="date" id="Check_Date_1"></td>
+                                                                <td class="col col-6"><input type="date" id="Mastery_Date_1"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="col col-1"><input type="text" id="Goal_2"></td>
+                                                                <td class="col col-3">
+                                                                    <input type="checkbox" value="Teacher/Text Test" id="Evaluation_Method_2"><label for="Special Edu.">b. Teacher/Text Test</label>
+                                                                </td>
+                                                                <td class="col col-4"><input type="date" id="Initial_Date_2"></td>
+                                                                <td class="col col-5"><input type="date" id="Check_Date_2"></td>
+                                                                <td class="col col-6"><input type="date" id="Mastery_Date_2"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="col col-1"><input type="text" id="Goal_3"></td>
+                                                                <td class="col col-3">
+                                                                    <input type="checkbox" value="Work Samples" id="Evaluation_Method_3"><label for="Special Edu.">c. Work Samples</label>
+                                                                </td>
+                                                                <td class="col col-4"><input type="date" id="Initial_Date_3"></td>
+                                                                <td class="col col-5"><input type="date" id="Check_Date_3"></td>
+                                                                <td class="col col-6"><input type="date" id="Mastery_Date_3"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="col col-1"><input type="text" id="Goal_4"></td>
+                                                                <td class="col col-3">
+                                                                    <input type="checkbox" value="Class Observation" id="Evaluation_Method_4"><label for="Special Edu.">d. Class Observation</label>
+                                                                </td>
+                                                                <td class="col col-4"><input type="date" id="Initial_Date_4"></td>
+                                                                <td class="col col-5"><input type="date" id="Check_Date_4"></td>
+                                                                <td class="col col-6"><input type="date" id="Mastery_Date_4"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="col col-1"><input type="text" id="Goal_5"></td>
+                                                                <td class="col col-3">
+                                                                    <input type="checkbox" value="Grades" id="Evaluation_Method_5"><label for="Special Edu.">e. Grades</label>
+                                                                </td>
+                                                                <td class="col col-4"><input type="date" id="Initial_Date_5"></td>
+                                                                <td class="col col-5"><input type="date" id="Check_Date_5"></td>
+                                                                <td class="col col-6"><input type="date" id="Mastery_Date_5"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="col col-1"><input type="text" id="Goal_6"></td>
+                                                                <td class="col col-3">
+                                                                    <input type="checkbox" value="Others" id="Evaluation_Method_Others_1"><label for="Special Edu.">f. Others</label>
+                                                                    <br><input type="text" id="evaluation_Method_Others_1">
+                                                                </td>
+                                                                <td class="col col-4"><input type="date" id="Initial_Date_6"></td>
+                                                                <td class="col col-5"><input type="date" id="Check_Date_6"></td>
+                                                                <td class="col col-6"><input type="date" id="Mastery_Date_6"></td>
+                                                            </tr>
+                                                            </form>
+                                                        </table>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="secondSection" style="display:none;">
+
+                                            <h2>Section II</h2>
+                                            <div class="wrap-collabsible" id="wrap-coll">
+                                                <input id="collapsible1" class="collapsible toggle" type="checkbox">
+                                                <label for="collapsible1" class="lbl-toggle">
+                                                    View More From This Section
+                                                </label>
+                                                <div class="collapsible-content">
+                                                    <div class="content-inner">
+
+                                                        <section class="main-container section-1">
+                                                            <table class="form-container form-1" border="1px">
+                                                                <form action="" method="post">
+                                                                <tr>
+                                                                    <th>Goals</th>
+                                                                    <th>Provider</th>
+                                                                    <th>Evaluation Method</th>
+                                                                    <th>Initial Date</th>
+                                                                    <th>Check Date</th>
+                                                                    <th>Mastery Date</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col col-1">
+                                                                        <input type="text" id="Goal_7">
+                                                                    </td>
+                                                                    <td class="col col-2" rowspan="6">
+                                                                        <input type="checkbox" value="Special Edu." id="Provider_6"><label for="Special Edu.">Special Edu.</label><br>
+                                                                        <input type="checkbox" value="SLP" id="Provider_7"><label for="Special Edu.">SLP</label><br>
+                                                                        <input type="checkbox" value="OT" id="Provider_8"><label for="Special Edu.">OT</label><br>
+                                                                        <input type="checkbox" value="BT" id="Provider_9"><label for="Special Edu.">BT</label><br>
+                                                                        <input type="checkbox" value="PT" id="Provider_10"><label for="Special Edu.">PT</label><br>
+                                                                        <input type="checkbox" value="Others" id="Provider_Others_2"><label for="Special Edu.">Others</label><br><input type="text" id="provider_Others_2">
+                                                                    </td>
+                                                                    <td class="col col-3">
+                                                                        <input type="checkbox" value="Data Collection" id="Evaluation_Method_6"><label for="Special Edu.">a. Data Collection</label>
+                                                                    </td>
+                                                                    <td class="col col-4"><input type="date" id="Initial_Date_7"></td>
+                                                                    <td class="col col-5"><input type="date" id="Check_Date_7"></td>
+                                                                    <td class="col col-6"><input type="date" id="Mastery_Date_7"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col col-1"><input type="text" id="Goal_8"></td>
+                                                                    <td class="col col-3">
+                                                                        <input type="checkbox" value="Teacher/Text Test" id="Evaluation_Method_7"><label for="Special Edu.">b. Teacher/Text Test</label>
+                                                                    </td>
+                                                                    <td class="col col-4"><input type="date" id="Initial_Date_8"></td>
+                                                                    <td class="col col-5"><input type="date" id="Check_Date_8"></td>
+                                                                    <td class="col col-6"><input type="date" id="Mastery_Date_8"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col col-1"><input type="text" id="Goal_9"></td>
+                                                                    <td class="col col-3">
+                                                                        <input type="checkbox" value="Work Samples" id="Evaluation_Method_8"><label for="Special Edu.">c. Work Samples</label>
+                                                                    </td>
+                                                                    <td class="col col-4"><input type="date" id="Initial_Date_9"></td>
+                                                                    <td class="col col-5"><input type="date" id="Check_Date_9"></td>
+                                                                    <td class="col col-6"><input type="date" id="Mastery_Date_9"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col col-1"><input type="text" id="Goal_10"></td>
+                                                                    <td class="col col-3">
+                                                                        <input type="checkbox" value="Class Observation" id="Evaluation_Method_9"><label for="Special Edu.">d. Class Observation</label>
+                                                                    </td>
+                                                                    <td class="col col-4"><input type="date" id="Initial_Date_10"></td>
+                                                                    <td class="col col-5"><input type="date" id="Check_Date_10"></td>
+                                                                    <td class="col col-6"><input type="date" id="Mastery_Date_10"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col col-1"><input type="text" id="Goal_11"></td>
+                                                                    <td class="col col-3">
+                                                                        <input type="checkbox" value="Grades" id="Evaluation_Method_10"><label for="Special Edu.">e. Grades</label>
+                                                                    </td>
+                                                                    <td class="col col-4"><input type="date" id="Initial_Date_11"></td>
+                                                                    <td class="col col-5"><input type="date" id="Check_Date_11"></td>
+                                                                    <td class="col col-6"><input type="date" id="Mastery_Date_11"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col col-1"><input type="text" id="Goal_12"></td>
+                                                                    <td class="col col-3">
+                                                                        <input type="checkbox" value="Others" id="Evaluation_Method_Others_2"><label for="Special Edu.">f. Others</label>
+                                                                        <br><input type="text" id="evaluation_Method_Others_2">
+                                                                    </td>
+                                                                    <td class="col col-4"><input type="date" id="Initial_Date_12"></td>
+                                                                    <td class="col col-5"><input type="date" id="Check_Date_12"></td>
+                                                                    <td class="col col-6"><input type="date" id="Mastery_Date_12"></td>
+                                                                </tr>
+                                                                </form>
+                                                            </table>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    @*<li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                            <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                Area
+                                            </label>
+                                            <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                <span class="form-sub-label-container" style="vertical-align:top">
+                                                    <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                    <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                            <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                Annual Goal
+                                            </label>
+                                            <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                <span class="form-sub-label-container" style="vertical-align:top">
+                                                    <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                    <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                </span>
+                                            </div>
+                                        </li>*@
+
+                                    @*<div id="cid_25" class="form-input-wide jf-required" data-layout="full">
+                                        <table summary="" aria-labelledby="label_25" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix" data-dynamic="true">
+                                            <tr class="form-matrix-tr form-matrix-header-tr">
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_0">
+                                                    <label id="label_25_col_0"> Goals</label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Provider </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Evaluation Method </label>
+                                                </th>
+
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Initial Date </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Check Date </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Mastery Date </label>
+                                                </th>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.DropDownListFor(x => x.MedicalHistory.Whooping_Enough_Answer, new List<SelectListItem>
+                                                      { new SelectListItem() { Text = "Select any",Value="" },
+                                                        new SelectListItem() { Text = "Special Education" },
+                                                        new SelectListItem() { Text = "SLP" },
+                                                        new SelectListItem() { Text = "OT" },
+                                                        new SelectListItem() { Text = "BT" },
+                                                        new SelectListItem() { Text = "PT" },
+                                                      }, new { id = "input_25_1_0", name = "", @Class = "form-dropdown validate[required, requireEveryRow]", style = "width:310px", datacomponent = "dropdown" })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Whooping_Enough_Answer, null, new { style = "color:red" })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Others", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "", size = "10", })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Data Collection", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Teacher/Text Test", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Work Samples", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Classroom Observation", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Grades", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Other", type = "text", size = "2", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                @*<td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                   @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                @*</td>*@
+
+                                    @*</table>*@
+
+                                    @*<li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                            <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                Area
+                                            </label>
+                                            <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                <span class="form-sub-label-container" style="vertical-align:top">
+                                                    <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                    <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                            <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                Annual Goal
+                                            </label>
+                                            <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                <span class="form-sub-label-container" style="vertical-align:top">
+                                                    <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" />
+                                                    <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                </span>
+                                            </div>
+                                        </li>*@
+
+                                    @*<div id="cid_25" class="form-input-wide jf-required" data-layout="full">
+                                        <table summary="" aria-labelledby="label_25" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix" data-dynamic="true">
+                                            <tr class="form-matrix-tr form-matrix-header-tr">
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_0">
+                                                    <label id="label_25_col_0"> Goals</label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Provider </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Evaluation Method </label>
+                                                </th>
+
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Initial Date </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Check Date </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Mastery Date </label>
+                                                </th>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.DropDownListFor(x => x.MedicalHistory.Whooping_Enough_Answer, new List<SelectListItem>
+                                                      { new SelectListItem() { Text = "Select any",Value="" },
+                                                        new SelectListItem() { Text = "Special Education" },
+                                                        new SelectListItem() { Text = "SLP" },
+                                                        new SelectListItem() { Text = "OT" },
+                                                        new SelectListItem() { Text = "BT" },
+                                                        new SelectListItem() { Text = "PT" },
+                                                      }, new { id = "input_25_1_0", name = "", @Class = "form-dropdown validate[required, requireEveryRow]", style = "width:310px", datacomponent = "dropdown" })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Whooping_Enough_Answer, null, new { style = "color:red" })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Others", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "", size = "10", })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Data Collection", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Teacher/Text Test", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Work Samples", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Classroom Observation", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Grades", type = "text", size = "2", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "Other", type = "text", size = "2", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.MedicalHistory.Measles_Age, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.MedicalHistory.Measles_Age, null, new { style = "color:red" })
+                                                </td>
+
+                                        </table>*@
+
+                                    @*<div style="width: 100%;">
+                                            <input id="pre_btn2" onclick="prev_step2()" type="button" value="Previous" class="prevbut">
+                                            <input id="next_btn1" onclick="next_step3()" type="button" value="Next" style="float: right; right: 0;">
+                                        </div>
+                                        </li>*@
+                                    <div style="width: 100%;">
+                                        <input id="pre_btn1" onclick="prev_step2()" type="button" value="Previous" class="prevbut">
+                                        <input id="next_btn1" onclick="next_step3()" type="button" value="Next" style="float: right; right: 0;">
+                                    </div>
+                                </fieldset>
+
+                                @*SUPLEMENTARY AIDS AND RELATED SERVICES*@
+                                <fieldset id="fourth">
+                                    <!--    <ul class="form-section page-section" style="display:none;"> -->
+                                    <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                        <div class="form-header-group  header-small">
+                                            <div class="header-text httac htvam">
+                                                <h3 id="header_65" class="form-header" data-component="header">
+                                                    SUPLEMENTARY AIDS & RELATED SERVICES
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <div id="cid_25" class="form-input-wide jf-required" data-layout="full">
+                                        <table summary="" aria-labelledby="label_25" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix" data-dynamic="true">
+                                            <tr class="form-matrix-tr form-matrix-header-tr">
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_0">
+                                                    <label id="label_25_col_0"> Services / Related Services </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Provider Name </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Hours per week</label>
+                                                </th>
+
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Location </label>
+                                                </th>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Related_Services_1, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Related_Services_2, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Related_Services_3, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Related_Services_4, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Related_Services_5, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Related_Services_6, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Related_Services_7, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.supplementaryAids.Related_Services_1, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Provider_Name_1, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Provider_Name_2, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Provider_Name_3, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Provider_Name_4, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Provider_Name_5, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Provider_Name_6, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Provider_Name_7, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.supplementaryAids.Provider_Name_1, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Hours_per_week_1, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Hours_per_week_2, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Hours_per_week_3, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Hours_per_week_4, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Hours_per_week_5, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Hours_per_week_6, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Hours_per_week_7, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.supplementaryAids.Hours_per_week_1, null, new { style = "color:red" })
+                                                </td>
+
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Location_1, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Location_2, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Location_3, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Location_4, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Location_5, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Location_6, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Location_7, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.supplementaryAids.Location_1, null, new { style = "color:red" })
+                                                </td>
+                                        </table>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    Aids/equipment/program modifications need to attain annual goals:
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.supplementaryAids.Program_Modifications, null, new { name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.supplementaryAids.Program_Modifications, null, new { style = "color:red" })
+                                                </div>
+
+                                                @*RECOMMENDED INSTRUCTIONAL AND/OR BEHAVIORAL INTERVENTIONS*@
+
+                                            <li id="cid_138" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-default">
+                                                    <div class="header-text httac htvam">
+                                                        <h2 id="header_138" class="form-header" data-component="header">
+                                                            RECOMMENDED INSTRUCTIONAL AND/OR BEHAVIORAL INTERVENTIONS
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <div id="cid_139" class="form-input-wide" data-layout="full">
+                                                @Html.TextAreaFor(x => x.supplementaryAids.Recommended_Instructional_Interventions, new { @class = "form-textarea", name = "q139_input139", style = "width:630px;height:160px", datacomponent = "textarea", placeholder = "", required = "", arialabelledby = "label_139" })
+                                                @Html.ValidationMessageFor(x => x.supplementaryAids.Recommended_Instructional_Interventions, null, new { style = "color:red" })
+                                            </div>
+                                            </li>
+                                            <div style="width: 100%;">
+                                                <input id="pre_btn3" onclick="prev_step3()" type="button" value="Previous" class="prevbut">
+                                                <input id="next_btn1" onclick="next_step4()" type="button" value="Next" style="float: right; right: 0;">
+                                            </div>
+                                            </li>
+
+                                </fieldset>
+
+                                @*IEP DEVELOPMENT TEAM*@
+                                <fieldset id="fifth">
+                                    <!--    <ul class="form-section page-section" style="display:none;"> -->
+                                    <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                        <div class="form-header-group  header-small">
+                                            <div class="header-text httac htvam">
+                                                <h3 id="header_65" class="form-header" data-component="header">
+                                                    IEP DEVELOPMENT TEAM
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <div id="cid_25" class="form-input-wide jf-required" data-layout="full">
+                                        <table summary="" aria-labelledby="label_25" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix" data-dynamic="true">
+                                            <tr class="form-matrix-tr form-matrix-header-tr">
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_0">
+                                                    <label id="label_25_col_0"> S.# </label>
+                                                </th>
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Name </label>
+                                                </th>
+                                                @*<th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Team Member's Signature</label>
+                                                    </th>*@
+
+                                                <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                    <label id="label_25_col_1"> Position/Title </label>
+                                                </th>
+                                            </tr>
+                                            @*<tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">*@
+                                            @*<td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_ID, null, new {text="1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_ID, null, new {text="2", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_ID, null, new {text="3", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_ID, null, new {text="4", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_ID, null, new {text="5", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_ID, null, new {text="6", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_ID, null, new {text="7", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.developmentTeam.DevelopmentTeam_ID, null, new { style = "color:red" })
+                                                @*</td>
+
+                                                <td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_1, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_2, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_3, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_4, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_5, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_6, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_7, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.developmentTeam.DevelopmentTeam_Name_1, null, new { style = "color:red" })
+                                                </td>*@
+
+                                            @*<td class="form-matrix-values">
+                                                    @Html.TextBoxFor(x => x.developmentTeam.Team_Members_Signature, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.Team_Members_Signature, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.Team_Members_Signature, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.Team_Members_Signature, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.Team_Members_Signature, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.Team_Members_Signature, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.TextBoxFor(x => x.developmentTeam.Team_Members_Signature, null, new { id = "input_25_0_1", name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                    @Html.ValidationMessageFor(x => x.developmentTeam.Team_Members_Signature, null, new { style = "color:red" })
+                                                </td>*@
+
+                                            @*<td class="form-matrix-values">
+                                                      @Html.TextBoxFor(x => x.developmentTeam.Position_1, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                      @Html.TextBoxFor(x => x.developmentTeam.Position_2, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                      @Html.TextBoxFor(x => x.developmentTeam.Position_3, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                      @Html.TextBoxFor(x => x.developmentTeam.Position_4, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                      @Html.TextBoxFor(x => x.developmentTeam.Position_5, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                      @Html.TextBoxFor(x => x.developmentTeam.Position_6, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                      @Html.TextBoxFor(x => x.developmentTeam.Position_7, null, new {name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })
+                                                      @Html.ValidationMessageFor(x => x.developmentTeam.Position_1, null, new { style = "color:red" })
+                                                  </td>
+                                                </tr>*@
+
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                <td class="form-matrix-values"><label>1</label></td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_1, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.Position_1, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_1">
+                                                <td class="form-matrix-values"><label>2</label></td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_2, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.Position_2, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_2">
+                                                <td class="form-matrix-values"><label>3</label></td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_3, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.Position_3, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_3">
+                                                <td class="form-matrix-values"><label>4</label></td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_4, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.Position_4, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_4">
+                                                <td class="form-matrix-values"><label>5</label></td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_5, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.Position_5, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_5">
+                                                <td class="form-matrix-values"><label>6</label></td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_6, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.Position_6, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                            </tr>
+                                            <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_6">
+                                                <td class="form-matrix-values"><label>7</label></td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.DevelopmentTeam_Name_7, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                                <td class="form-matrix-values">@Html.TextBoxFor(x => x.developmentTeam.Position_7, null, new { name = "q25_medicalHistory[0][1]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "2", placeholder = "", type = "text", size = "10", })</td>
+                                            </tr>
+                                        </table>
+
+                                        <input id="pre_btn4" onclick="prev_step4()" type="button" value="Previous" class="prevbut">
+                                        <input id="submit" onclick="IEPSubmitData()" name="next" type="submit" value="Submit" style="float: right; right: 0;">
+
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@*<script src="~/Content/NewAdmissionAssets/js/newadd.js"></script>*@
+
+
+<script>
+
+    const targetDiv = document.getElementById("secondSection");
+    const btn = document.getElementById("addsection");
+    btn.onclick = function () {
+        if (targetDiv.style.display !== "none") {
+            targetDiv.style.display = "none";
+            $('#addsection').html('Add Section');
+            $('#addsection').css({ "width": "120px" });
+        } else {
+            targetDiv.style.display = "block";
+            $('#addsection').html('Remove Section');
+            $('#addsection').css({ "width": "140px" });
+        }
+    };
+
+    function GetSTDInfo(id) {
+
+        $.get("/Editor/GetOT2RecordbyId?GRNO=" + id, function (res) {
+            console.log(res)
+            $("#Std_Name").val(res.Student_First_Name + " " + res.Student_Last_Name);
+
+            if (res.Gender == "Male") {
+                $("#input_15_0").prop('checked', true);
+            } else {
+                $("#input_15_1").prop('checked', true);
+            }
+
+            const d1 = new Date(res.Dob.match(/\d+/)[0] * 1);
+            const formattedDate1 = d1.getFullYear() + '-' + ("0" + (d1.getMonth() + 1)).slice(-2) + '-' + ("0" + d1.getDate()).slice(-2)
+            console.log(formattedDate1)
+            $('#Std_DOB').val(formattedDate1);
+            $("#Disability").val(res.Disability);
+        });
+    }
+
+    function IEPSubmitData() {
+        debugger
+        let GR_NO = $("#GR_NO").val();
+        let Date_Of_Assessment = $("#d_ex").val();
+        let Initial_IEP = $('#meetingInformation_Initial_IEP').val();
+        let Date_Initial_IEP = $('#meetingInformation_Initial_IEP').val();
+        let Annual_Review = $('#meetingInformation_Annual_Review').val();
+        let Date_Annual_Review = $('#meetingInformation_Annual_Review').val();
+        let Review_Other_Than_Annaul_Review = $('#meetingInformation_Review_Other_Than_Annaul_Review').val();
+        let Date_Review_Other_Than_Annaul_Review = $('#meetingInformation_Review_Other_Than_Annaul_Review').val();
+        let Ammendment = $('#meetingInformation_Ammendment').val();
+        let Date_Ammendment = $('#meetingInformation_Ammendment').val();
+        let Communicating_Language = $('#meetingInformation_Communicating_Language').val();
+        let presentLevel_Physical_Development = $('#presentLevel_Physical_Development').val();
+        let presentLevel_Communication = $('#presentLevel_Communication').val();
+        let presentLevel_Self_Help_Skills = $('#presentLevel_Self_Help_Skills').val();
+        let presentLevel_Cognition = $('#presentLevel_Cognition').val();
+        let presentLevel_Socialization = $('#presentLevel_Socialization').val();
+        let presentLevel_Functional_Academic = $('#presentLevel_Functional_Academic').val();
+        let presentLevel_Academic_Performance = $('#presentLevel_Academic_Performance').val();
+        let presentLevel_PreVocational_Skills = $('#presentLevel_PreVocational_Skills').val();
+        let presentLevel_Others = $('#presentLevel_Others').val();
+        let specialInstructional_Question_1 = "";
+        let specialInstructional_Question_2 = "";
+        let specialInstructional_Question_3 = "";
+        let specialInstructional_Question_4 = "";
+        let specialInstructional_Question_5 = "";
+        let specialInstructional_Question_6 = "";
+
+        if ($('#input_3_0').is(":checked")) {
+            specialInstructional_Question_1 = "Yes";
+        } else if ($('#input_3_1').is(":checked")) {
+            specialInstructional_Question_1 = "No";
+        }
+        if ($('#input_3_2').is(":checked")) {
+            specialInstructional_Question_2 = "Yes";
+        } else if ($('#input_3_3').is(":checked")) {
+            specialInstructional_Question_2 = "No";
+        }
+        if ($('#input_3_4').is(":checked")) {
+            specialInstructional_Question_3 = "Yes";
+        } else if ($('#input_3_5').is(":checked")) {
+            specialInstructional_Question_3 = "No";
+        }
+        if ($('#input_3_6').is(":checked")) {
+            specialInstructional_Question_4 = "Yes";
+        } else if ($('#input_3_7').is(":checked")) {
+            specialInstructional_Question_4 = "No";
+        }
+        if ($('#input_3_8').is(":checked")) {
+            specialInstructional_Question_5 = "Yes";
+        } else if ($('#input_3_9').is(":checked")) {
+            specialInstructional_Question_5 = "No";
+        }
+        if ($('#input_3_10').is(":checked")) {
+            specialInstructional_Question_6 = "Yes";
+        } else if ($('#input_3_11').is(":checked")) {
+            specialInstructional_Question_6 = "No";
+        }
+
+        let Goal_1 = $("#Goal_1").val();
+        let Goal_2 = $("#Goal_2").val();
+        let Goal_3 = $("#Goal_3").val();
+        let Goal_4 = $("#Goal_4").val();
+        let Goal_5 = $("#Goal_5").val();
+        let Goal_6 = $("#Goal_6").val();
+        let Goal_7 = $("#Goal_7").val();
+        let Goal_8 = $("#Goal_8").val();
+        let Goal_9 = $("#Goal_9").val();
+        let Goal_10 = $("#Goal_10").val();
+        let Goal_11 = $("#Goal_11").val();
+        let Goal_12 = $("#Goal_12").val();
+
+        let Provider_1 = $("#Provider_1").val();
+        let Provider_2 = $("#Provider_2").val();
+        let Provider_3 = $("#Provider_3").val();
+        let Provider_4 = $("#Provider_4").val();
+        let Provider_5 = $("#Provider_5").val();
+        let Provider_6 = $("#Provider_6").val();
+        let Provider_7 = $("#Provider_7").val();
+        let Provider_8 = $("#Provider_8").val();
+        let Provider_9 = $("#Provider_9").val();
+        let Provider_10 = $("#Provider_10").val();
+        let Provider_Others_1 = $("#provider_Others_1").val();
+        let Provider_Others_2 = $("#provider_Others_2").val();
+
+        let Evaluation_Method_1 = $("#Evaluation_Method_1").val();
+        let Evaluation_Method_2 = $("#Evaluation_Method_2").val();
+        let Evaluation_Method_3 = $("#Evaluation_Method_3").val();
+        let Evaluation_Method_4 = $("#Evaluation_Method_4").val();
+        let Evaluation_Method_5 = $("#Evaluation_Method_5").val();
+        let Evaluation_Method_6 = $("#Evaluation_Method_6").val();
+        let Evaluation_Method_7 = $("#Evaluation_Method_7").val();
+        let Evaluation_Method_8 = $("#Evaluation_Method_8").val();
+        let Evaluation_Method_9 = $("#Evaluation_Method_9").val();
+        let Evaluation_Method_10 = $("#Evaluation_Method_10").val();
+        let Evaluation_Method_Others_1 = $("#evaluation_Method_Others_1").val();
+        let Evaluation_Method_Others_2 = $("#evaluation_Method_Others_2").val();
+
+        let Initial_Date_1 = $("#Initial_Date_1").val();
+        let Initial_Date_2 = $("#Initial_Date_2").val();
+        let Initial_Date_3 = $("#Initial_Date_3").val();
+        let Initial_Date_4 = $("#Initial_Date_4").val();
+        let Initial_Date_5 = $("#Initial_Date_5").val();
+        let Initial_Date_6 = $("#Initial_Date_6").val();
+        let Initial_Date_7 = $("#Initial_Date_7").val();
+        let Initial_Date_8 = $("#Initial_Date_8").val();
+        let Initial_Date_9 = $("#Initial_Date_9").val();
+        let Initial_Date_10 = $("#Initial_Date_10").val();
+        let Initial_Date_11 = $("#Initial_Date_11").val();
+        let Initial_Date_12 = $("#Initial_Date_12").val();
+
+        let Check_Date_1 = $("#Check_Date_1").val();
+        let Check_Date_2 = $("#Check_Date_2").val();
+        let Check_Date_3 = $("#Check_Date_3").val();
+        let Check_Date_4 = $("#Check_Date_4").val();
+        let Check_Date_5 = $("#Check_Date_5").val();
+        let Check_Date_6 = $("#Check_Date_6").val();
+        let Check_Date_7 = $("#Check_Date_7").val();
+        let Check_Date_8 = $("#Check_Date_8").val();
+        let Check_Date_9 = $("#Check_Date_9").val();
+        let Check_Date_10 = $("#Check_Date_10").val();
+        let Check_Date_11 = $("#Check_Date_11").val();
+        let Check_Date_12 = $("#Check_Date_12").val();
+
+        let Mastery_Date_1 = $("#Mastery_Date_1").val();
+        let Mastery_Date_2 = $("#Mastery_Date_2").val();
+        let Mastery_Date_3 = $("#Mastery_Date_3").val();
+        let Mastery_Date_4 = $("#Mastery_Date_4").val();
+        let Mastery_Date_5 = $("#Mastery_Date_5").val();
+        let Mastery_Date_6 = $("#Mastery_Date_6").val();
+        let Mastery_Date_7 = $("#Mastery_Date_7").val();
+        let Mastery_Date_8 = $("#Mastery_Date_8").val();
+        let Mastery_Date_9 = $("#Mastery_Date_9").val();
+        let Mastery_Date_10 = $("#Mastery_Date_10").val();
+        let Mastery_Date_11 = $("#Mastery_Date_11").val();
+        let Mastery_Date_12 = $("#Mastery_Date_12").val();
+
+        let Related_Services_1 = $("#supplementaryAids_Related_Services_1").val();
+        let Related_Services_2 = $("#supplementaryAids_Related_Services_2").val();
+        let Related_Services_3 = $("#supplementaryAids_Related_Services_3").val();
+        let Related_Services_4 = $("#supplementaryAids_Related_Services_4").val();
+        let Related_Services_5 = $("#supplementaryAids_Related_Services_5").val();
+        let Related_Services_6 = $("#supplementaryAids_Related_Services_6").val();
+        let Related_Services_7 = $("#supplementaryAids_Related_Services_7").val();
+
+        let Provider_Name_1 = $("#supplementaryAids_Provider_Name_1").val();
+        let Provider_Name_2 = $("#supplementaryAids_Provider_Name_2").val();
+        let Provider_Name_3 = $("#supplementaryAids_Provider_Name_3").val();
+        let Provider_Name_4 = $("#supplementaryAids_Provider_Name_4").val();
+        let Provider_Name_5 = $("#supplementaryAids_Provider_Name_5").val();
+        let Provider_Name_6 = $("#supplementaryAids_Provider_Name_6").val();
+        let Provider_Name_7 = $("#supplementaryAids_Provider_Name_7").val();
+
+        let Hours_per_week_1 = $("#supplementaryAids_Hours_per_week_1").val();
+        let Hours_per_week_2 = $("#supplementaryAids_Hours_per_week_2").val();
+        let Hours_per_week_3 = $("#supplementaryAids_Hours_per_week_3").val();
+        let Hours_per_week_4 = $("#supplementaryAids_Hours_per_week_4").val();
+        let Hours_per_week_5 = $("#supplementaryAids_Hours_per_week_5").val();
+        let Hours_per_week_6 = $("#supplementaryAids_Hours_per_week_6").val();
+        let Hours_per_week_7 = $("#supplementaryAids_Hours_per_week_7").val();
+
+        let Location_1 = $("#supplementaryAids_Location_1").val();
+        let Location_2 = $("#supplementaryAids_Location_2").val();
+        let Location_3 = $("#supplementaryAids_Location_3").val();
+        let Location_4 = $("#supplementaryAids_Location_4").val();
+        let Location_5 = $("#supplementaryAids_Location_5").val();
+        let Location_6 = $("#supplementaryAids_Location_6").val();
+        let Location_7 = $("#supplementaryAids_Location_7").val();
+
+        let Program_Modifications = $("#supplementaryAids_Program_Modifications").val();
+        let Recommended_Instructional_Interventions = $("#supplementaryAids_Recommended_Instructional_Interventions").val();
+
+        let DevelopmentTeam_Name_1 = $("#developmentTeam_DevelopmentTeam_Name_1").val();
+        let DevelopmentTeam_Name_2 = $("#developmentTeam_DevelopmentTeam_Name_2").val();
+        let DevelopmentTeam_Name_3 = $("#developmentTeam_DevelopmentTeam_Name_3").val();
+        let DevelopmentTeam_Name_4 = $("#developmentTeam_DevelopmentTeam_Name_4").val();
+        let DevelopmentTeam_Name_5 = $("#developmentTeam_DevelopmentTeam_Name_5").val();
+        let DevelopmentTeam_Name_6 = $("#developmentTeam_DevelopmentTeam_Name_6").val();
+        let DevelopmentTeam_Name_7 = $("#developmentTeam_DevelopmentTeam_Name_7").val();
+
+        let Position_1 = $("#developmentTeam_Position_1").val();
+        let Position_2 = $("#developmentTeam_Position_2").val();
+        let Position_3 = $("#developmentTeam_Position_3").val();
+        let Position_4 = $("#developmentTeam_Position_4").val();
+        let Position_5 = $("#developmentTeam_Position_5").val();
+        let Position_6 = $("#developmentTeam_Position_6").val();
+        let Position_7 = $("#developmentTeam_Position_7").val();
+
+
+
+        let data = {
+            iEPlanModel: {
+                GR_No: GR_NO,
+                Date_Of_Assessment: Date_Of_Assessment,
+            },
+            meetingInformation: {
+                //date: Date_Of_Assessment,
+                Initial_IEP: Initial_IEP,
+                Date_Initial_IEP: Date_Initial_IEP,
+                Annual_Review: Annual_Review,
+                Date_Annual_Review: Date_Annual_Review,
+                Review_Other_Than_Annaul_Review: Review_Other_Than_Annaul_Review,
+                Date_Review_Other_Than_Annaul_Review: Date_Review_Other_Than_Annaul_Review,
+                Ammendment: Ammendment,
+                Date_Ammendment: Date_Ammendment,
+                Communicating_Language: Communicating_Language,
+            },
+            presentLevel: {
+                Physical_Development: presentLevel_Physical_Development,
+                Communication: presentLevel_Communication,
+                Self_Help_Skills: presentLevel_Self_Help_Skills,
+                Cognition: presentLevel_Cognition,
+                Socialization: presentLevel_Socialization,
+                Functional_Academic: presentLevel_Functional_Academic,
+                Academic_Performance: presentLevel_Academic_Performance,
+                PreVocational_Skills: presentLevel_PreVocational_Skills,
+                Others: presentLevel_Others
+            },
+            specialInstructional: {
+                Question_1: specialInstructional_Question_1,
+                Question_2: specialInstructional_Question_2,
+                Question_3: specialInstructional_Question_3,
+                Question_4: specialInstructional_Question_4,
+                Question_5: specialInstructional_Question_5,
+                Question_6: specialInstructional_Question_6
+            },
+            iEP_Page3: {
+                Goal_1: Goal_1,
+                Goal_2: Goal_2,
+                Goal_3: Goal_3,
+                Goal_4: Goal_4,
+                Goal_5: Goal_5,
+                Goal_6: Goal_6,
+                Goal_7: Goal_7,
+                Goal_8: Goal_8,
+                Goal_9: Goal_9,
+                Goal_10: Goal_10,
+                Goal_11: Goal_11,
+                Goal_12: Goal_12,
+                Provider_1: Provider_1,
+                Provider_2: Provider_2,
+                Provider_3: Provider_3,
+                Provider_4: Provider_4,
+                Provider_5: Provider_5,
+                Provider_6: Provider_6,
+                Provider_7: Provider_7,
+                Provider_8: Provider_8,
+                Provider_9: Provider_9,
+                Provider_10: Provider_10,
+                Provider_Others_1: Provider_Others_1,
+                Provider_Others_2: Provider_Others_2,
+                Evaluation_Method_1: Evaluation_Method_1,
+                Evaluation_Method_2: Evaluation_Method_2,
+                Evaluation_Method_3: Evaluation_Method_3,
+                Evaluation_Method_4: Evaluation_Method_4,
+                Evaluation_Method_5: Evaluation_Method_5,
+                Evaluation_Method_6: Evaluation_Method_6,
+                Evaluation_Method_7: Evaluation_Method_7,
+                Evaluation_Method_8: Evaluation_Method_8,
+                Evaluation_Method_9: Evaluation_Method_9,
+                Evaluation_Method_10: Evaluation_Method_10,
+                Evaluation_Method_Others_1: Evaluation_Method_Others_1,
+                Evaluation_Method_Others_2: Evaluation_Method_Others_2,
+                Initial_Date_1: Initial_Date_1,
+                Initial_Date_2: Initial_Date_2,
+                Initial_Date_3: Initial_Date_3,
+                Initial_Date_4: Initial_Date_4,
+                Initial_Date_5: Initial_Date_5,
+                Initial_Date_6: Initial_Date_6,
+                Initial_Date_7: Initial_Date_7,
+                Initial_Date_8: Initial_Date_8,
+                Initial_Date_9: Initial_Date_9,
+                Initial_Date_10: Initial_Date_10,
+                Initial_Date_11: Initial_Date_11,
+                Initial_Date_12: Initial_Date_12,
+                Check_Date_1: Check_Date_1,
+                Check_Date_2: Check_Date_2,
+                Check_Date_3: Check_Date_3,
+                Check_Date_4: Check_Date_4,
+                Check_Date_5: Check_Date_5,
+                Check_Date_6: Check_Date_6,
+                Check_Date_7: Check_Date_7,
+                Check_Date_8: Check_Date_8,
+                Check_Date_9: Check_Date_9,
+                Check_Date_10: Check_Date_10,
+                Check_Date_11: Check_Date_11,
+                Check_Date_12: Check_Date_12,
+                Mastery_Date_1: Mastery_Date_1,
+                Mastery_Date_2: Mastery_Date_2,
+                Mastery_Date_3: Mastery_Date_3,
+                Mastery_Date_4: Mastery_Date_4,
+                Mastery_Date_5: Mastery_Date_5,
+                Mastery_Date_6: Mastery_Date_6,
+                Mastery_Date_7: Mastery_Date_7,
+                Mastery_Date_8: Mastery_Date_8,
+                Mastery_Date_9: Mastery_Date_9,
+                Mastery_Date_10: Mastery_Date_10,
+                Mastery_Date_11: Mastery_Date_11,
+                Mastery_Date_12: Mastery_Date_12,
+            },
+            supplementaryAids: {
+                Related_Services_1: Related_Services_1,
+                Related_Services_2: Related_Services_2,
+                Related_Services_3: Related_Services_3,
+                Related_Services_4: Related_Services_4,
+                Related_Services_5: Related_Services_5,
+                Related_Services_6: Related_Services_6,
+                Related_Services_7: Related_Services_7,
+                Provider_Name_1: Provider_Name_1,
+                Provider_Name_2: Provider_Name_2,
+                Provider_Name_3: Provider_Name_3,
+                Provider_Name_4: Provider_Name_4,
+                Provider_Name_5: Provider_Name_5,
+                Provider_Name_6: Provider_Name_6,
+                Provider_Name_7: Provider_Name_7,
+                Hours_per_week_1: Hours_per_week_1,
+                Hours_per_week_2: Hours_per_week_2,
+                Hours_per_week_3: Hours_per_week_3,
+                Hours_per_week_4: Hours_per_week_4,
+                Hours_per_week_5: Hours_per_week_5,
+                Hours_per_week_6: Hours_per_week_6,
+                Hours_per_week_7: Hours_per_week_7,
+                Location_1: Location_1,
+                Location_2: Location_2,
+                Location_3: Location_3,
+                Location_4: Location_4,
+                Location_5: Location_5,
+                Location_6: Location_6,
+                Location_7: Location_7,
+                Program_Modifications: Program_Modifications,
+                Recommended_Instructional_Interventions: Recommended_Instructional_Interventions
+
+            },
+            developmentTeam: {
+                DevelopmentTeam_Name_1: DevelopmentTeam_Name_1,
+                DevelopmentTeam_Name_2: DevelopmentTeam_Name_2,
+                DevelopmentTeam_Name_3: DevelopmentTeam_Name_3,
+                DevelopmentTeam_Name_4: DevelopmentTeam_Name_4,
+                DevelopmentTeam_Name_5: DevelopmentTeam_Name_5,
+                DevelopmentTeam_Name_6: DevelopmentTeam_Name_6,
+                DevelopmentTeam_Name_7: DevelopmentTeam_Name_7,
+                Position_1: Position_1,
+                Position_2: Position_2,
+                Position_3: Position_3,
+                Position_4: Position_4,
+                Position_5: Position_5,
+                Position_6: Position_6,
+                Position_7: Position_7
+            }
+
+        }
+
+        console.log(data);
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        };
+        fetch('/IDD/AddIEP', requestOptions)
+            .then(response => response.json())
+            .then(json => {
+                alert(json)
+                location.reload();
+            })
+    }
+
+    function next_step1() {
+        document.getElementById("first").style.display = "none";
+        document.getElementById("second").style.display = "block";
+        document.getElementById("active2").style.color = "red";
+    }
+    function next_step2() {
+        document.getElementById("second").style.display = "none";
+        document.getElementById("third").style.display = "block";
+        document.getElementById("active3").style.color = "red";
+    }
+    function next_step3() {
+        document.getElementById("third").style.display = "none";
+        document.getElementById("fourth").style.display = "block";
+        document.getElementById("active3").style.color = "red";
+    }
+    function next_step4() {
+        document.getElementById("fourth").style.display = "none";
+        document.getElementById("fifth").style.display = "block";
+        document.getElementById("active3").style.color = "red";
+
+    }
+    // Previous Button Script
+    function prev_step1() {
+        document.getElementById("first").style.display = "block";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("active1").style.color = "red";
+        document.getElementById("active2").style.color = "gray";
+    }
+    function prev_step2() {
+        document.getElementById("third").style.display = "none";
+        document.getElementById("second").style.display = "block";
+        document.getElementById("active2").style.color = "red";
+        document.getElementById("active3").style.color = "gray";
+    }
+    function prev_step3() {
+        document.getElementById("fourth").style.display = "none";
+        document.getElementById("third").style.display = "block";
+        document.getElementById("active2").style.color = "red";
+        document.getElementById("active3").style.color = "gray";
+    }
+    function prev_step4() {
+        document.getElementById("fifth").style.display = "none";
+        document.getElementById("fourth").style.display = "block";
+        document.getElementById("active2").style.color = "red";
+        document.getElementById("active3").style.color = "gray";
+    }
+
+
+</script>

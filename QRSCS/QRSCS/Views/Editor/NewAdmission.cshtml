@@ -1,0 +1,299 @@
+﻿@model QRSCS.Models.NewAdmissionModel
+@{
+    ViewBag.Title = "NewAdmission";
+}
+<link href="~/Content/NewAdmissionAssets/css/newadd.css" rel="stylesheet" />
+<main>
+    <div class="container">
+        <header>New Admission</header>
+        @using (Html.BeginForm("NewAdmission", "Editor", FormMethod.Post, new { @id = "formmm", enctype = "multipart/form-data" }))
+        {
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Student Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Student First Name</label>
+                            @Html.TextBoxFor(x => x.Student_First_Name, new { placeholder = "Enter First Name", @required = "required" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>Student Last Name</label>
+                            @Html.TextBoxFor(x => x.Student_Last_Name, new { placeholder = "Enter Last Name", @required = "required" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of Admission</label>
+                            @Html.TextBoxFor(x => x.Date_of_Admission, null, new { @type = "date", @required = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Class of Admission</label>
+                            @Html.DropDownListFor(x => x.Class, new List<SelectListItem>
+                         { new SelectListItem() { Text = "Please Select" },
+                           new SelectListItem() { Text = "1" },
+                           new SelectListItem() { Text = "2" },
+                           new SelectListItem() { Text = "3" },
+                           new SelectListItem() { Text = "4" },
+                           new SelectListItem() { Text = "5" },
+                           new SelectListItem() { Text = "6" },
+                           new SelectListItem() { Text = "7" },
+                           new SelectListItem() { Text = "8" },
+                           new SelectListItem() { Text = "9" },
+                           new SelectListItem() { Text = "10" }
+
+                         }, new { @required = "required", id = "gen" })
+                        </div>
+                        <div class="input-field">
+
+                            <label>Gender</label>
+                            @Html.DropDownListFor(x => x.Gender, new List<SelectListItem>
+                         { new SelectListItem() { Text = "Please Select" },
+                           new SelectListItem() { Text = "Male" },
+                           new SelectListItem() { Text = "Female" }
+                         }, new { @required = "required", id = "gen" })
+
+
+
+
+                        </div>
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            @Html.TextBoxFor(x => x.Dob, null, new { @type = "date", @required = "required" })
+
+
+                        </div>
+                        <div class="input-field">
+                            <label>Place of Birth</label>
+                            @Html.TextBoxFor(x => x.Place_of_Birth, new { placeholder = "Enter Place of Birth", @required = "required" })
+                        </div>
+                        <div class="input-field">
+                            <label>Religion</label>
+                            @Html.TextBoxFor(x => x.Religion, new { placeholder = "Enter Place of Birth", @required = "required" })
+                        </div><div class="input-field">
+                            <label>Name of Last School Attended</label>
+                            @Html.TextBoxFor(x => x.Name_Last_School_Attended, new { placeholder = "Enter Place of Birth", @required = "required" })
+                        </div>
+                        <div class="input-field">
+                            <label>Hobbies</label>
+                            @Html.TextBoxFor(x => x.Hobbies, new { placeholder = "Enter Place of Birth", @required = "required" })
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="details ID">
+
+
+                    <div onclick="forwardbtn()" class="backBtn">
+                        <span class="btnText">Next</span>
+                        <i style="transform:none" class="uil uil-navigator"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form second">
+                <div class="details address">
+                    <span class="title">Parents/Guardian Information</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Father Name</label>
+                            @Html.TextBoxFor(x => x.Father_Name, null, new { placeholder = "Enter Full name of Father", @requiired = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Father NIC</label>
+                            @Html.TextBoxFor(x => x.NIC, null, new { placeholder = "Enter Father NIC", @requiired = "required", @id = "NIC" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Relation with Student</label>
+                            @Html.TextBoxFor(x => x.Relation_with_Student, null, new { placeholder = "Enter the Relation", @requiired = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Education</label>
+                            @Html.TextBoxFor(x => x.Education, null, new { placeholder = "Enter the Education ", @requiired = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Monthly Income</label>
+                            @Html.TextBoxFor(x => x.Monthy_Income, null, new { placeholder = "Enter Monthly Income", @requiired = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Occupation</label>
+                            @Html.TextBoxFor(x => x.Occupation, null, new { placeholder = "Enter the Occupation", @requiired = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Category</label>
+                            @Html.DropDownListFor(x => x.Category, new List<SelectListItem>
+                            { new SelectListItem() { Text = "Please Select" },
+                            new SelectListItem() { Text = "Army/Ranger Serving" },
+                            new SelectListItem() { Text = "Rangers/Retired" },
+                            new SelectListItem() { Text = "PN/Police Per" },
+                            new SelectListItem() { Text = "Civilian" }
+                            }, new { @required = "required" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>Complete Address</label>
+                            @Html.TextBoxFor(x => x.Address, null, new { placeholder = "Enter Complete Address", @requiired = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>State</label>
+                            @Html.DropDownListFor(x => x.State, new List<SelectListItem>
+                            { new SelectListItem() { Text = "Please Select" },
+                            new SelectListItem() { Text = "Sindh" },
+                            new SelectListItem() { Text = "Punjab" },
+                            new SelectListItem() { Text = "Balochistan" },
+                            new SelectListItem() { Text = "Khyber Pakhtunkhwa" },
+                            new SelectListItem() { Text = "Gilgit Baltistan" }
+                            }, new { @required = "required" })
+                        </div>
+                        <div class="input-field">
+                            <label>City</label>
+                            @Html.TextBoxFor(x => x.City, null, new { placeholder = "Enter City", @requiired = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Postal /Zip Code</label>
+                            @Html.TextBoxFor(x => x.Zip_Code, null, new { placeholder = "Enter Postal Code", @requiired = "required", @class = "postal" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Contact Number</label>
+                            @Html.TextBoxFor(x => x.Contact, null, new { placeholder = "Enter Contact Number", @requiired = "required", @class = "phon" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Phone Residence</label>
+                            @Html.TextBoxFor(x => x.Phone_Residence, null, new { placeholder = "Enter Phone Residence", @requiired = "required", @class = "phon" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Office Phone</label>
+                            @Html.TextBoxFor(x => x.Phone_Office, null, new { placeholder = "Enter Office Phone", @requiired = "required", @class = "phon" })
+
+                        </div>
+                        <div class="input-field">
+                            <label style="visibility:hidden">Office Phone </label>
+                            @*@Html.TextBoxFor(x => x.Phone_Office, null, new { placeholder = "Enter Office Phone", @requiired = "required" })*@
+
+                        </div>
+
+                    </div>
+                    <div class="buttons">
+                        <div onclick="backwardbtn()" class="backBtn" style="margin-right:10px;margin-top:-5px" >
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+
+  
+                        <div onclick="nextforwardbtn()" class="backBtn" style="margin-top:-5px" >
+                            <span class="btnText">Next</span>
+                            <i style="transform:none" class="uil uil-navigator"></i>
+                        </div>
+
+                         
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="form third">
+                <div class="details address">
+                    <span class="title">Child's Disability</span>
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label>Disabilities</label>
+                            @Html.DropDownListFor(x => x.Disability, new List<SelectListItem>
+                                                { new SelectListItem() { Text = "Please Select" },
+                                                  new SelectListItem() { Text = "H.I" },
+                                                  new SelectListItem() { Text = "V.I" },
+                                                   new SelectListItem() { Text = "I.D.D" },
+                                                  new SelectListItem() { Text = "P.H" },
+                                                  new SelectListItem() { Text = "C.P" },
+                                                  new SelectListItem() { Text = "Multiple Problems" },
+                                                  new SelectListItem() { Text = "Therapeutic Services" },
+                                                } )
+                        </div>
+
+                        <div class="input-field">
+                            <label>Presenting Complaint</label>
+                            @Html.TextBoxFor(x => x.Presenting_Complain, null, new { placeholder = "Any Present Complain", @requiired = "required"  })
+
+                        </div>
+                        <div class="input-field" style="visibility:hidden">
+                            <label>State</label>
+
+                        </div>
+                        <div class="input-field" style="visibility:hidden">
+                            <label>City</label>
+
+
+                        </div>
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Postal /Zip Code</label>
+
+                        </div>
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Contact Number</label>
+
+                        </div>
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Phone Residence</label>
+
+                        </div>
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Office Phone</label>
+
+                        </div>
+                        <div class="input-field">
+                            <label style="visibility:hidden">Office Phone </label>
+                            @*@Html.TextBoxFor(x => x.Phone_Office, null, new { placeholder = "Enter Office Phone", @requiired = "required" })*@
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="buttons"  >
+                    <div onclick="nextbackwardbtn()" class="backBtn">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btnText">Back</span>
+                    </div>
+
+
+                    <button type="submit" class=" backBtn" style="margin-left:10px">
+                        <span class="btnText">Submit</span>
+                        <i style="transform:none !important" class="uil uil-navigator"></i>
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        }
+
+
+    </div>
+
+
+
+</main>
+
+
+<script src="~/Content/NewAdmissionAssets/js/newadd.js"></script>

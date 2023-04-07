@@ -1,0 +1,594 @@
+﻿@model QRSCS.Models.DashboardModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<body>
+
+
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">Dashboard</h1>
+        <ul class="breadcrumbs">
+            <li>
+                @{
+                    if (User.IsInRole("Admin"))
+                    {
+                        <a href="#">Admin</a>
+                    }
+                    else
+                    {
+                        <a href="#">Teacher</a>
+                    }
+                }
+
+            </li>
+            <li class="divider">/</li>
+            <li><a href="#">Dashboard</a></li>
+        </ul>
+        @{
+            if (User.IsInRole("Admin"))
+            {
+                <div class="info-data">
+                    <div class="card" style="background: radial-gradient(#f588d8, #c0a3e5);">
+                        <div class="head">
+                            <div>
+                                <h3>TOTAL ACCCOUNTS</h3>
+                                <p>Web App Handlers</p>
+                            </div>
+                            <h3>@Model.total_users</h3>
+
+                        </div>
+                        <span class="progress" data-value="100%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">ADMINS AND TEACHERS</h5>
+                            </div>
+                            <h5 class="inner-divv">@Model.total_users</h5>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="card" style=" background: radial-gradient(#60efbc, #58d5c9);">
+                        <div class="head">
+                            <div>
+                                <h3>TEACHER ACCOUNTS</h3>
+                                <p>School Faculty</p>
+                            </div>
+                            <h3>@Model.total_teachers</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_teachers_percent%"></span>
+
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL TEACHERS</h5>
+                            </div>
+                            <h5 class="inner-divv">@Model.total_teachers_percent%</h5>
+
+                        </div>
+                    </div>
+
+                    <div class="card" style=" background: radial-gradient(#76b2fe, #b69efe);">
+                        <div class="head">
+                            <div>
+                                <h3>ADMIN ACCOUNTS</h3>
+                                <p>Web App Administrators</p>
+                            </div>
+                            <h3>@Model.total_admins</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_admin_percent%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL ADMINS</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_admin_percent%</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style=" background: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%); ">
+                        <div class="head">
+                            <div>
+                                <h3>DEACTIVATED ADMINS</h3>
+                                <p>Admin Accounts</p>
+                            </div>
+                            <h3>@Model.total_deactivated_admins</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_deactivated_admins_percent%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL DEACTIVATED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_deactivated_admins_percent%</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: #85FFBD; background-image: linear-gradient(45deg, #85FFBD 0%, #fffc44 100%); ">
+                        <div class="head">
+                            <div>
+                                <h3>DEACTIVATED TEACHER</h3>
+                                <p>Teacher Accounts</p>
+                            </div>
+                            <h3>@Model.total_deactivated_teachers</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_deactivated_teachers_percent%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL DEACTIVATED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_deactivated_teachers_percent%</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: #74EBD5; background-image: linear-gradient(90deg, #74EBD5 46%, #9FACE6 100%); ">
+                        <div class="head">
+                            <div>
+                                <h3>STUDENTS COUNT</h3>
+                                <p>HI-VI-IDD</p>
+                            </div>
+                            <h3>@Model.total_students</h3>
+                        </div>
+                        <span class="progress" data-value="100%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL STUDENTS</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_students</span>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="info-data">
+                    <div class="card" style="background-image: linear-gradient(45deg, #ccff00, #09afff); ">
+                        <div class="head">
+                            <div>
+                                <h3>HI STUDENTS</h3>
+                                <p>Hearing Impaired</p>
+                            </div>
+                            <h3>@Model.total_histudents</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_histudents_percent%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL HI-DISABLED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_histudents_percent%</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style="background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d); ">
+                        <div class="head">
+                            <div>
+                                <h3>VI STUDENTS</h3>
+                                <p>Visual Impaired</p>
+                            </div>
+                            <h3>@Model.total_vistudents</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_vistudents_percent%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL VI-DISABLED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_vistudents_percent%</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style="background-image: linear-gradient( 70.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );">
+                        <div class="head">
+                            <div>
+                                <h3>IDD STUDENTS</h3>
+                                <p>ID Disability</p>
+                            </div>
+                            <h3>@Model.total_iddstudents</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_iddstudents_percent%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL IDD-DISABLED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_iddstudents_percent%</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style="background-image: linear-gradient(45deg, #e91e63, #ffeb3b);">
+                        <div class="head">
+                            <div>
+                                <h3>IE Plan COUNT</h3>
+                                <p>Education Plan</p>
+                            </div>
+                            <h3>@Model.total_IEP</h3>
+                        </div>
+                        <span class="progress" data-value="100%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL EDUCATION PLANS</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_IEP</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="data">
+                    <div class="content-data">
+                        <div class="head">
+                            <h3>Accounts Info</h3>
+
+                        </div>
+                        <div class="chart">
+                            <p style="visibility: hidden;">Charts</p>
+                            <div id="chart"></div>
+                        </div>
+                    </div>
+                    <div class="content-data">
+                        <div class="head">
+                            <h3>Bars According To Disability</h3>
+
+                        </div>
+                        <div class="chart">
+                            <div id="chart1"></div>
+                        </div>
+                    </div>
+                    <div class="content-data">
+                        <div class="head">
+                            <h3>Students Record</h3>
+
+                        </div>
+                        <div class="chart">
+                            <div id="chart2"></div>
+                        </div>
+                    </div>
+                    <div class="content-data">
+                        <div class="head">
+                            <h3>Disability Comparison</h3>
+
+                        </div>
+                        <div class="chart">
+                            <p style="visibility: hidden;">Charts</p>
+                             
+                            <div id="chart3"></div>
+                        </div>
+                    </div>
+                     
+
+
+
+                </div>
+
+            }
+            else if(Model!=null)
+            {
+                <div class="info-data">
+                    <div class="card" style="background-image: linear-gradient(45deg, #ccff00, #09afff); ">
+                        <div class="head">
+                            <div>
+                                <h3>CLASS ASSIGNED</h3>
+                                <p>teacher Class</p>
+                            </div>
+                            <h3>@Model.Class_of_Teacher</h3>
+                        </div>
+                        <span class="progress" data-value="100%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">CLASS ASSIGNED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.Class_of_Teacher</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style="background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d); ">
+                        <div class="head">
+                            <div>
+                                <h3>STUDENTS COUNT</h3>
+                                <p>HI-VI-IDD</p>
+                            </div>
+                            <h3>@Model.total_students</h3>
+                        </div>
+                        <span class="progress" data-value="100%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL STUDENTS</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_students</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style="background-image: linear-gradient( 70.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );">
+                        <div class="head">
+                            <div>
+                                <h3>IDD STUDENTS</h3>
+                                <p>ID Disability</p>
+                            </div>
+                            <h3>@Model.total_iddstudents_in_class</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_iddstudents_percent_in_class%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL IDD-DISABLED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_iddstudents_percent_in_class%</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style="background-image: linear-gradient(45deg, #e91e63, #ffeb3b);">
+                        <div class="head">
+                            <div>
+                                <h3>HI STUDENTS</h3>
+                                <p>HI Disability</p>
+                            </div>
+                            <h3>@Model.total_histudents_in_class</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_histudents_percent_in_class%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL HI-DISABLED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_histudents_percent_in_class%</span>
+
+                        </div>
+                    </div>
+                    <div class="card" style=" background: radial-gradient(#f588d8, #c0a3e5);">
+                        <div class="head">
+                            <div>
+                                <h3>VI STUDENTS</h3>
+                                <p>VI Disability</p>
+                            </div>
+                            <h3>@Model.total_vistudents_in_class</h3>
+                        </div>
+                        <span class="progress" data-value="@Model.total_vistudents_percent_in_class%"></span>
+                        <div class="head">
+                            <div>
+                                <h5 class="inner-divv">TOTAL VI-DISABLED</h5>
+                            </div>
+                            <span class="inner-divv">@Model.total_vistudents_percent_in_class%</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="data">
+
+                    <div class="content-data">
+                        <div class="head">
+                            <h3>Bars According To Disability</h3>
+
+                        </div>
+                        <div class="chart">
+                            <div id="chart1"></div>
+                        </div>
+                    </div>
+
+                    <div class="content-data">
+                        <div class="head">
+                            <h3>Disability Comparison</h3>
+
+                        </div>
+                        <div class="chart">
+                            <p style="visibility: hidden;">Charts</p>
+                           
+                            <div id="chart3"></div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            }
+
+
+        }
+
+    </main>
+    <!-- MAIN -->
+    <!--Profile Modal-->
+    @*<div style="visibility: hidden;" class="container">
+            <header>Registration</header>
+
+            <form action="#">
+                <div class="form first">
+                    <div class="details personal">
+                        <span class="title">Personal Details</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="Enter your name" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date of Birth</label>
+                                <input type="date" placeholder="Enter birth date" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Email</label>
+                                <input type="text" placeholder="Enter your email" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Mobile Number</label>
+                                <input type="number" placeholder="Enter mobile number" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Gender</label>
+                                <select required>
+                                    <option disabled selected>Select gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Occupation</label>
+                                <input type="text" placeholder="Enter your ccupation" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="details ID">
+                        <span class="title">Identity Details</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>ID Type</label>
+                                <input type="text" placeholder="Enter ID type" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>ID Number</label>
+                                <input type="number" placeholder="Enter ID number" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Issued Authority</label>
+                                <input type="text" placeholder="Enter issued authority" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Issued State</label>
+                                <input type="text" placeholder="Enter issued state" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Issued Date</label>
+                                <input type="date" placeholder="Enter your issued date" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Expiry Date</label>
+                                <input type="date" placeholder="Enter expiry date" required>
+                            </div>
+                        </div>
+
+                        <button class="nextBtn">
+                            <span class="btnText">Next</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form second">
+                    <div class="details address">
+                        <span class="title">Address Details</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Address Type</label>
+                                <input type="text" placeholder="Permanent or Temporary" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Nationality</label>
+                                <input type="text" placeholder="Enter nationality" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>State</label>
+                                <input type="text" placeholder="Enter your state" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>District</label>
+                                <input type="text" placeholder="Enter your district" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Block Number</label>
+                                <input type="number" placeholder="Enter block number" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Ward Number</label>
+                                <input type="number" placeholder="Enter ward number" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="details family">
+                        <span class="title">Family Details</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Father Name</label>
+                                <input type="text" placeholder="Enter father name" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Mother Name</label>
+                                <input type="text" placeholder="Enter mother name" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Grandfather</label>
+                                <input type="text" placeholder="Enter grandfther name" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Spouse Name</label>
+                                <input type="text" placeholder="Enter spouse name" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Father in Law</label>
+                                <input type="text" placeholder="Father in law name" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Mother in Law</label>
+                                <input type="text" placeholder="Mother in law name" required>
+                            </div>
+                        </div>
+
+                        <div class="buttons">
+                            <div class="backBtn">
+                                <i class="uil uil-navigator"></i>
+                                <span class="btnText">Back</span>
+                            </div>
+
+                            <button class="sumbit">
+                                <span class="btnText">Submit</span>
+                                <i class="uil uil-navigator"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>*@
+    @*<script src="~/Content/Adminassets/js/profile_modal.js"></script>*@
+    <!--end of modal-->
+    @*<script src="~/Content/Adminassets/js/main_layout.js"></script>*@
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="~/Content/Adminassets/js/main_charts.js"></script>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <script>
+            Account_info_Function(2, @Model.total_admins, @Model.total_teachers, 2, 2);
+            disability_chart(@Model.total_histudents, @Model.total_vistudents, @Model.total_iddstudents);
+            Students_Record(@Model.class1, @Model.class2, @Model.class3, @Model.class4, @Model.class5,
+                @Model.class6, @Model.class7, @Model.class8, @Model.class9, @Model.class10);
+
+            Disability_Comparison(@Model.total_histudents, @Model.total_vistudents, @Model.total_iddstudents, @Model.PH_student, @Model.CP_student);
+        </script>
+}
+    else if(Model !=null)
+    {
+        <script>
+    disability_chart(@Model.total_histudents_in_class , @Model.total_vistudents_in_class, @Model.total_iddstudents_in_class);
+            Disability_Comparison(@Model.total_histudents_in_class, @Model.total_vistudents_in_class, @Model.total_iddstudents_in_class, @Model.total_phstudents_in_class, @Model.total_cpstudents_in_class);
+
+        </script>
+
+    }
+
+
+
+</body>
+

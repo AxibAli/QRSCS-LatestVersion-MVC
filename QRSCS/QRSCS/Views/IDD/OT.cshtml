@@ -1,0 +1,912 @@
+﻿@model QRSCS.Models.OccupationalTherapy1ModelDTO
+@{
+    ViewBag.Title = "Occupational Therapy Form";
+
+}
+<link type="text/css" rel="stylesheet" href="~/Content/adminassets/css/style.css">
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+@*<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>*@
+<style>
+
+    fieldset {
+        display: none;
+        padding: 25px;
+    }
+
+    #first {
+        display: block;
+    }
+
+    input[type=submit], input[type=button] {
+        width: 120px;
+        margin: 15px 25px;
+        padding: 5px;
+        height: 40px;
+        background-color: #2e69ff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .prevbut {
+        background-color: #e5e7f2 !important;
+        color: black !important;
+    }
+
+        .prevbut:hover {
+            background-color: #b8b8b8 !important;
+        }
+</style>
+
+<main>
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h4 class="breadcrumb-title"></h4>
+            <ul class="db-breadcrumb-list">
+                
+                <h2>Occupational Therapy</h2>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="widget-inner">
+                        <div id="calendar">
+                            @using (Html.BeginForm("OT", "IDD", FormMethod.Post, new { @class = "jotform-form", method = "post", name = "form_212582673034454", id = "212582673034454", acceptcharset = "utf-8", autocomplete = "on" }))
+                            {
+                                <div role="main" class="form-all">
+                                    @*OCCUPATIONAL THERAPY*@
+                                    <fieldset id="first">
+                                        <ul class="form-section page-section">
+                                            <li id="cid_43" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-large">
+                                                    <div class="header-text httac htvam">
+                                                        <h1 id="header_43" class="form-header" data-component="header">
+                                                            OCCUPATIONAL THERAPY
+                                                        </h1>
+                                                        <div id="subHeader_43" class="form-subHeader">
+                                                            Assessment Of The Child With Cerebral Palsy
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-small">
+                                                    <div class="header-text httac htvam">
+                                                        <h3 id="header_65" class="form-header" data-component="header">
+                                                            GENERAL INFORMATION
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="form-line jf-required" data-type="control_number" id="id_73">
+                                                <label class="form-label form-label-top" id="label_73" for="input_73">
+                                                    GR No
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_73" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        @*<input type="number" id="input_73" name="q73_grNo" data-type="input-number" class="form-number-input form-textbox validate[required]" data-defaultvalue="" style="width:310px" size="310" value="" placeholder="ex: 23" data-component="number" aria-labelledby="label_73 sublabel_input_73" required="" step="any" />*@
+                                                        @Html.TextBoxFor(x => x.occupationalTherapy1.GR_NO, null, new { required = "required", @Class = "form-textbox validate[required, Numeric, minCharLimit]", maxLength = "20", dataminlength = "", placeholder = "Enter GR-NO For Search", type = "text", id = "input_73", name = "q73_grNo", size = "10" })
+                                                        @Html.ValidationMessageFor(x => x.occupationalTherapy1.GR_NO, null, new { style = "color:red" })
+                                                        <label class="form-sub-label" for="input_73" id="sublabel_input_73" style="min-height:13px" aria-hidden="false"> Enter GR-No For Search </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="form-line jf-required" data-type="control_fullname" id="id_56">
+                                                <label class="form-label form-label-top form-label-auto" id="label_56" for="first_56">
+                                                    Student Name.
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_56" class="form-input-wide jf-required" data-layout="full">
+                                                    <div data-wrapper-react="true">
+                                                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                                            <input type="text" id="first_56" required="required" readonly="readonly" , disabled="disabled" class="form-textbox " name="q56_name[first]" data-defaultvalue="" size="10" value="" data-component="first" aria-labelledby="label_56 sublabel_56_first" />
+                                                            <label class="form-sub-label" for="first_56" id="sublabel_56_first" style="min-height:13px" aria-hidden="false"> First Name </label>
+                                                        </span>
+                                                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
+                                                            <input type="text" id="last_56" class="form-textbox " name="q56_name[last]" required="required" readonly="readonly" , required, disabled="disabled" data-defaultvalue="" size="15" value="" data-component="last" aria-labelledby="label_56 sublabel_56_last" />
+                                                            <label class="form-sub-label" for="last_56" id="sublabel_56_last" style="min-height:13px" aria-hidden="false"> Last Name </label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_dropdown" id="id_57">
+                                                <label class="form-label form-label-top" id="label_57" for="input_57">
+                                                    Father Name
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+
+                                                <div id="cid_57" class="form-input-wide jf-required" data-layout="half">
+                                                    <span class="form-sub-label-container" style="vertical-align:top">
+                                                        <input type="text" id="input_72" class="form-textbox " name="q72_fatherName72" readonly="readonly" , disabled="disabled" data-type="input-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_72 sublabel_input_72" required="" />
+                                                        <label class="form-sub-label" for="input_72" id="sublabel_input_72" style="min-height:13px" aria-hidden="false"> Full name of Father </label>
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_radio" id="id_15">
+                                                <label class="form-label form-label-top" id="label_15" for="input_15">
+                                                    Gender
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_15" class="form-input-wide jf-required" data-layout="full">
+                                                    <div class="form-single-column" role="group" aria-labelledby="label_15" data-component="radio">
+                                                        <span class="form-radio-item" style="clear:left">
+                                                            <span class="dragger-item">
+                                                            </span>
+                                                            <input type="radio" aria-describedby="label_15" readonly="readonly" disabled="disabled" class="form-radio " id="input_15_0" name="q15_gender" value="Male" />
+                                                            <label id="label_input_15_0" for="input_15_0"> Male </label>
+                                                        </span>
+                                                        <span class="form-radio-item" style="clear:left">
+                                                            <span class="dragger-item">
+                                                            </span>
+                                                            <input type="radio" aria-describedby="label_15" readonly="readonly" disabled="disabled" class="form-radio " id="input_15_1" name="q15_gender" value="Female" />
+                                                            <label id="label_input_15_1" for="input_15_1"> Female </label>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li style="display:flex; flex-flow: row wrap;">
+                                            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_textbox" id="id_63">
+                                                <label class="form-label form-label-top" id="label_63" for="input_63">
+                                                    Disablity
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_63" class="form-input-wide jf-required" data-layout="half">
+                                                    <input type="text" id="input_63" readonly="readonly" ,required="required" , disabled="disabled" name="q63_disablity" data-type="input-textbox" class="form-textbox " data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_63" />
+                                                </div>
+                                            </li>
+                                            <li class="form-line form-line-column form-col-3 jf-required" data-type="control_birthdate" id="id_39">
+                                                <label class="form-label form-label-top" id="label_39" for="input_39">
+                                                    Date of Assessment
+                                                    <span class="form-required">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div id="cid_74" class="form-input-wide jf-required" data-layout="full">
+
+                                                    @Html.EditorFor(x => x.occupationalTherapy1.Date_of_Assessment, new { htmlAttributes = new { @id = "d_ex", @class = "form-textbox validate[required]", @type = "date" } })
+                                                    @Html.ValidationMessageFor(x => x.occupationalTherapy1.Date_of_Assessment, null, new { style = "color:red" })
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                        <div>
+                                            <input id="next_btn1" onclick="next_step1()" type="button" value="Next" style="float: right; right: 0;">
+                                        </div>
+                                    </fieldset>
+                                    @*@MEETING INFORMATION@*@
+                                    <fieldset id="second">
+                                        <div class="form-line jf-required" data-type="control_matrix" id="id_114">
+                                            <div id="cid_114" class="form-input-wide jf-required" data-layout="full">
+                                                <table summary="" aria-labelledby="label_114" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix">
+                                                    <tr class="form-matrix-tr form-matrix-header-tr">
+                                                        <th class="form-matrix-th" style="border:none">
+
+                                                        </th>
+                                                        <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_0">
+                                                            <label id="label_114_col_0">  </label>
+                                                        </th>
+                                                        <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                            <label id="label_114_col_1"> Remarks </label>
+                                                        </th>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_0">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_0"> <u><b>General Impression</b></u> <br />Alertness and Communication </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Alertness, null, new { id = "input_114_0_0", name = "q114_postNatal[0][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit,requireOneAnswer]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Alertness, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Alertness, null, new { id = "input_114_0_1", name = "q114_postNatal[0][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Alertness, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_1">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_1"> <b>TONE</b> (Spasticity-Flaccidity)</label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Tone, null, new { id = "input_114_1_0", name = "q114_postNatal[1][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", required = "required", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Tone, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Tone, null, new { id = "input_114_1_1", name = "q114_postNatal[1][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Tone, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_2">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_2"> <u>REFLEXES</u> <br />Moro </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Reflexes, null, new { id = "input_114_2_0", name = "q114_postNatal[2][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Reflexes, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Reflexes, null, new { id = "input_114_2_1", name = "q114_postNatal[2][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Reflexes, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_3">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_3"> Startle </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Startle, null, new { id = "input_114_3_0", name = "q114_postNatal[3][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Startle, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Startle, null, new { id = "input_114_3_1", name = "q114_postNatal[3][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Startle, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_4">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_4"> ATNR </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.ATNR, null, new { id = "input_114_4_0", name = "q114_postNatal[4][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.ATNR, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.ATNR, null, new { id = "input_114_4_1", name = "q114_postNatal[4][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.ATNR, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_5">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_5"> Gallant </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Gallant, null, new { id = "input_114_5_0", name = "q114_postNatal[5][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Gallant, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Gallant, null, new { id = "input_114_5_1", name = "q114_postNatal[5][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Gallant, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_6">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_6"> Landau </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Landau, null, new { id = "input_114_6_0", name = "q114_postNatal[6][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Landau, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Landau, null, new { id = "input_114_6_1", name = "q114_postNatal[6][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Landau, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_7">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_7"> <b>Grasp</b> (palmar-plantar) </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Grasp, null, new { id = "input_114_7_0", name = "q114_postNatal[7][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Grasp, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Grasp, null, new { id = "input_114_7_1", name = "q114_postNatal[7][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Grasp, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_8">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_8"> <b>Placing</b> (hand-foot) </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Placing, null, new { id = "input_114_8_0", name = "q114_postNatal[8][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Placing, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Placing, null, new { id = "input_114_8_1", name = "q114_postNatal[8][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Placing, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_114 label_114_row_9">
+                                                        <th scope="row" class="form-matrix-headers form-matrix-row-headers">
+                                                            <label id="label_114_row_9"><b>Parachute</b> (forward-sideways-backward) </label>
+                                                        </th>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Parachute, null, new { id = "input_114_9_0", name = "q114_postNatal[9][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "10", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Parachute, null, new { style = "color:red" })
+                                                        </td>
+                                                        <td class="form-matrix-values">
+                                                            @Html.TextBoxFor(x => x.ot1_Page1.Parachute, null, new { id = "input_114_9_1", name = "q114_postNatal[9][]", @Class = "form-textbox validate[Numeric, minCharLimit]", maxLength = "4", type = "text", size = "10", })
+                                                            @Html.ValidationMessageFor(x => x.ot1_Page1.Parachute, null, new { style = "color:red" })
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-small">
+                                                    <div class="header-text httac htvam">
+                                                        <h3 id="header_65" class="form-header" data-component="header">
+                                                            Ding key for reflexes:Present= P, Absent= A
+                                                        </h3>
+                                                        <h3 id="header_65" class="form-header" data-component="header">
+                                                            Modified As worth Scale for Spasticity
+                                                        </h3>
+                                                    </div>
+                                                    <br />
+                                                    <label class="form-label form-label-top form-label-auto">
+                                                        0. No increase in muscle tone
+                                                    </label>
+                                                    <label class="form-label form-label-top form-label-auto">
+                                                        1. Slight increase in muscle tone, manifested by a catch and release, or by Minimal resistance at the end of the range of motion when the affected part(s) is moved
+                                                        in flexion or extension
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <input id="pre_btn3" onclick="prev_step1()" type="button" value="Previous" class="prevbut">
+                                        <input id="next_btn4" name="next" onclick="next_step2()" type="button" value="Next" style="float: right; right: 0;">
+                                    </fieldset>
+                                    @*@MEETING INFORMATION@*@
+                                    <fieldset id="third">
+                                        <ul>
+                                            <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-small">
+                                                    <label class="form-label form-label-top form-label-auto">
+                                                        1. Slight increase in muscle tone, manifested by a catch, followed by minimal resistance throughout the remainder (less than half) of the ROM.
+                                                    </label>
+                                                    <label class="form-label form-label-top form-label-auto">
+                                                        2. More marked increase in muscle
+                                                    </label>
+                                                    <label class="form-label form-label-top form-label-auto">
+                                                        3. Considerable increase in muscle tone, passove movement difficult
+                                                    </label>
+                                                    <label class="form-label form-label-top form-label-auto">
+                                                        4. Affected part  (s) rigid in flexion and extension
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div id="cid_25" class="form-input-wide jf-required" data-layout="full">
+                                            <table summary="" aria-labelledby="label_25" cellPadding="4" cellSpacing="0" class="form-matrix-table" data-component="matrix" data-dynamic="true">
+                                                <tr class="form-matrix-tr form-matrix-header-tr">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_0">
+                                                        <label id="label_25_col_0">Age </label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1">Development Milestones </label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Remarks</label>
+                                                    </th>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 3 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Head Holding</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_3_Months, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_3_Months, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 6 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Sits with support</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_6_Months, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_6_Months, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 7 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Sits without support</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_7_Months, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_7_Months, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 6 to 7 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Transfer object from one hand to another</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_6_To_7_Months, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_6_To_7_Months, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 8 to 10 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Creeps</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_8_To_10_Months, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_8_To_10_Months, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 10 to 11 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Crawl</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_10_To_11_Months_Crawl, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_10_To_11_Months_Crawl, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 9 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Standing holding furniture</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_9_Months, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_9_Months, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 10 to 11 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Stands without support</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_10_To_11_Months_Stands, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_10_To_11_Months_Stands, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 12 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Walks holding furniture</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_12_Months_Walks, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_12_Months_Walks, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 13 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Walks without support</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_13_Months_Walks, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_13_Months_Walks, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 12 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Says one work with meaning</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_12_Months_Says, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_12_Months_Says, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 15 to 18 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Joints 2 to 3 words with meaning</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_15_To_18_Months_Joints, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_15_To_18_Months_Joints, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 13 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Feeds self with spoon</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_13_Months_Feeds, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_13_Months_Feeds, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 15 to 18 months</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Climb stairs</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_15_To_18_Months_Climb_Stairs, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_15_To_18_Months_Climb_Stairs, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 2 to 3 years</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Handles cup well & releases wthout spilling <br /> Matches colors(5 out of 6) <br /> Imtiates cross(2 1/2 years)</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_2_To_3_Years, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_2_To_3_Years, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                                <tr class="form-matrix-tr form-matrix-value-tr" aria-labelledby="label_25 label_25_row_0">
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> 3 to 4 years</label>
+                                                    </th>
+                                                    <th scope="col" class="form-matrix-headers form-matrix-column-headers form-matrix-column_1">
+                                                        <label id="label_25_col_1"> Dresses self fully</label>
+                                                    </th>
+                                                    <td class="form-matrix-values">
+                                                        @Html.TextBoxFor(x => x.ot1_Page2.Remark_3_To_4_Years, null, new { id = "input_114_17_0", name = "q114_postNatal[17][]", @Class = "form-textbox validate[AlphaNumeric, minCharLimit]", maxLength = "20", type = "text", size = "10", })
+                                                        @Html.ValidationMessageFor(x => x.ot1_Page2.Remark_3_To_4_Years, null, new { style = "color:red" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <ul>
+                                            <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-small">
+                                                    <div class="header-text httac htvam">
+                                                        <h3 id="header_65" class="form-header" data-component="header">
+                                                            2. Cross Motor Skills
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    a. Reach(Initial,Partial,Full)
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Reach, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Reach, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    b. Prehension(Pinch,Grasp,Hook)
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Prehension, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Prehension, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    c. Carry(Initial,Partial,Full)
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Carry, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Carry, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    d. Release(Initial,Partial,Full)
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Release, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Release, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-small">
+                                                    <div class="header-text httac htvam">
+                                                        <h3 id="header_65" class="form-header" data-component="header">
+                                                            3. Fine Motor Skills (Able,Unable)
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    a. Isolated Finger movement
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Isolated, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Isolated, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    b. Opposition
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Opposition, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Opposition, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    c. Tip to tip
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.TiptoTip, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.TiptoTip, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    d. Finger abduction
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Finger, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Finger, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    4. Pre-writing Skills
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Pre_writing, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "Fist Grasp / Digital Pronate / Static Tripod", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Pre_writing, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    5. Cognition
+
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Cognition, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Cognition, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                            a. Response to external environment
+                                        </label>
+                                        <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                            b. Perception(shape,color,size)
+                                        </label>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    6a.
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Cognition, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Cognition, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    6b. Auditory
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Auditory, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Auditory, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    6c.Visual
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Visual, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Visual, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    6d. Taste and smell
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Taste_Smell, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Taste_Smell, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li id="cid_65" class="form-input-wide" data-type="control_head">
+                                                <div class="form-header-group  header-small">
+                                                    <div class="header-text httac htvam">
+                                                        <h3 id="header_65" class="form-header" data-component="header">
+                                                            Key intact/impaired/absent
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    7. Vestibular (Present/Absent)
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Vestibular, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", required = "required", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Vestibular, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    8. Praxis / Motor Planning
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Praxis, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "Below age / Age appropiate", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Praxis, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    9. Stereignosis
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Stereignosis, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "Present/Absent", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Stereignosis, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    10. Communication
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Communication, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Communication, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27"></label>
+                                                11. Behavior/ Play Skill
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Behaviour, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Behaviour, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    12. Sleep
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Sleep, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Sleep, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display:flex; flex-flow: row wrap;">
+                                            <div class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_27">
+                                                <label class="form-label form-label-top form-label-auto" id="label_27" for="input_27">
+                                                    13. Activities of Daily living
+                                                </label>
+                                                <div id="cid_27" class="form-input-wide jf-required" data-layout="half">
+                                                    @Html.TextBoxFor(x => x.ot1_Page3.Activities, null, new { id = "input_27", name = "q27_typeA", @Class = "form-textbox validate[required, Alphabetic, minCharLimit]", maxLength = "30", placeholder = "Independent/ Dependent", type = "text", size = "10" })
+                                                    @Html.ValidationMessageFor(x => x.ot1_Page3.Activities, null, new { style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input id="pre_btn8" onclick="prev_step2()" type="button" value="Previous" class="prevbut">
+                                        <input id="submit" @*onclick="btn_submitch()"*@ name="next" type="submit" value="Submit" style="float: right; right: 0;">
+                                    </fieldset>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@*<script src="~/Content/javascripts/OT.js"></script>*@
+<script>
+    // Next Button Script
+    function next_step1() {
+        document.getElementById("first").style.display = "none";
+        document.getElementById("second").style.display = "block";
+        document.getElementById("active2").style.color = "red";
+    }
+
+    function next_step2() {
+        document.getElementById("second").style.display = "none";
+        document.getElementById("third").style.display = "block";
+        document.getElementById("active3").style.color = "red";
+    }
+
+    // Previous Button Script
+    function prev_step1() {
+        document.getElementById("first").style.display = "block";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("active1").style.color = "red";
+        document.getElementById("active2").style.color = "gray";
+    }
+    function prev_step2() {
+        document.getElementById("third").style.display = "none";
+        document.getElementById("second").style.display = "block";
+        document.getElementById("active2").style.color = "red";
+        document.getElementById("active3").style.color = "gray";
+    }
+</script>
+
+<script>
+
+    jQuery_3_6_1("#input_73").on('change', function () {
+        var userid = jQuery_3_6_1(this).val();
+        if (userid != '') {
+            jQuery_3_6_1.post('@Url.Action("GetUserByID","Editor")', { GR_NO: userid })
+            .done(function (response, status, jqxhr) {
+
+                if (response != '') {
+                    var postdata = { input_73: userid }
+                    jQuery_3_6_1("#first_56").val(response.Student_First_Name);
+                    jQuery_3_6_1("#last_56").val(response.Student_Last_Name);
+                    jQuery_3_6_1("input[name=q15_gender][value=" + response.Gender + "]").prop("checked", true);
+                    jQuery_3_6_1("#input_72").val(response.Father_Name);
+                    jQuery_3_6_1("#input_63").val(response.Disability);
+
+                }
+
+            })
+            .fail(function (jqxhr, status, error) { alert('error') });
+        }
+    });
+</script>
+

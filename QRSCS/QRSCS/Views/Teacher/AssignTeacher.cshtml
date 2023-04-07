@@ -1,0 +1,63 @@
+﻿@model QRSCS.Models.Assign_Teacher_Model
+@{
+    ViewBag.Title = "AssignTeacher";
+}
+<link href="~/Content/CreateUser/css/createuser.css" rel="stylesheet" />
+
+<main>
+    <div class="container" >
+        <header>Assign Class To Teacher</header>
+        @using (Html.BeginForm("AssignTeacher", "Teacher", FormMethod.Post, new { @id = "formmm", enctype = "multipart/form-data" }))
+        {
+            <div class="form first">
+                <div class="details personal">
+
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Teacher ID</label>
+                            @Html.TextBoxFor(m => m.User_ID, new { placeholder = "Enter User ID", @required = "required", @readonly = "readonly" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>Assign Class</label>
+
+                            @Html.DropDownListFor(x => x.Class, new List<SelectListItem>
+                                { new SelectListItem() { Text = "Please Select" },
+                                new SelectListItem() { Text = "1" },
+                                new SelectListItem() { Text = "2" },
+                                new SelectListItem() { Text = "3" },
+                                new SelectListItem() { Text = "4" },
+                                new SelectListItem() { Text = "5" },
+                                new SelectListItem() { Text = "6" },
+                                new SelectListItem() { Text = "7" },
+                                new SelectListItem() { Text = "8" },
+                                new SelectListItem() { Text = "9" },
+                                new SelectListItem() { Text = "10" }})
+                        </div>
+                        <div class="input-field">
+                            <label>Assign Section</label>
+                            @Html.DropDownListFor(x => x.Section, new List<SelectListItem>
+                                { new SelectListItem() { Text = "Please Select" },
+                                new SelectListItem() { Text = "A" },
+                                new SelectListItem() { Text = "B" },
+                                new SelectListItem() { Text = "C" },
+                                })
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="buttons">
+                   
+                    <button type="submit" class=" backBtn">
+                        <span class="btnText">Save</span>
+                        <i style="transform:none !important" class="uil uil-navigator"></i>
+                    </button>
+
+
+                </div>
+            </div>}
+    </div>
+</main>
+

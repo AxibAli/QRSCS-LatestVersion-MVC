@@ -1,0 +1,150 @@
+﻿@model QRSCS.Models.SpeechTherapyAssessmentModel
+@{
+    ViewBag.Title = "SpeechTherapyAssessment";
+ 
+}
+<link href="~/Content/CreateUser/css/createuser.css" rel="stylesheet" />
+<main>
+    <div class="container">
+        <header>Speech Therapy Assessment Form</header>
+        @using (Html.BeginForm("SpeechTherapyAssessment", "Editor", FormMethod.Post, new { @id = "formmm", enctype = "multipart/form-data" }))
+        {
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>GR No.</label>
+                            @Html.TextBoxFor(x => x.GR_NO, new { placeholder = "Enter GR Number", id = "gr_", @required = "required", onchange = "GetInfo(document.getElementById('gr_').value)" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>Student Full Name</label>
+                            @Html.TextBoxFor(x => x.Full_Name, new { placeholder = "Enter Full Name", id = "full_", @required = "required", @readonly = "readonly" })
+                        </div>
+
+                        <div class="input-field">
+                            <label>Student Class</label>
+                            @Html.TextBoxFor(x => x.Std_Class, new { placeholder = "Enter Student Class", id = "class_", @required = "required",@readonly = "readonly" })
+
+                        </div>
+                         
+                        <div class="input-field">
+                            <label>Date of Assesment</label>
+                            @Html.TextBoxFor(x => x.Date_of_Assessment, null, new { @type = "date", placeholder = "Enter the Date" , @required = "required" })
+
+                        </div>
+                        <div class="input-field">
+                            <label>Student Marks Obtained</label>
+                            @Html.TextBoxFor(x => x.Marks, null, new { placeholder = "Enter Student Marks", @required = "required" })
+
+
+
+
+                        </div>
+                        <div class="input-field">
+                            <label>Upload Assesment Image</label>
+                            @Html.TextBoxFor(m => m.Speech_Test_Image_File, new { @id = "user-image", @class = "upload-box", type = "file", accept = "image/png, image/jpeg", @required = "required" })
+                        </div>
+
+                        <div class="input-field">
+                            <label style="visibility:hidden">Upload User Image</label>
+
+                            <div id="preview" style="visibility:hidden;margin:0px;" onclick="preview_modal()" class="backBtn">Preview Image</div>
+                        </div>
+
+                        <div class="input-field" style="visibility:hidden">
+                            <label>Upload User Image</label>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                 
+
+
+                     
+
+                <div class="buttons">
+
+                    <button type="submit" class=" backBtn"  >
+                        <span class="btnText">Submit</span>
+                        <i style="transform:none !important" class="uil uil-navigator"></i>
+                    </button>
+                </div>
+                
+            </div>
+
+ 
+        }
+
+
+    </div>
+
+    <div id="image-preview" class="popup">
+        <header>
+            <span>Preview of Image</span>
+            <div><i onclick="img_modal_close()" class="uil uil-times"></i></div>
+        </header>
+        <div class="content">
+            <center>
+                <img width="200px" height="200px" src="" alt="" id="photo-preview" />
+            </center>
+
+        </div>
+    </div>
+
+
+</main>
+
+
+
+<script src="~/Content/adminassets/assets/js/jquery.min.js"></script>
+<script type="text/javascript">
+    function GetInfo(id) {
+        console.log(id);
+        jQuery_3_6_1.get("/Result/GetInfo?GRNO=" + id, function (response) {
+            console.log(response);
+            jQuery_3_6_1("#full_").val(response.Name + " " + response.Father_Name);
+            jQuery_3_6_1("#class_").val(response.Class);
+            //document.getElementById("full_").innerHTML = response.Name;
+            //document.getElementById("class_").innerHTML = response.Father_Name;
+
+
+        });
+    }
+    function GetInfopost() {
+        var img = jQuery_3_6_1('#BrowseImage')[0].files[0];
+        console.log(img);
+        var Db = new FormData();
+        //alert($("#gr_").val() + $("#full_").val() + $("#marks").val() + $("#class_").val());
+        Db.append("GR_NO", jQuery_3_6_1("#gr_").val());
+        Db.append("ImageFile", img);
+        var a = jQuery_3_6_1("#datee").val();
+        var ab = a.split("T");
+
+        Db.append("Full_Name", $("#full_").val());
+        Db.append("Date_of_Assessment", ab[0]);
+        Db.append("Marks", $("#marks").val());
+        Db.append("std_class", $("#class_").val());
+        $.ajax({
+            url: 'SpeechTherapyAssessment/Editor',
+            type: "Post",
+
+            data: Db,
+            contentType: false,
+            processData: false,
+            enctype: 'multipart/form-data',
+            cache: false,
+            success: function (data) {
+               alert("Successfully Added")
+            }
+        });
+    }
+    
+</script>
+<script src="~/Content/CreateUser/js/createuser.js"></script>

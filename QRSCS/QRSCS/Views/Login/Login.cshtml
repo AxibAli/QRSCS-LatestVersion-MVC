@@ -1,0 +1,121 @@
+﻿@model QRSCS.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="~/Content/loginassets/css/login_design.css" rel="stylesheet" />
+    <link href="~/Content/loginassets/css/notify_alert.css" rel="stylesheet" />
+</head>
+<body>
+    <main class="sign-up-mode">
+
+        <div class="box">
+            <div class="inner-box">
+                <div class="forms-wrap">
+
+
+                    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "sign-up-form" }))
+                    {
+                        <div class="logo">
+                            <img src="~/Content/loginassets/img/logo.png" alt="easyclass" />
+                            <h2>QRSCS</h2>
+                        </div>
+
+                        <div class="heading">
+                            <h2>Welcome!</h2>
+                            <h6>Login to QRSCS Online Portal</h6>
+
+                        </div>
+                        <div class="actual-form">
+                            <div class="input-wrap">
+                                @Html.TextBoxFor(x => x.UserName, new { @id = "username", @minlength = "4", @class = "input-field", @required = "required" })
+                                <label>Username</label>
+                            </div>
+                            <div class="input-wrap">
+                                @Html.PasswordFor(x => x.Password, new { @id = "password", @minlength = "8", @class = "input-field", @required = "required", @type = "password" })
+                                <label>Password</label>
+                            </div>
+
+                            <br>
+
+                            <input type="submit" value="Sign In" class="sign-btn" />
+                        </div>
+
+                    }
+                </div>
+
+                <div class="carousel">
+                    <div class="images-wrapper">
+                        <img width="500px" height="500px" src="~/Content/loginassets/img/animation_500_lbj5asx1.gif" class="image img-1 show" alt="" />
+                        <img width="500px" height="500px" src="~/Content/loginassets/img/animation_500_lbj618ka.gif" class="image img-2" alt="" />
+                        <img width="500px" height="500px" src="~/Content/loginassets/img/animation_500_lbj6tzxx.gif" class="image img-3" alt="" />
+                        <!-- <img src="./img/108510-transparant-study.gif" class="image img-3" alt="" /> -->
+                    </div>
+
+                    <div class="text-slider">
+                        <div class="text-wrap">
+                            <div class="text-group">
+                                <h2>“Learn as much as you can!”</h2>
+                                <h2>“Be so good they can't ignore you.”</h2>
+                                <h2>“Success is the sum of small efforts.”</h2>
+                            </div>
+                        </div>
+
+                        <div class="bullets">
+                            <span id="one" class="active" data-value="1"></span>
+                            <span id="two" data-value="2"></span>
+                            <span id="three" data-value="3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+
+
+</html>
+<script src="~/Content/loginassets/js/layout_Design.js"></script>
+
+
+@*
+<div class="alert hide">
+    <span class="fas fa-exclamation-circle"></span>
+    <span class="msg">@TempData["Message"]</span>
+    <div class="close-btn">
+        <span class="fas fa-times"></span>
+    </div>
+</div>
+
+<script>
+
+    jQuery_3_6_1('.close-btn').click(function () {
+        jQuery_3_6_1('.alert').removeClass("show");
+        jQuery_3_6_1('.alert').addClass("hide");
+    });
+</script>
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            jQuery_3_6_1('#username').val("");
+            jQuery_3_6_1('#password').val("");
+
+            jQuery_3_6_1('.alert').addClass("show");
+            jQuery_3_6_1('.alert').removeClass("hide");
+            jQuery_3_6_1('.alert').addClass("showAlert");
+            setTimeout(function () {
+                jQuery_3_6_1('.alert').removeClass("show");
+                jQuery_3_6_1('.alert').addClass("hide");
+            }, 5000);
+        }
+    </script>
+}*@
+
+
